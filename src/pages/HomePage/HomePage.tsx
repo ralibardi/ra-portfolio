@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
           count is {count}
         </button>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          Edit <code>src/HomePage.tsx</code> and save to test HMR
         </p>
       </div>
       <p className="read-the-docs">

@@ -9,12 +9,12 @@
     /* Aliases */
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["."],
       "@public/*": ["../public/*"],
-      "@extensions/*": ["extensions/*"],
-      "@pages/*": ["pages/*"],
-      "@components/*": ["components/*"],
+      "@/*": ["."],
       "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@utilities/*": ["utilities/*"],
     },
 
     /* Bundler mode */
