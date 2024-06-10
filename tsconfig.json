@@ -11,10 +11,18 @@
     "paths": {
       "@public/*": ["../public/*"],
       "@/*": ["."],
+      "@app/*": ["app/*"],
+      "@routes/*": ["app/routes/*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
+      "@config/*": ["config/*"],
+      "@features/*": ["features/*"],
+      "@hooks/*": ["hooks/*"],
+      "@lib/*": ["lib/*"],
       "@pages/*": ["pages/*"],
-      "@utilities/*": ["utilities/*"],
+      "@tests/*": ["tests/*"],
+      "@types/*": ["types/*"],
+      "@utils/*": ["utils/*"],
     },
 
     /* Bundler mode */
