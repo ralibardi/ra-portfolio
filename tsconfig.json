@@ -10,7 +10,7 @@
     "baseUrl": "./src",
     "paths": {
       "@public/*": ["../public/*"],
-      "@/*": ["."],
+      "@/*": ["/*"],
       "@app/*": ["app/*"],
       "@routes/*": ["app/routes/*"],
       "@assets/*": ["assets/*"],

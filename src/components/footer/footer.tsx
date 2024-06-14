@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
-import {footerTransKey} from '@app/i18n/keys';
-import FooterSocials from './components/footerSocials';
+import { footerTransKey } from '@app/i18n/keys';
+
+const FooterSocials = lazy(() => import('./components/footerSocials'));
+
+import './footer.scss';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -9,9 +12,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer__footer">
       <div className="footer__container">
-        <p>
-          {t(footerTransKey)}
-        </p>
+        <p>{t(footerTransKey)}</p>
         <FooterSocials />
       </div>
     </footer>

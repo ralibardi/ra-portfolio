@@ -1,33 +1,14 @@
-$blue: #005eb8;
-$white: #ffffff;
+$primary-blue: #646cff;
+$secondary-blue: #535bf2;
+$teritary-blue: #747bff;
 
-$dark-blue: #003087;
-$bright-blue: #008dff;
-$light-blue: #3cc6ff;
-
-$black: #231f20;
-$black-text: #212B32;
-$dark-grey: #425563;
-$mid-grey: #6b7783;
-$secondary-mid-grey: #F4F6FA;
-$keyline-grey: #b9bdbe;
-$light-grey: #dadee0;
-$pale-grey: #e8edee;
-$grayish-blue: #768692;
-
-$purple: #330072;
-$dark-pink: #7c2855;
-$pink: #ae2573;
-$dark-red: #8a1538;
-$red: #da291c;
-$orange: #ed8b00;
-$warm-yellow: #ffb81c;
-$yellow: #fae100;
-$sulphur-yellow: #edff20;
-$secondary-green: #009639;
-$accesibility-grey: #b5bbc1;
+$white: #ffffffde;
+$black: #242424;
 
 // Theme colours
-$primary-colour: $blue;
-$secondary-colour: $white;
-$tertiary-colour: $white;
+$primary-colour: $primary-blue;
+$secondary-colour: $secondary-blue;
+$tertiary-colour: $teritary-blue;
+
+// Colour scheme
+$colour-scheme: light dark;

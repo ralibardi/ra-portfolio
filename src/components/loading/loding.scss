@@ -1,4 +1,4 @@
-@import '@/_colours.scss';
+@use '@\/_colours.scss' as *;
 
 .spinner {
     width: 56px;

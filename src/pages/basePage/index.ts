@@ -1,2 +1,2 @@
-import BasePage from './BasePage';
+import BasePage from './basePage';
 export default BasePage;
