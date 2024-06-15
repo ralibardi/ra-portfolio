@@ -1,3 +1,4 @@
+// Colours
 $primary-blue: #646cff;
 $secondary-blue: #535bf2;
 $teritary-blue: #747bff;
@@ -10,5 +11,17 @@ $primary-colour: $primary-blue;
 $secondary-colour: $secondary-blue;
 $tertiary-colour: $teritary-blue;
 
+// Accents
+$accent-colour: #fa7575;
+
+
 // Colour scheme
 $colour-scheme: light dark;
+
+.manifest_colours {
+  --black: #{$black};
+  --white: #{$white};
+  --primary-colour: #{$primary-colour};
+  --secondary-colour: #{$secondary-colour};
+  --tertiary-colour: #{$tertiary-colour};
+}

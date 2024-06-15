@@ -5,15 +5,20 @@ import { Outlet } from 'react-router-dom';
 const Header = lazy(() => import('@components/header'));
 const Footer = lazy(() => import('@components/footer'));
 
-import "./basePage.scss"
+import './basePage.scss';
 
 const BasePage: React.FC = () => {
   return (
-    <React.Fragment>
+    <div className="basePage">
       <Header />
-      <Outlet />
+      <div className="basePage__content">
+        <aside className="basePage__sidebar"></aside>
+        <div className="basePage__body">
+          <Outlet />
+        </div>
+      </div>
       <Footer />
-    </React.Fragment>
+    </div>
   );
 };
 

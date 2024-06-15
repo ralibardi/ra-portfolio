@@ -1,9 +1,11 @@
-import { Loading } from '@components/loading';
+import React, { lazy } from 'react';
 import { PrimaryButtonProps } from './types/primaryButtonProps';
+
+const Loading = lazy(() => import('@components/loading'));
 
 import './primaryButton.scss';
 
-const PrimaryButton = ({
+const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   onClick,
   children,
   isLoading,

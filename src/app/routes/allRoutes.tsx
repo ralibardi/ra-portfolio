@@ -1,14 +1,12 @@
 // import packages
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import React, { Suspense, lazy } from "react";
-import {
-  rootPath
-} from "./routePaths";
-import { Loading } from "@components/loading";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import { rootPath } from './routePaths';
 
-const BasePage = lazy(() => import("@pages/basePage"));
-const HomePage = lazy(() => import("@pages/homePage"));
-const ErrorPage = lazy(() => import("@pages/errorPage"));
+const Loading = lazy(() => import('@components/loading'));
+const BasePage = lazy(() => import('@pages/basePage'));
+const HomePage = lazy(() => import('@pages/homePage'));
+const ErrorPage = lazy(() => import('@pages/errorPage'));
 
 const AllRoutes: React.FC = () => {
   return (
