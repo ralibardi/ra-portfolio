@@ -3,7 +3,7 @@ import { PrimaryButtonProps } from './types/primaryButtonProps';
 
 const Loading = lazy(() => import('@components/loading'));
 
-import './primaryButton.scss';
+import styles from './primaryButton.module.scss';
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   onClick,
@@ -13,7 +13,8 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 }: PrimaryButtonProps) => {
   return (
     <button
-      className="primary-button"
+      className={styles.primary_button}
+      id="primary-button"
       type="button"
       {...props}
       onClick={(e) => {

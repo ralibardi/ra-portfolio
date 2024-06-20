@@ -7,10 +7,10 @@ import {
   faXTwitter,
   faXbox,
 } from '@fortawesome/free-brands-svg-icons';
-import { SocialLinks } from '../types/socialLinks';
+import IconLinkType from '@type/iconLinkType';
 
-export function getSocialLinks(): SocialLinks[] {
-  const socialLinks: SocialLinks[] = [
+export function getSocialLinks(): IconLinkType[] {
+  const socialLinks: IconLinkType[] = [
     {
       icon: faLinkedinIn,
       link: 'https://facebook.com',

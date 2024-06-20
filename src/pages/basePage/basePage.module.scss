@@ -7,15 +7,10 @@
 
 .basePage__content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
   overflow: hidden;
   flex-grow: 1;
-}
-
-.basePage__sidebar {
-  flex-shrink: 0;
-  width: 320px;
 }
 
 .basePage__body {

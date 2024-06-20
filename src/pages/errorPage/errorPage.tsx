@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './errorPage.scss'
+import styles from './errorPage.module.scss';
 
 const ErrorPage: React.FC = () => {
   return (
-    <div>
+    <div className={styles.errorPage__container}>
       <h1>Error</h1>
       <p>Something went wrong.</p>
     </div>

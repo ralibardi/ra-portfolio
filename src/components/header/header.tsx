@@ -1,10 +1,11 @@
 import React from 'react';
-import './header.scss';
+
+import styles from './header.module.scss';
 
 const Header: React.FC = () => {
   return (
-    <header className="header__header">
-      <span className="header__text">Test</span>
+    <header className={styles.header}>
+      <span className={styles.header__title}>Test</span>
     </header>
   );
 };

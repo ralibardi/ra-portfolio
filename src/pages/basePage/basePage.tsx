@@ -3,22 +3,23 @@ import React, { lazy } from 'react';
 import { Outlet } from 'react-router-dom';
 
 const Header = lazy(() => import('@components/header'));
+const Sidebar = lazy(() => import('@components/sidebar'));
 const Footer = lazy(() => import('@components/footer'));
 
-import './basePage.scss';
+import styles from './basePage.module.scss';
 
 const BasePage: React.FC = () => {
   return (
-    <div className="basePage">
+    <main className={styles.basePage}>
       <Header />
-      <div className="basePage__content">
-        <aside className="basePage__sidebar"></aside>
-        <div className="basePage__body">
+      <div className={styles.basePage__content}>
+        <Sidebar />
+        <div className={styles.basePage__body}>
           <Outlet />
         </div>
       </div>
       <Footer />
-    </div>
+    </main>
   );
 };
 

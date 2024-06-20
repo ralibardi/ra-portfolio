@@ -1,0 +1,63 @@
+@use '@/_colors.scss' as *; 
+
+.iconColor {
+  color: $primary_color;
+}
+
+.sidebar {
+  display: contents;
+}
+
+.sidebar__container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar_icon {
+  background-color: #333;
+  color: $white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar_icon:hover {
+  background-color: #555;
+}
+
+.sidebar_icon i {
+  font-size: 1.7rem;
+}
+
+.sidebar_items {
+  background-color: #333;
+  color: $white;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.sidebar_item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar_item:hover {
+  background-color: #555;
+}
+
+.sidebar_item i {
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.sidebar_item p {
+  font-size: 1rem;
+}

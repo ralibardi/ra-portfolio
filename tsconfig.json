@@ -21,7 +21,7 @@
       "@lib/*": ["lib/*"],
       "@pages/*": ["pages/*"],
       "@tests/*": ["tests/*"],
-      "@types/*": ["types/*"],
+      "@type/*": ["types/*"],
       "@utils/*": ["utils/*"],
     },
 
@@ -39,6 +39,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "src/types/iconLinkType.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

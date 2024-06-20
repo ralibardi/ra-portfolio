@@ -1,10 +1,15 @@
 import React, { lazy } from 'react';
-import './homePage.scss';
 
 const Loading = lazy(() => import('@components/loading'));
 
+import styles from './homePage.module.scss';
+
 const HomePage: React.FC = () => {
-  return <Loading />;
+  return (
+    <div className={styles.homePage__container}>
+      <Loading />
+    </div>
+  );
 };
 
 export default HomePage;

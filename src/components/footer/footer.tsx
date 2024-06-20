@@ -4,14 +4,14 @@ import { footerTransKey } from '@app/i18n/keys';
 
 const FooterSocials = lazy(() => import('./components/footerSocials'));
 
-import './footer.scss';
+import styles from './footer.module.scss';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="footer__footer">
-      <div className="footer__container">
+    <footer className={styles.footer__footer}>
+      <div className={styles.footer__container}>
         <p>{t(footerTransKey)}</p>
         <FooterSocials />
       </div>
