@@ -16,7 +16,7 @@ export default defineConfig({
     {
       name: 'manifest-generator',
       enforce: 'post', // Run after other plugins
-      writeBundle: async () => {
+      writeBundle: () => {
         generateManifest();
       },
     },

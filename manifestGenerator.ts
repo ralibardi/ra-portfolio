@@ -3,7 +3,7 @@ import fs from 'fs';
 import handlebars from 'handlebars';
 import * as sass from 'sass';
 
-export async function generateManifest() {
+export function generateManifest() {
   // Read _colours.scss
   const scssContent = fs.readFileSync('src/_colours.scss', 'utf8');
 

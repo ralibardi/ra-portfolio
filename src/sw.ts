@@ -31,7 +31,9 @@ self.addEventListener('fetch', (event: FetchEvent) => {
         const responseToCache = response.clone();
 
         caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
+          void cache.put(event.request, responseToCache);
+        }).catch((error) => {
+          console.error('Error initializing service worker:', error);
         });
 
         return response;

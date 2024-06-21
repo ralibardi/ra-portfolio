@@ -1,9 +1,9 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-type IconLinkType = {
+interface IIconLink {
   icon: IconDefinition;
   link: string;
   order: number;
 }
 
-export default IconLinkType;
+export default IIconLink;

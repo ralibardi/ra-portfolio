@@ -1,11 +1,11 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
-type RouteType = {
+interface IRoute {
     path: string;
     component: React.FC;
     label: string;
     icon: IconDefinition;
-    children?: RouteType[];
+    children?: IRoute[];
   }
   
-  export default RouteType;
+  export default IRoute;

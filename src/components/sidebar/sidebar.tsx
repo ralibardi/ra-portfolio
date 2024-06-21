@@ -1,6 +1,6 @@
 import React, { lazy, useState } from "react";
 import { faBars, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import RouteType from '@type/routeType';
+import IRoute from '@type/route';
 import { getAppRoutes } from '@utils/getAppRoutes';
 import { Each } from '@utils/Each';
 
@@ -32,7 +32,7 @@ const Sidebar: React.FC = () => {
             <IconLink icon={faCircleXmark} color={styles.iconColor}/>
           </div>
           <Each
-            render={(route: RouteType) => <IconLink icon={route.icon} linkUrl={route.path} color={styles.iconColor} />}
+            render={(route: IRoute) => <IconLink icon={route.icon} linkUrl={route.path} color={styles.iconColor} />}
             of={getAppRoutes}
           />
         </div>

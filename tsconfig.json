@@ -39,6 +39,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/types/iconLinkType.ts"],
+  "include": ["src", "src/types/iconLinke.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
