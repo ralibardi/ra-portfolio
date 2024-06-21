@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './loading.module.scss';
+import styles from './loding.module.scss';
 
 const Loading: React.FC = () => {
   return (
