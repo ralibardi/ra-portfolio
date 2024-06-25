@@ -1,52 +1,44 @@
 import {
   faGithub,
-  faInstagram,
-  faLinkedinIn,
-  faSpotify,
   faStackOverflow,
-  faXTwitter,
+  faAndroid,
+  faAppStore,
+  faLinkedinIn,
+  faInstagram,
   faXbox,
+  faXTwitter,
+  faSpotify,
 } from '@fortawesome/free-brands-svg-icons';
-import IIconLink from '@type/iconLink';
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-export function getSocialLinks(): IIconLink[] {
-  const socialLinks: IIconLink[] = [
-    {
-      icon: faLinkedinIn,
-      link: 'https://facebook.com',
-      order: 3,
-    },
-    {
-      icon: faGithub,
-      link: 'https://facebook.com',
-      order: 1,
-    },
-    {
-      icon: faInstagram,
-      link: 'https://facebook.com',
-      order: 4,
-    },
-    {
-      icon: faStackOverflow,
-      link: 'https://facebook.com',
-      order: 2,
-    },
-    {
-      icon: faXTwitter,
-      link: 'https://facebook.com',
-      order: 1,
-    },
-    {
-      icon: faXbox,
-      link: 'https://facebook.com',
-      order: 5,
-    },
-    {
-      icon: faSpotify,
-      link: 'https://facebook.com',
-      order: 10,
-    }
-  ];
+import socialLinks from './socialLinks.json';
 
-  return socialLinks;
+interface ISocialLink {
+  icon: IconDefinition; 
+  link: string;
+  order: number;
+  isHidden: boolean;
+}
+
+const iconMap: Record<string, IconDefinition> = {
+  'faGithub': faGithub,
+  'faStackOverflow': faStackOverflow,
+  'faAndroid': faAndroid,
+  'faAppStore': faAppStore,
+  'faLinkedinIn': faLinkedinIn,
+  'faInstagram': faInstagram,
+  'faXbox': faXbox,
+  'faXTwitter': faXTwitter,
+  'faSpotify': faSpotify,
+};
+function getIconDefinition(iconName: string): IconDefinition {
+  console.log(iconMap[iconName]);
+  return iconMap[iconName];
+}
+
+export function getSocialLinks(): ISocialLink[] {
+  return socialLinks.map(link => ({
+    ...link,
+    icon: getIconDefinition(link.icon),
+  })).filter(link => !link.isHidden).sort((a, b) => a.order - b.order);
 }

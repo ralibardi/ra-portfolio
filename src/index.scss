@@ -7,10 +7,6 @@
   line-height: $font-height-normal;
   font-weight: $font-weight-regular;
 
-  color-scheme: $colour-scheme;
-  color: $white;
-  background-color: $black;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,4 +21,22 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+body, header, footer {
+  --primary-colour: #{$primary-colour-light};
+  --accent-colour: #{$accent-colour-light};
+  --background-colour: #{$background-colour-light};
+  --background-grey: #{$grey};
+  --text-colour: #{$text-colour-light};
+  --colour-scheme: #{$colour-scheme-light};
+}
+
+body.dark-mode, header.dark-mode, footer.dark-mode  {
+  --primary-colour: #{$primary-colour-dark};
+  --accent-colour: #{$accent-colour-dark};
+  --background-colour: #{$background-colour-dark};
+  --background-grey: #{$grey};
+  --text-colour: #{$text-colour-dark};
+  --colour-scheme: #{$colour-scheme-dark};
 }

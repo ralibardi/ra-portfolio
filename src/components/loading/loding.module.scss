@@ -12,9 +12,9 @@
   width: 56px;
   height: 56px;
   display: grid;
-  border: 4.5px solid #0000;
+  border: 4.5px solid var(--background-colour);
   border-radius: 50%;
-  border-right-color: $primary-colour;
+  border-right-color: var(--accent-colour);
   animation: spinner-a4dj62 1s infinite linear;
 }
 

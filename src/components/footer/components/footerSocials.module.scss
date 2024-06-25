@@ -1,0 +1,5 @@
+@use '@\/_colours.scss' as *;
+
+.iconColour {
+  --colour: #{var(--primary-colour)};
+}

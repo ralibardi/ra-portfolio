@@ -1,5 +1,3 @@
-/// <reference lib="webworker" />
-
 const CACHE_NAME = 'ra-protfolio-cache';
 const urlsToCache = ['/', '/index.html'];
 

@@ -2,6 +2,11 @@
 
 .icon-link__icon {
     padding-right: 1rem;
+    color: var(--primary-colour);
+}
+
+.icon-link__icon:hover {
+    color: var(--accent-colour);
 }
 
 .icon-link__label {

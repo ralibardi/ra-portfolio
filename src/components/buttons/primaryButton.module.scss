@@ -7,14 +7,14 @@
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--background-colour);
   cursor: pointer;
   transition: border-color 0.25s;
-  color: $white;
+  color: var(--primary-colour);
 }
 
 .primary-button:hover {
-  border-color: $primary-colour;
+  border-color: var(--background-colour);
 }
 
 .primary-button:focus,

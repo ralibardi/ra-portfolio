@@ -10,15 +10,16 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  assetsInclude: ['**/*.jpeg', '**/*.jpg'],
   plugins: [
     react(),
     tsconfigPaths(),
     {
       name: 'manifest-generator',
-      enforce: 'post', // Run after other plugins
+      enforce: 'post',
       writeBundle: () => {
         generateManifest();
       },
     },
-  ],
+  ]
 });
