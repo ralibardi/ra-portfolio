@@ -13,7 +13,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 }: PrimaryButtonProps) => {
   return (
     <button
-      className={styles.primary_button}
+      className={styles.primaryButton}
       id="primary-button"
       type="button"
       {...props}

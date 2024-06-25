@@ -14,7 +14,7 @@
       "@app/*": ["app/*"],
       "@routes/*": ["app/routes/*"],
       "@assets/*": ["assets/*"],
-      "@contexts/*": ["context/*"],
+      "@contexts/*": ["contexts/*"],
       "@components/*": ["components/*"],
       "@config/*": ["config/*"],
       "@features/*": ["features/*"],

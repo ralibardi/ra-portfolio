@@ -32,7 +32,6 @@ const iconMap: Record<string, IconDefinition> = {
   'faSpotify': faSpotify,
 };
 function getIconDefinition(iconName: string): IconDefinition {
-  console.log(iconMap[iconName]);
   return iconMap[iconName];
 }
 

@@ -1,5 +1,4 @@
-import React, { lazy, useState } from 'react';
-import { faBars, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import React, { lazy } from 'react';
 import IRoute from '@type/route';
 import { getAppRoutes } from '@utils/getAppRoutes';
 import { Each } from '@utils/Each';
@@ -7,27 +6,19 @@ import { Each } from '@utils/Each';
 const IconLink = lazy(() => import('@components/iconLink'));
 const CompanyInfo = lazy(() => import('@components/companyInfo'));
 
+import styles from "./sidebar.module.scss"
+
 const Sidebar: React.FC = () => {
-  const [sidebarOpen] = useState(false);
-
-  // const handleSidebarOpen = () => {
-  //   setSidebarOpen(true);
-  // };
-
-  // const handleSidebarClose = () => {
-  //   setSidebarOpen(false);
-  // };
 
   return (
     <div>
-      <nav className="sidebar">
-        <div className="sidebar-top-wrapper">
+      <nav className={styles.sidebar}>
+        <div className={styles.sidebar__companyLogo}>
           <CompanyInfo />
-          <IconLink icon={sidebarOpen ? faCircleXmark : faBars} />
         </div>
-        <div className="sidebar-links">
+        <div className={styles.sidebar__links}>
         <Each
-            render={(route: IRoute) => <IconLink icon={route.icon} linkUrl={route.path} />}
+            render={(route: IRoute) => <IconLink icon={route.icon} linkUrl={route.path} title={route.label} />}
             of={getAppRoutes}
           />
         </div>

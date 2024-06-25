@@ -14,16 +14,19 @@
   display: flex;
   color: var(--white);
   flex-direction: column;
-  background-color: var(--sidebar-background);
+  background-color: var(--background-colour);
   transition: max-width 0.2s ease-in-out;
 }
 
-.sidebar-top-wrapper {
+.sidebar__companyLogo {
   display: flex;
   background-color: var(--primary-color-light);
 }
 
 /*? menu links */
-.sidebar-links {
+.sidebar__links {
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }

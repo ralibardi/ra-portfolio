@@ -1,8 +1,7 @@
 {
-  "footer": "Lorem ipsum odor amet, consectetuer adipiscing elit.",
-  "header": "Lorem ipsum odor amet, consectetuer adipiscing elit.",
-  "sidebar": "Lorem ipsum odor amet, consectetuer adipiscing elit.",
-  "sidebar.company": "NHSEnlgand",
-  "sidebar.search": "search",
-  "sidebar.link1": "Home"
+  "company_name": "Ronny Alibardi",
+  "header_title": "Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique taciti duis; lacinia tempus fringilla accumsan. Risus aliquam posuere pellentesque sociosqu facilisi maecenas. Aptent blandit aliquet cras ultrices neque. Risus habitasse eleifend est urna maximus lorem dui? Tellus lectus pulvinar; iaculis torquent augue ad. Luctus quis neque mus; adipiscing sociosqu fringilla auctor. Consectetur dignissim primis tempus sociosqu congue efficitur, cubilia hendrerit enim.",
+  "footer_copyright": "© 2024 Ronny Alibardi",
+  "error_page_title": "Ooopss... There's something wrong",
+  "error_404_message": "Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique taciti duis; lacinia tempus fringilla accumsan. Risus aliquam posuere pellentesque sociosqu facilisi maecenas. Aptent blandit aliquet cras ultrices neque. Risus habitasse eleifend est urna maximus lorem dui? Tellus lectus pulvinar; iaculis torquent augue ad. Luctus quis neque mus; adipiscing sociosqu fringilla auctor. Consectetur dignissim primis tempus sociosqu congue efficitur, cubilia hendrerit enim."
 }

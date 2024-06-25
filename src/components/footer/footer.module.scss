@@ -1,16 +1,16 @@
 @use '@\/_colours.scss' as *;
 
-.footer__footer {
+.footer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1.25rem;
+  padding: 1.5rem;
   background-color: var(--background-grey);
 }
 
-.footer__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.footer__copyright {
   color: var(--text-colour);
+  padding-top: 0.8rem;
+  font-size: 0.8rem;
 }
