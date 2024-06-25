@@ -14,6 +14,7 @@
       "@app/*": ["app/*"],
       "@routes/*": ["app/routes/*"],
       "@assets/*": ["assets/*"],
+      "@contexts/*": ["contexts/*"],
       "@components/*": ["components/*"],
       "@config/*": ["config/*"],
       "@features/*": ["features/*"],
@@ -39,6 +40,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/types/iconLinke.ts"],
+  "include": ["src", "src/types/iconLinke.ts", "public/sw.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

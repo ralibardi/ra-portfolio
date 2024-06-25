@@ -19,7 +19,7 @@ root.render(
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('/sw.js') // Adjust path if needed
+      .register('../public/sw.ts')
       .then((registration) => {
         console.log('Service worker registered:', registration);
       })

@@ -1,11 +1,8 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:446422004.
 import React, { lazy } from 'react';
 import { Each } from '@utils/Each';
 import { getSocialLinks } from '../utils/getSocialLinks';
 
 const IconLink = lazy(() => import('@components/iconLink'));
-
-import styles from './footerSocials.module.scss';
 
 const FooterSocials: React.FC = () => {
   const socialLinks = getSocialLinks();
@@ -15,9 +12,9 @@ const FooterSocials: React.FC = () => {
       <div className="footer-social">
         <Each
           render={({ icon, link }) => (
-            <IconLink icon={icon} linkUrl={link} color={styles.iconColor}/>
+            <IconLink icon={icon} linkUrl={link}/>
           )}
-          of={socialLinks.sort((a, b) => a.order - b.order)}
+          of={socialLinks}
         />
       </div>
     </div>

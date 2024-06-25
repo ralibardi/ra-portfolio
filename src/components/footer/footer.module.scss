@@ -1,0 +1,16 @@
+@use '@\/_colours.scss' as *;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: var(--background-grey);
+}
+
+.footer__copyright {
+  color: var(--text-colour);
+  padding-top: 0.8rem;
+  font-size: 0.8rem;
+}

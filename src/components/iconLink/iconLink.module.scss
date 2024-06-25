@@ -1,9 +1,24 @@
 @use '@\/_colours.scss' as *;
 
-.icon-link__icon {
-    padding-right: 1rem;
+.iconLink {
+  height: 1.5rem;
+  display: inline-flex;
+  text-decoration: none;
+  align-items: center;
 }
 
-.icon-link__label {
-    padding-right: 1rem;
+.iconLink__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding-right: 1rem;
+  color: var(--primary-colour);
+}
+
+.iconLink__icon:hover {
+  color: var(--accent-colour);
+}
+
+.iconLink__label {
+  padding-right: 1rem;
+  color: var(--text-colour);
 }

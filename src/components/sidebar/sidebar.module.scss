@@ -1,63 +1,32 @@
 @use '@\/_colours.scss' as *;
 
-.iconColor {
-  color: $primary_colour;
-}
-
 .sidebar {
-  display: contents;
-}
-
-.sidebar__container{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.sidebar_icon {
-  background-color: #333;
-  color: $white;
-  width: 50px;
-  height: 50px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  min-height: 50rem;
+  height: 100%;
+  padding: 1.5rem 1rem;
+  border-radius: 1.5rem;
+  user-select: none;
+  max-width: 18rem;
+  min-width: 4rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--white);
+  flex-direction: column;
+  background-color: var(--background-colour);
+  transition: max-width 0.2s ease-in-out;
 }
 
-.sidebar_icon:hover {
-  background-color: #555;
+.sidebar__companyLogo {
+  display: flex;
+  background-color: var(--primary-color-light);
 }
 
-.sidebar_icon i {
-  font-size: 1.7rem;
-}
-
-.sidebar_items {
-  background-color: #333;
-  color: $white;
-  width: 200px;
+/*? menu links */
+.sidebar__links {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-}
-
-.sidebar_item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.sidebar_item:hover {
-  background-color: #555;
-}
-
-.sidebar_item i {
-  font-size: 1.3rem;
-  margin-right: 10px;
-}
-
-.sidebar_item p {
-  font-size: 1rem;
+  gap: 1rem;
 }

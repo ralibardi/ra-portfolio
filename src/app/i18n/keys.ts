@@ -1,6 +1,21 @@
-export const footerTransKey = "footer";
-export const headerTransKey = "header";
-export const sidebarTransKey = "sidebar";
-export const sidebarCompanyKey = "sidebar.company";
-export const sidebarSearchKey = "sidebar.search";
-export const sidebarLink1Key = "sidebar.link1";
+// Company
+export const companyNameKey = "company_name";
+
+// Header
+export const headerTitleKey = "header_title";
+
+// Footer
+export const footerCopyrightKey = "footer_copyright";
+
+// Home Page
+export const homePageTitleKey = "home_page_title";
+
+//About Page
+export const aboutPageTitleKey = "about_page_title";
+
+// Error Page
+export const errorMessageTitleKey = "error_page_title";
+export const error404MessageKey = "error_404_message";
+
+// Contact Page
+export const contactPageTitleKey = "contact_page_title";

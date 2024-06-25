@@ -1,27 +1,30 @@
 // Colours
-$primary-blue: #646cff;
-$secondary-blue: #535bf2;
-$teritary-blue: #747bff;
+$dark-blue: #646cff;
+$light-blue: #2dc4eb;
 
-$white: #ffffffde;
-$black: #242424;
+$light-orange: #fa7575;
+$dark-orange: #e34c26;
+
+$white: #f9fcfe;
+$black: #0a2c34;
+$grey: #6c757d;
 
 // Theme colours
-$primary-colour: $primary-blue;
-$secondary-colour: $secondary-blue;
-$tertiary-colour: $teritary-blue;
+$primary-colour-light: $dark-blue;
+$primary-colour-dark: $light-blue;
 
 // Accents
-$accent-colour: #fa7575;
+$accent-colour-light: $light-orange;
+$accent-colour-dark: $dark-orange;
 
+// Background
+$background-colour-light: $white;
+$background-colour-dark: $black;
+
+// Text
+$text-colour-light: $black;
+$text-colour-dark: $white;
 
 // Colour scheme
-$colour-scheme: light dark;
-
-.manifest_colours {
-  --black: #{$black};
-  --white: #{$white};
-  --primary-colour: #{$primary-colour};
-  --secondary-colour: #{$secondary-colour};
-  --tertiary-colour: #{$tertiary-colour};
-}
+$colour-scheme-light: light;
+$colour-scheme-dark: dark;

@@ -1,4 +1,3 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:1145938011.
 import React, { lazy } from 'react';
 import { Outlet } from 'react-router-dom';
 
