@@ -1,3 +1,3 @@
 import { BaseButtonProps } from './baseButtonProps';
 
-export type PrimaryButtonProps = BaseButtonProps;
+export type SecondaryButtonProps = BaseButtonProps;

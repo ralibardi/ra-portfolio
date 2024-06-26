@@ -1,8 +1,9 @@
 @use '@\/_colours.scss' as *;
 
-.primaryButton {
+.button {
   border-radius: 8px;
   border: 1px solid transparent;
+  margin: 1rem;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -13,11 +14,16 @@
   color: var(--primary-colour);
 }
 
-.primaryButton:hover {
-  border-color: var(--background-colour);
+.button:hover {
+  border-color: var(--accent-colour);
+  filter: drop-shadow(0 0 1rem var(--accent-colour));
 }
 
-.primaryButton:focus,
-.primaryButton:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.button__content {
+  display: flex;
+  align-items: center;
+}
+
+.icon{
+  padding-right: 1rem;
 }

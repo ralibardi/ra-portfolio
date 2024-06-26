@@ -1,0 +1,20 @@
+@use '@\/_colours.scss' as *;
+
+.button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  margin: 1rem;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--background-colour);
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: var(--primary-colour);
+}
+
+.button:hover {
+  border-color: var(--accent-colour);
+  filter: drop-shadow(0 0 1rem var(--accent-colour));
+}

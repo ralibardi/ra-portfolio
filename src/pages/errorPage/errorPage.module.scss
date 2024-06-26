@@ -1,0 +1,22 @@
+@use '@\/_colours.scss' as *;
+
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $white;
+  color: $black;
+  padding: 2rem;
+}
+
+.errorPage__header {
+  display: inline-flex;
+}
+
+.errorPage__header__title {
+  display: flex;
+}
+
+.errorPage__description {
+  display: flex;
+}
