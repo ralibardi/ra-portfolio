@@ -2,7 +2,7 @@ import React, { lazy } from 'react';
 
 const Loading = lazy(() => import('@components/loading'));
 
-import styles from './homePage.module.scss';
+import styles from './assets/homePage.module.scss';
 
 const HomePage: React.FC = () => {
   return (

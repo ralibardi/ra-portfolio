@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
-import styles from './iconLink.module.scss';
+import styles from './assets/iconLink.module.scss';
 
 interface IIconLinkProps {
   icon: IconDefinition;

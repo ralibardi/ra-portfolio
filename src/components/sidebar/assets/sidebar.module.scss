@@ -1,4 +1,4 @@
-@use '@\/_colours.scss' as *;
+@use '@assets\/_colours.scss' as *;
 
 .sidebar {
   position: sticky;
@@ -8,6 +8,7 @@
   height: 100%;
   padding: 1.5rem 1rem;
   border-radius: 1.5rem;
+  -webkit-user-select: none;
   user-select: none;
   max-width: 18rem;
   min-width: 4rem;

@@ -6,7 +6,7 @@ import useError from '@hooks/useError';
 import { ButtonWithIcon } from '@components/buttons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-import styles from './errorPage.module.scss';
+import styles from './assets/errorPage.module.scss';
 
 interface IErrorPageProps {
   error?: Error | null;

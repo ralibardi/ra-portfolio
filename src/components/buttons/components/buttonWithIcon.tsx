@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Loading = lazy(() => import('@components/loading'));
 
-import styles from './buttonWithIcon.module.scss';
+import styles from '../assets/buttonWithIcon.module.scss';
 
 const ButtonWithIcon: React.FC<ButtonWithIconProps> = memo(
   ({ icon, onClick, children, isLoading, ...props }: ButtonWithIconProps) => {

@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { companyNameKey } from '@app/i18n/keys';
 
 import logo from './assets/logo.jpg';
-import styles from './companyInfo.module.scss';
+import styles from './assets/companyInfo.module.scss';
 
 interface ICompanyInfoProps {
   isLabelHidden?: boolean;

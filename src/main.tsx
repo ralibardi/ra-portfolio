@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ReactDOM from 'react-dom/client';
 import App from '@app/app';
 
-import './index.scss';
+import '@assets/index.scss';
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root')!);

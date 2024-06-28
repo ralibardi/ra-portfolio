@@ -5,7 +5,7 @@ const Header = lazy(() => import('@components/header'));
 const Sidebar = lazy(() => import('@components/sidebar'));
 const Footer = lazy(() => import('@components/footer'));
 
-import styles from './basePage.module.scss';
+import styles from './assets/basePage.module.scss';
 
 const BasePage: React.FC = () => {
   return (

@@ -5,7 +5,7 @@ import * as sass from 'sass';
 
 export function generateManifest() {
   // Read _colours.scss
-  const scssContent = fs.readFileSync('src/_colours.scss', 'utf8');
+  const scssContent = fs.readFileSync('src/assets/_colours.scss', 'utf8');
 
   // Compile SCSS to CSS
   const cssResult = sass.compileString(scssContent);

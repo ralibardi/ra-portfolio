@@ -3,7 +3,7 @@ import { PrimaryButtonProps } from '../types/primaryButtonProps';
 
 const Loading = lazy(() => import('@components/loading'));
 
-import styles from './secondaryButton.module.scss';
+import styles from '../assets/secondaryButton.module.scss';
 
 const SecondaryButton: React.FC<PrimaryButtonProps> = memo(
   ({ onClick, children, isLoading, ...props }: PrimaryButtonProps) => {

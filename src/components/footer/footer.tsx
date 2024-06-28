@@ -4,7 +4,7 @@ import { footerCopyrightKey } from '@app/i18n/keys';
 
 const FooterSocials = lazy(() => import('./components/footerSocials'));
 
-import styles from './footer.module.scss';
+import styles from './assets/footer.module.scss';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();

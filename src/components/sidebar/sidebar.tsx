@@ -6,7 +6,7 @@ import { Each } from '@utils/Each';
 const IconLink = lazy(() => import('@components/iconLink'));
 const CompanyInfo = lazy(() => import('@components/companyInfo'));
 
-import styles from "./sidebar.module.scss"
+import styles from './assets/sidebar.module.scss';
 
 const Sidebar: React.FC = () => {
 

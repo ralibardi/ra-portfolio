@@ -1,4 +1,4 @@
-@use '@\/_colours.scss' as *;
+@use '@assets\/_colours.scss' as *;
 
 .button {
   border-radius: 8px;
@@ -17,4 +17,13 @@
 .button:hover {
   border-color: var(--accent-colour);
   filter: drop-shadow(0 0 1rem var(--accent-colour));
+}
+
+.button__content {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  padding-right: 1rem;
 }
