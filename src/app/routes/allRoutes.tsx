@@ -20,7 +20,7 @@ const AllRoutes: React.FC = () => {
             <Route path="*" element={<ErrorPage error={error.error} />} />
           ) : (
             <>
-              <Route path={rootPath} i element={<BasePage />}>
+              <Route path={rootPath} element={<BasePage />}>
                 {getAppRoutes.map((route: IRoute) => (
                   <Route
                     key={route.path}
