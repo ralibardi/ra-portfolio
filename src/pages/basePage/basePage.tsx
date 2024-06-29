@@ -9,11 +9,11 @@ import styles from './assets/basePage.module.scss';
 
 const BasePage: React.FC = () => {
   return (
-    <main className={styles.basePage}>
+    <main className={styles.container}>
       <Header />
-      <div className={styles.basePage__content}>
+      <div className={styles.content}>
         <Sidebar />
-        <div className={styles.basePage__body}>
+        <div className={styles.body}>
           <Outlet />
         </div>
       </div>

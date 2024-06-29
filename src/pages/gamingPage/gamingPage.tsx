@@ -2,9 +2,9 @@ import React, { lazy } from 'react';
 
 const Loading = lazy(() => import('@components/loading'));
 
-import styles from './assets/homePage.module.scss';
+import styles from './assets/gamingPage.module.scss';
 
-const HomePage: React.FC = () => {
+const GamingPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <Loading />
@@ -12,4 +12,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default GamingPage;

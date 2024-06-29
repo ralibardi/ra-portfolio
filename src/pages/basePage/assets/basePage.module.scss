@@ -1,11 +1,13 @@
-.basePage {
+@use '@assets\/_colours.scss' as *;
+
+.container {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
 }
 
-.basePage__content {
+.content {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -13,7 +15,7 @@
   flex-grow: 1;
 }
 
-.basePage__body {
+.body {
   width: 100%;
   height: 100%;
   overflow: auto;

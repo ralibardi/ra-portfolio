@@ -9,6 +9,7 @@ export function generateManifest() {
 
   // Compile SCSS to CSS
   const cssResult = sass.compileString(scssContent);
+  console.log(cssResult.css);
 
   // Extract primary colour value
   const primaryColourMatch = cssResult.css.match(
