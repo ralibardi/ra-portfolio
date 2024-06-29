@@ -23,16 +23,14 @@ const ErrorPage: React.FC<IErrorPageProps> = ({ error }) => {
   };
 
   return (
-    <div className={styles.errorPage}>
-      <div className={styles.errorPage__header}>
+    <div className={styles.container}>
+      <div className={styles.header}>
         <ButtonWithIcon icon={faArrowLeft} onClick={handleClearError}>
           Go Back
         </ButtonWithIcon>
-        <h1 className={styles.errorPage__header__title}>
-          {t(errorMessageTitleKey)}
-        </h1>
+        <h1 className={styles.header__title}>{t(errorMessageTitleKey)}</h1>
       </div>
-      <span className={styles.errorPage__description}>
+      <span className={styles.description}>
         {error?.message ?? t(error404MessageKey)}
       </span>
     </div>

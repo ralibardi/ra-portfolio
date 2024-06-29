@@ -1,6 +1,6 @@
 @use '@assets\/_colours.scss' as *;
 
-.companyLogo__container {
+.container {
   position: relative;
   display: flex;
   align-items: start;
@@ -11,7 +11,7 @@
   padding-bottom: 1rem;
 }
 
-.companyLogo__wrapper {
+.wrapper {
   display: flex;
   align-items: center;
   color: var(--accent-colour);
@@ -22,7 +22,7 @@
   gap: 0.75rem;
 }
 
-.companyLogo__imageSmall {
+.imageSmall {
   height: 2rem;
   width: 2rem;
   overflow: hidden;
@@ -31,10 +31,10 @@
   border: 0.125rem solid var(--accent-colour);
 }
 
-.companyLogo__companyName {
+.companyName {
   white-space: nowrap;
 }
 
-.companyLogo__companyName__hidden {
+.companyName__hidden {
   visibility: hidden;
 }

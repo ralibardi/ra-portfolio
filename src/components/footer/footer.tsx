@@ -10,9 +10,9 @@ const Footer: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className={styles.footer}>
-        <FooterSocials />
-        <span className={styles.footer__copyright}>{t(footerCopyrightKey)}</span>
+    <footer className={styles.container}>
+      <FooterSocials />
+      <span className={styles.copyright}>{t(footerCopyrightKey)}</span>
     </footer>
   );
 };

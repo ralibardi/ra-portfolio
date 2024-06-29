@@ -27,7 +27,7 @@ const ButtonWithIcon: React.FC<ButtonWithIconProps> = memo(
         {isLoading ? (
           <Loading />
         ) : (
-          <div className={styles.button__content}>
+          <div className={styles.content}>
             <FontAwesomeIcon icon={icon} className={styles.icon} />
             {children}
           </div>

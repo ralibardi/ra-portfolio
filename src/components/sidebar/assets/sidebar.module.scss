@@ -1,6 +1,6 @@
 @use '@assets\/_colours.scss' as *;
 
-.sidebar {
+.container {
   position: sticky;
   top: 0;
   left: 0;
@@ -19,13 +19,13 @@
   transition: max-width 0.2s ease-in-out;
 }
 
-.sidebar__companyLogo {
+.companyLogo {
   display: flex;
   background-color: var(--primary-color-light);
 }
 
 /*? menu links */
-.sidebar__links {
+.links {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;

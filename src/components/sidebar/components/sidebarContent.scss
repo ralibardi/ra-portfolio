@@ -1,4 +1,4 @@
-.sidebarContent {
+.container {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -7,13 +7,13 @@
   overflow-y: auto;
 }
 
-.sidebarContent__title {
+.title {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
-.sidebarContent__list {
+.list {
   list-style-type: none;
   display: flex;
   flex-direction: column;

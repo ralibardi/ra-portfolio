@@ -1,6 +1,6 @@
 @use '@assets\/_colours.scss' as *;
 
-.errorPage {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,14 +9,14 @@
   padding: 2rem;
 }
 
-.errorPage__header {
+.header {
   display: inline-flex;
 }
 
-.errorPage__header__title {
+.header__title {
   display: flex;
 }
 
-.errorPage__description {
+.description {
   display: flex;
 }

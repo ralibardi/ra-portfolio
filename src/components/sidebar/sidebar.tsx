@@ -12,13 +12,19 @@ const Sidebar: React.FC = () => {
 
   return (
     <div>
-      <nav className={styles.sidebar}>
-        <div className={styles.sidebar__companyLogo}>
+      <nav className={styles.container}>
+        <div className={styles.companyLogo}>
           <CompanyInfo />
         </div>
-        <div className={styles.sidebar__links}>
-        <Each
-            render={(route: IRoute) => <IconLink icon={route.icon} linkUrl={route.path} title={route.label} />}
+        <div className={styles.links}>
+          <Each
+            render={(route: IRoute) => (
+              <IconLink
+                icon={route.icon}
+                linkUrl={route.path}
+                title={route.label}
+              />
+            )}
             of={getAppRoutes}
           />
         </div>

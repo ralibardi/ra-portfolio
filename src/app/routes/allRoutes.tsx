@@ -1,4 +1,3 @@
-// import packages
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
 import { getAppRoutes } from '@utils/getAppRoutes';
