@@ -1,15 +1,13 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { headerTitleKey } from '@app/i18n/keys';
+import React, { lazy } from 'react';
+
+const Topbar = lazy(() => import('@components/topbar'));
 
 import styles from './assets/header.module.scss';
 
 const Header: React.FC = () => {
-  const { t } = useTranslation();
-
   return (
     <header className={styles.header}>
-      <span className={styles.header__title}>{t(headerTitleKey)}</span>
+      <Topbar />
     </header>
   );
 };

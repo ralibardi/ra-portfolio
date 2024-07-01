@@ -4,7 +4,7 @@ import { getAppRoutes } from '@utils/getAppRoutes';
 import { Each } from '@utils/Each';
 import IRoute from '@type/route';
 
-import './container.scss';
+import styles from './container.module.scss';
 
 const SidebarContent: React.FC = () => {
   return (
@@ -12,9 +12,9 @@ const SidebarContent: React.FC = () => {
       of={getAppRoutes}
       render={(item: IRoute) => {
         return (
-          <a href={item.path} className="link__wrapper">
-            <FontAwesomeIcon icon={item.icon} className="link__icon" />
-            <span className="link__wrapper">{item.label}</span>
+          <a href={item.path} className={styles.container}>
+            <FontAwesomeIcon icon={item.icon} className={styles.icon} />
+            <span className={styles.label}>{item.label}</span>
           </a>
         );
       }}

@@ -1,1 +1,7 @@
 @use '@assets\/_colours.scss' as *;
+.header {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    padding: 1.5rem;
+}

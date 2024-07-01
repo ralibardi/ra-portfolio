@@ -18,13 +18,13 @@ const IconLink: React.FC<IIconLinkProps> = ({icon, linkUrl, title}) => {
 
   return (
     <a
-      href={linkUrl}
+      href="#"
       target="_blank"
       rel="noopener noreferrer"
       aria-label={title ?? icon.iconName ?? 'Link'}
       className={styles.iconLink}
     >
-      <FontAwesomeIcon icon={icon} className={styles.iconLink__icon}/>
+      <FontAwesomeIcon icon={icon} className={styles.iconLink__icon} />
       {title && <span className={styles.iconLink__label}>{title}</span>}
     </a>
   );
