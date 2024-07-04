@@ -1,16 +1,16 @@
 import React, { lazy, memo } from 'react';
-import { ButtonWithIconProps } from '../types/buttonWithIconProps';
+import { ButtonWithIconProps } from '../../types/buttonWithIconProps';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Loading = lazy(() => import('@components/loading'));
 
-import styles from '../assets/buttonWithIcon.module.scss';
+import styles from '../../assets/button-with-icon.module.scss';
 
 const ButtonWithIcon: React.FC<ButtonWithIconProps> = memo(
   function buttonWithIcon({
     icon,
     onClick,
-    children,
+    label,
     isLoading,
     ...props
   }: ButtonWithIconProps) {
@@ -24,7 +24,7 @@ const ButtonWithIcon: React.FC<ButtonWithIconProps> = memo(
     return (
       <button
         className={styles.button}
-        id="primary-button"
+        id="button-with-icon"
         type="button"
         {...props}
         onClick={handleClick}
@@ -35,7 +35,7 @@ const ButtonWithIcon: React.FC<ButtonWithIconProps> = memo(
         ) : (
           <div className={styles.content}>
             <FontAwesomeIcon icon={icon} className={styles.icon} />
-            {children}
+            <span className={styles.label}>{label}</span>
           </div>
         )}
       </button>

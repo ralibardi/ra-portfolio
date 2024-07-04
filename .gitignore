@@ -47,3 +47,4 @@ lerna-debug.log*
 
 # Linters
 .eslintcache
+*storybook.log

@@ -14,7 +14,7 @@
 .wrapper {
   display: flex;
   align-items: center;
-  color: var(--accent-colour);
+  color: var(--primary-text-sidebar-canvas);
   font-weight: 700;
   text-decoration: none;
   font-size: 1.35rem;
@@ -28,7 +28,7 @@
   overflow: hidden;
   object-fit: cover;
   border-radius: 50%;
-  border: 0.125rem solid var(--accent-colour);
+  border: 0.125rem solid var(--primary-text-sidebar-canvas);
 }
 
 .companyName {

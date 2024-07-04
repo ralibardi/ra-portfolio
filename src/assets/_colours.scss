@@ -1,29 +1,95 @@
 // Colours
-$dark-blue: #646cff;
-$light-blue: #2dc4eb;
+// Primary
+$dark-primary-light: #fa7575;
+$medium-primary-light: #fa7575;
+$light-primary-light: #fa7575;
 
-$light-orange: #fa7575;
-$dark-orange: #e34c26;
+$dark-primary-dark: #e34c26;
+$medium-primary-dark: #e34c26;
+$light-primary-dark: #e34c26;
 
-$white: #f9fcfe;
-$black: #0a2c34;
-$grey: #6c757d;
+//Secondary
+$dark-secondary-light: #2dc4eb;
+$medium-secondary-light: #2dc4eb;
+$light-secondary-light: #2dc4eb;
+
+$dark-secondary-dark: #646cff;
+$medium-secondary-dark: #646cff;
+$light-secondary-dark: #646cff;
+
+// Inline
+$dark-inline-light: #fa7575;
+$medium-inline-light: #fa7575;
+$light-inline-light: #fa7575;
+
+$dark-inline-dark: #e34c26;
+$medium-inline-dark: #e34c26;
+$light-inline-dark: #e34c26;
+
+// Link
+$dark-link-light: #2dc4eb;
+$medium-link-light: #2dc4eb;
+$light-link-light: #2dc4eb;
+
+$dark-link-dark: #646cff;
+$medium-link-dark: #646cff;
+$light-link-dark: #646cff;
+
+// Disabled
+$dark-disabled-light: #f9fcfe;
+$medium-disabled-light: #f2f5f9;
+$light-disabled-light: #e5eaf2;
+
+$dark-disabled-dark: #1a1a1a;
+$medium-disabled-dark: #333333;
+$light-disabled-dark: #4d4d4d;
+
+// Whites
+$dark-white-light: #f9fcfe;
+$medium-white-light: #f2f5f9;
+$light-white-light: #e5eaf2;
+
+$dark-white-dark: #1a1a1a;
+$medium-white-dark: #333333;
+$light-white-dark: #4d4d4d;
+
+// Blacks
+$dark-black-light: #1a1a1a;
+$medium-black-light: #333333;
+$light-black-light: #4d4d4d;
+
+$dark-black-dark: #f9fcfe;
+$medium-black-dark: #f2f5f9;
+$light-black-dark: #e5eaf2;
+
+// Greys
+$dark-grey-light: #2d2d2d;
+$medium-grey-light: #4f4f4f;
+$light-grey-light: #bfbfbf;
+
+$dark-grey-dark: #d9d9d9;
+$medium-grey-dark: #bfbfbf;
+$light-grey-dark: #4f4f4f;
 
 // Theme colours
-$primary-colour-light: $dark-blue;
-$primary-colour-dark: $light-blue;
+$primary-colour-light: $medium-secondary-dark;
+$primary-colour-dark: $medium-secondary-light;
 
 // Accents
-$accent-colour-light: $light-orange;
-$accent-colour-dark: $dark-orange;
+$accent-colour-light: $medium-inline-light;
+$accent-colour-dark: $medium-inline-dark;
 
 // Background
-$background-colour-light: $white;
-$background-colour-dark: $black;
+$background-colour-light: $light-white-light;
+$background-colour-dark: $light-white-light;
+
+// Foreground
+$foreground-colour-light: $medium-grey-light;
+$foreground-colour-dark: $medium-grey-dark;
 
 // Text
-$text-colour-light: $black;
-$text-colour-dark: $white;
+$text-colour-light: $light-black-light;
+$text-colour-dark: $light-black-light;
 
 // Colour scheme
 $colour-scheme-light: light;

@@ -3,6 +3,8 @@
 .container {
     display: flex;
     width: 100vw;
+    height: -moz-fit-content;
+    height: fit-content;
     justify-content: center;
     padding: 1.5rem;
     position: sticky;

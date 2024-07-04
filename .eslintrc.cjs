@@ -11,8 +11,9 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier',
     'plugin:prettier/recommended',
+    'plugin:storybook/recommended',
   ],
-  ignorePatterns: ['dist/', '.eslintrc.cjs'],
+  ignorePatterns: ['dist/', '.eslintrc.cjs', 'storybook-static/sw.ts'],
   parser: '@typescript-eslint/parser',
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {

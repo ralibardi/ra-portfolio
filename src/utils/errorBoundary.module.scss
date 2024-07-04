@@ -4,9 +4,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: $white;
-  color: $black;
-  padding: 2rem;
+  background-color: var(--light-canvas);
+  color: var(--primary-text-light-canvas);
+  padding: var(--large-padding-base);
 }
 
 .header {

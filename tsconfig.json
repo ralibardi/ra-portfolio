@@ -39,5 +39,6 @@
     "strict": true
   },
   "include": ["src", "public"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "types": ["jest", "@testing-library/jest-dom"]
 }

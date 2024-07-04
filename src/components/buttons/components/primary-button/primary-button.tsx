@@ -1,14 +1,14 @@
 import React, { lazy, memo } from 'react';
-import { PrimaryButtonProps } from '../types/primaryButtonProps';
+import { PrimaryButtonProps } from '../../types/primaryButtonProps';
 
 const Loading = lazy(() => import('@components/loading'));
 
-import styles from '../assets/primaryButton.module.scss';
+import styles from '../../assets/primary-button.module.scss';
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
   function primaryButton({
     onClick,
-    children,
+    label,
     isLoading,
     ...props
   }: PrimaryButtonProps) {
@@ -28,7 +28,13 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
         onClick={handleClick}
         disabled={isLoading}
       >
-        {isLoading ? <Loading /> : children}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className={styles.content}>
+            <span className={styles.label}>{label}</span>
+          </div>
+        )}
       </button>
     );
   },
