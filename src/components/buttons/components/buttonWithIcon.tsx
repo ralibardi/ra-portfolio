@@ -7,7 +7,13 @@ const Loading = lazy(() => import('@components/loading'));
 import styles from '../assets/buttonWithIcon.module.scss';
 
 const ButtonWithIcon: React.FC<ButtonWithIconProps> = memo(
-  ({ icon, onClick, children, isLoading, ...props }: ButtonWithIconProps) => {
+  function ButtonWithIcon({
+    icon,
+    onClick,
+    children,
+    isLoading,
+    ...props
+  }: ButtonWithIconProps) {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (!isLoading) {
@@ -34,7 +40,9 @@ const ButtonWithIcon: React.FC<ButtonWithIconProps> = memo(
         )}
       </button>
     );
-  }
+  },
 );
 
+ButtonWithIcon.displayName = 'ButtonWithIcon';
+  
 export default ButtonWithIcon;

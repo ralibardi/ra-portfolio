@@ -6,7 +6,12 @@ const Loading = lazy(() => import('@components/loading'));
 import styles from '../assets/primaryButton.module.scss';
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
-  ({ onClick, children, isLoading, ...props }: PrimaryButtonProps) => {
+  function PrimaryButton({
+    onClick,
+    children,
+    isLoading,
+    ...props
+  }: PrimaryButtonProps) {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (!isLoading) {
@@ -28,5 +33,8 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = memo(
     );
   }
 );
+
+PrimaryButton.displayName = 'PrimaryButton';
+
 
 export default PrimaryButton;

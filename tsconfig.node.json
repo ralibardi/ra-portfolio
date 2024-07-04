@@ -5,7 +5,28 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "strict": true
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Aliases */
+    "baseUrl": "./src",
+    "paths": {
+      "@public/*": ["../public/*"],
+      "@/*": ["/*"],
+      "@app/*": ["app/*"],
+      "@routes/*": ["app/routes/*"],
+      "@assets/*": ["assets/*"],
+      "@contexts/*": ["contexts/*"],
+      "@components/*": ["components/*"],
+      "@config/*": ["config/*"],
+      "@features/*": ["features/*"],
+      "@hooks/*": ["hooks/*"],
+      "@lib/*": ["lib/*"],
+      "@pages/*": ["pages/*"],
+      "@tests/*": ["tests/*"],
+      "@type/*": ["types/*"],
+      "@utils/*": ["utils/*"]
+    }
   },
   "include": ["vite.config.ts", "./manifestGenerator.ts"]
 }

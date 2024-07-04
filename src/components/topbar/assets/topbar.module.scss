@@ -35,9 +35,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  visibility: hidden;
+  display: none;
+    height: max-content;
 }
 
 .link:hover .label {
-  visibility: visible;
+  display: block;
 }

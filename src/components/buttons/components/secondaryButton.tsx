@@ -6,7 +6,12 @@ const Loading = lazy(() => import('@components/loading'));
 import styles from '../assets/secondaryButton.module.scss';
 
 const SecondaryButton: React.FC<PrimaryButtonProps> = memo(
-  ({ onClick, children, isLoading, ...props }: PrimaryButtonProps) => {
+  function SecondaryButton({
+    onClick,
+    children,
+    isLoading,
+    ...props
+  }: PrimaryButtonProps) {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       if (!isLoading) {
@@ -28,5 +33,7 @@ const SecondaryButton: React.FC<PrimaryButtonProps> = memo(
     );
   }
 );
+
+SecondaryButton.displayName = 'SecondaryButton';
 
 export default SecondaryButton;
