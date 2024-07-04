@@ -6,7 +6,7 @@ self.addEventListener('install', (event: ExtendableEvent) => {
     caches.open(CACHE_NAME).then((cache) => {
       console.log('Opened cache');
       return cache.addAll(urlsToCache);
-    })
+    }),
   );
 });
 
@@ -28,15 +28,18 @@ self.addEventListener('fetch', (event: FetchEvent) => {
         // Clone the response to cache it (responses are streams)
         const responseToCache = response.clone();
 
-        caches.open(CACHE_NAME).then((cache) => {
-          void cache.put(event.request, responseToCache);
-        }).catch((error) => {
-          console.error('Error initializing service worker:', error);
-        });
+        caches
+          .open(CACHE_NAME)
+          .then((cache) => {
+            void cache.put(event.request, responseToCache);
+          })
+          .catch((error) => {
+            console.error('Error initializing service worker:', error);
+          });
 
         return response;
       });
-    })
+    }),
   );
 });
 

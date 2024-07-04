@@ -13,15 +13,17 @@ export function generateManifest() {
 
   // Extract primary colour value
   const primaryColourMatch = cssResult.css.match(
-    /--primary-colour:\s*(#[0-9a-fA-F]{6});/
+    /--primary-colour:\s*(#[0-9a-fA-F]{6});/,
   );
   const primaryColour = primaryColourMatch ? primaryColourMatch[1] : '#ffffff';
 
   // Extract background colour value
   const backgroundColourMatch = cssResult.css.match(
-    /--background-colour:\s*(#[0-9a-fA-F]{6});/
+    /--background-colour:\s*(#[0-9a-fA-F]{6});/,
   );
-  const backgroundColour = backgroundColourMatch ? backgroundColourMatch[1] : '#000000';
+  const backgroundColour = backgroundColourMatch
+    ? backgroundColourMatch[1]
+    : '#000000';
 
   // Read manifest.hbs template
   const manifestTemplate = fs.readFileSync('manifest.hbs', 'utf8');

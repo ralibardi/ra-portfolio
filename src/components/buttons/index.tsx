@@ -1,1 +1,5 @@
-export { PrimaryButton, SecondaryButton, ButtonWithIcon } from './buttons';
+export {
+  PrimaryButton,
+  SecondaryButton,
+  ButtonWithIcon,
+} from './components/buttons';

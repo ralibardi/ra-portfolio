@@ -5,7 +5,7 @@ import IRoute from '@type/route';
 import { rootPath } from '@utils/routePaths';
 
 const Loading = lazy(() => import('@components/loading'));
-const BasePage = lazy(() => import('@pages/basePage'));
+const BasePage = lazy(() => import('@pages/base-page'));
 
 const AllRoutes: React.FC = () => {
   return (

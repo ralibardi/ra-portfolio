@@ -1,7 +1,13 @@
 @use '@assets\/_colours.scss' as *;
-.header {
+
+.container {
     display: flex;
     width: 100vw;
     justify-content: center;
     padding: 1.5rem;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    -webkit-backdrop-filter: blur(10px); // For Safari
+    backdrop-filter: blur(10px); // Uniform frost effect
 }

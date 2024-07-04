@@ -6,22 +6,21 @@ import { errorMessageTitleKey, goBackKey } from '@app/i18n/keys';
 
 import styles from './errorBoundary.module.scss'; // Assuming CSS module usage
 
-
-interface ErrorBoundaryProps extends WithTranslation {
+interface IErrorBoundaryProps extends WithTranslation {
   children: React.ReactNode;
 }
 
-interface ErrorBoundaryState {
+interface IErrorBoundaryState {
   hasError: boolean;
   error: Error | null;
   errorInfo: ErrorInfo | null;
 }
 
 class ErrorBoundary extends React.Component<
-  ErrorBoundaryProps,
-  ErrorBoundaryState
+  IErrorBoundaryProps,
+  IErrorBoundaryState
 > {
-  constructor(props: ErrorBoundaryProps) {
+  constructor(props: IErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false, error: null, errorInfo: null };
   }

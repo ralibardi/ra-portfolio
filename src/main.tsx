@@ -16,7 +16,7 @@ root.render(
         <App />
       </ErrorBoundary>
     </QueryClientProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 if ('serviceWorker' in navigator) {

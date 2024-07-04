@@ -4,27 +4,31 @@ import React, { createContext, useState, useEffect } from 'react';
 type Theme = 'light' | 'dark' | 'system';
 
 // Define the context interface
-interface ThemeContextType {
+interface IThemeContext {
   theme: Theme;
   toggleTheme: () => void;
 }
 
 // Create the context with default values
-const ThemeContext = createContext<ThemeContextType | null>(null);
+const ThemeContext = createContext<IThemeContext | null>(null);
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
     // Check system preference on mount
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (prefersDark) {
       setTheme('dark');
     }
   }, []);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   return (

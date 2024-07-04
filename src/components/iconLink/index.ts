@@ -1,3 +1,3 @@
-import IconLink from "./iconLink";
+import IconLink from './components/iconLink';
 
 export default IconLink;

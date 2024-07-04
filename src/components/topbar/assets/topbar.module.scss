@@ -6,22 +6,32 @@
   background-color: var(--background-grey);
   padding: 0.5rem 1.5rem;
   border-radius: 1.5rem;
-  box-shadow: inset 0 0 0.625rem $black;
+  box-shadow: inset 0 0 0.5rem $black;
 }
 
-.link {
+.link,
+.link:hover,
+.active {
   display: flex;
   padding: 0.25rem 0.75rem;
   text-decoration: none;
   color: var(--text-colour);
+  height: 1.5rem;
+
 }
 
-.link:hover {
+.link {
+  width: 1.5rem;
+}
+
+.link:hover,
+.active {
   background-color: $white;
-  padding: 0.25rem 0.75rem;
   border-radius: 1.5rem;
-  box-shadow: outset 0 0 0.5rem $black;
-  border-color: 1px solid $black;
+  box-shadow: inset 0 0 0.25rem $black;
+  border: 1px solid $black;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .icon {
@@ -36,9 +46,44 @@
   align-items: center;
   justify-content: center;
   display: none;
-    height: max-content;
 }
 
-.link:hover .label {
+.link:hover .label,
+.active .label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   display: block;
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes extendEffect {
+  from {
+    max-width: 1.5rem;
+    opacity: 0;
+  }
+
+  to {
+    max-width: 10rem;
+    opacity: 1;
+  }
+}
+
+.link:hover {
+  animation: extendEffect 0.5s ease-in forwards;
+
+  &.label {
+    animation: slideRight 0.5s ease-in forwards;
+  }
 }

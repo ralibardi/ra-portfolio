@@ -17,12 +17,12 @@ import {
   photographyPagePath,
 } from './routePaths';
 
-const HomePage = lazy(() => import('@pages/homePage'));
-const CodingPage = lazy(() => import('@pages/codingPage'));
-const PhotographyPage = lazy(() => import('@pages/photographyPage'));
-const GamingPage = lazy(() => import('@pages/gamingPage'));
-const AboutPage = lazy(() => import('@pages/aboutPage'));
-const ContactPage = lazy(() => import('@pages/contactPage'));
+const HomePage = lazy(() => import('@pages/home-page'));
+const CodingPage = lazy(() => import('@pages/coding-page'));
+const PhotographyPage = lazy(() => import('@pages/photography-page'));
+const GamingPage = lazy(() => import('@pages/gaming-page'));
+const AboutPage = lazy(() => import('@pages/about-page'));
+const ContactPage = lazy(() => import('@pages/contact-page'));
 
 export const getAppRoutes: IRoute[] = [
   {
