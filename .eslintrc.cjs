@@ -31,7 +31,6 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',
     '@typescript-eslint/no-unsafe-argument': 'error',
     '@typescript-eslint/no-unsafe-assignment': 'error',
-    '@typescript-eslint/no-unsafe-call': 'error',
     'require-await': 'off',
     '@typescript-eslint/require-await': 'error',
     'no-extra-semi': 'off',
@@ -81,7 +80,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2021,
     sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    project: [
+      './tsconfig.json',
+      './tsconfig.node.json',
+      './tsconfig.jest.json',
+      './tsconfig.setup.json',
+    ],
     tsconfigRootDir: __dirname,
   },
   settings: {

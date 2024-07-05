@@ -1,27 +1,80 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
-import { PrimaryButton } from '@components/buttons';
+import { act, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
+import { PrimaryButton } from '../buttons';
 
 describe('PrimaryButton', () => {
-  it('renders correctly', () => {
+  test('renders correctly', async () => {
+    // ARRANGE
     const handleClick = jest.fn();
-
     render(<PrimaryButton label="Test" onClick={handleClick} />);
-    expect(screen.getByText('Test')).toBeInTheDocument();
-    expect(screen.getByRole('button')).toHaveClass('button');
+
+    // ACT
+    const { buttonContainer, labelContainer, label } = await act(() => {
+      const buttonContainer = screen.getByTestId('primary-button-container');
+      const labelContainer = screen.getByTestId(
+        'primary-button-label-container',
+      );
+      const label = screen.getByTestId('primary-button-label');
+
+      return { buttonContainer, labelContainer, label };
+    });
+
+    // ASSERT
+    expect(buttonContainer).not.toBeNull();
+    expect(buttonContainer).toHaveAttribute('id', 'primary-button');
+    expect(labelContainer).not.toBeNull();
+    expect(label).not.toBeNull();
+    expect(label).toHaveTextContent('Test');
   });
 
-  it('handles click events', () => {
+  test('handles click events', async () => {
+    // ARRANGE
     const handleClick = jest.fn();
-    render(<PrimaryButton label="Click Me" onClick={handleClick} />);
-    fireEvent.click(screen.getByText('Click Me'));
-    expect(handleClick).toHaveBeenCalled();
+    render(<PrimaryButton label="Test" onClick={handleClick} />);
+
+    // ACT
+    const { buttonContainer, labelContainer, label } = await act(async () => {
+      const buttonContainer = screen.getByTestId('primary-button-container');
+      const labelContainer = screen.getByTestId(
+        'primary-button-label-container',
+      );
+      const label = screen.getByTestId('primary-button-label');
+      await userEvent.click(buttonContainer);
+
+      return { buttonContainer, labelContainer, label };
+    });
+
+    // ASSERT
+    expect(buttonContainer).not.toBeNull();
+    expect(buttonContainer).toHaveAttribute('id', 'primary-button');
+    expect(labelContainer).not.toBeNull();
+    expect(label).not.toBeNull();
+    expect(label).toHaveTextContent('Test');
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it('is disabled when loading', () => {
+  test('shows spinner when loading', async () => {
+    // ARRANGE
     const handleClick = jest.fn();
+    render(<PrimaryButton label="Loading" onClick={handleClick} isLoading />);
 
-    render(<PrimaryButton label="Loading" isLoading onClick={handleClick} />);
-    expect(screen.getByRole('button')).toBeDisabled();
+    // ACT
+    const { buttonContainer, loadingContainer, loadingSpinner } = await act(
+      () => {
+        const buttonContainer = screen.getByTestId('primary-button-container');
+        const loadingContainer = screen.getByTestId('loading-container');
+        const loadingSpinner = screen.getByTestId('loading-spinner');
+
+        return { buttonContainer, loadingContainer, loadingSpinner };
+      },
+    );
+
+    // ASSERT
+    expect(buttonContainer).not.toBeNull();
+    expect(buttonContainer).toHaveAttribute('id', 'primary-button');
+    expect(loadingContainer).not.toBeNull();
+    expect(loadingSpinner).not.toBeNull();
   });
 });

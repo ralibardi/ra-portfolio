@@ -1,44 +1,47 @@
-import React, { lazy, memo } from 'react';
+import React, { memo } from 'react';
+import Loading from '@components/loading';
 import { PrimaryButtonProps } from '../../types/primaryButtonProps';
-
-const Loading = lazy(() => import('@components/loading'));
 
 import styles from '../../assets/secondary-button.module.scss';
 
-const SecondaryButton: React.FC<PrimaryButtonProps> = memo(
-  function secondaryButton({
-    onClick,
-    label,
-    isLoading,
-    ...props
-  }: PrimaryButtonProps) {
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      if (!isLoading) {
-        onClick(e);
-      }
-    };
+const SecondaryButton = memo(function secondaryButton({
+  onClick,
+  label,
+  isLoading = false,
+  ...props
+}: PrimaryButtonProps) {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!isLoading) {
+      onClick(e);
+    }
+  };
 
-    return (
-      <button
-        className={styles.button}
-        id="secondary-button"
-        type="button"
-        {...props}
-        onClick={handleClick}
-        disabled={isLoading}
-      >
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <div className={styles.content}>
-            <span className={styles.label}>{label}</span>
-          </div>
-        )}
-      </button>
-    );
-  },
-);
+  return (
+    <button
+      className={styles.button}
+      data-testid="secondary-button-container"
+      id="secondary-button"
+      type="button"
+      {...props}
+      onClick={handleClick}
+      disabled={isLoading}
+    >
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div
+          className={styles.content}
+          data-testid="secondary-button-label-container"
+        >
+          <span className={styles.label} data-testid="secondary-button-label">
+            {label}
+          </span>
+        </div>
+      )}
+    </button>
+  );
+});
 
 SecondaryButton.displayName = 'SecondaryButton';
 

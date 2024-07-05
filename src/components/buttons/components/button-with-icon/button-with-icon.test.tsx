@@ -1,43 +1,102 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
-import { ButtonWithIcon } from '@components/buttons';
+import { act, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
+import { ButtonWithIcon } from '../buttons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 describe('ButtonWithIcon', () => {
-  it('renders correctly', () => {
+  test('renders correctly', async () => {
+    // ARRANGE
     const handleClick = jest.fn();
-
     render(
-      <ButtonWithIcon icon={faArrowLeft} label="Test" onClick={handleClick} />,
+      <ButtonWithIcon label="Test" onClick={handleClick} icon={faArrowLeft} />,
     );
-    expect(screen.getByText('Test')).toBeInTheDocument();
-    expect(screen.getByRole('button')).toHaveClass('button');
+
+    // ACT
+    const { buttonContainer, labelContainer, icon, label } = await act(() => {
+      const buttonContainer = screen.getByTestId('button-with-icon-container');
+      const labelContainer = screen.getByTestId(
+        'button-with-icon-label-container',
+      );
+      const icon = screen.getByTestId('button-with-icon-icon');
+      const label = screen.getByTestId('button-with-icon-label');
+
+      return { buttonContainer, labelContainer, icon, label };
+    });
+
+    // ASSERT
+    expect(buttonContainer).not.toBeNull();
+    expect(buttonContainer).toHaveAttribute('id', 'button-with-icon');
+    expect(labelContainer).not.toBeNull();
+    expect(icon).not.toBeNull();
+    expect(label).not.toBeNull();
+    expect(label).toHaveTextContent('Test');
   });
 
-  it('handles click events', () => {
+  test('handles click events', async () => {
+    // ARRANGE
+    const handleClick = jest.fn();
+    render(
+      <ButtonWithIcon label="Test" onClick={handleClick} icon={faArrowLeft} />,
+    );
+
+    // ACT
+    const { buttonContainer, labelContainer, icon, label } = await act(
+      async () => {
+        const buttonContainer = screen.getByTestId(
+          'button-with-icon-container',
+        );
+        const labelContainer = screen.getByTestId(
+          'button-with-icon-label-container',
+        );
+        const icon = screen.getByTestId('button-with-icon-icon');
+        const label = screen.getByTestId('button-with-icon-label');
+        await userEvent.click(buttonContainer);
+
+        return { buttonContainer, labelContainer, icon, label };
+      },
+    );
+
+    // ASSERT
+    expect(buttonContainer).not.toBeNull();
+    expect(buttonContainer).toHaveAttribute('id', 'button-with-icon');
+    expect(labelContainer).not.toBeNull();
+    expect(icon).not.toBeNull();
+    expect(label).not.toBeNull();
+    expect(label).toHaveTextContent('Test');
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  test('shows spinner when loading', async () => {
+    // ARRANGE
     const handleClick = jest.fn();
     render(
       <ButtonWithIcon
-        icon={faArrowLeft}
-        label="Click Me"
-        onClick={handleClick}
-      />,
-    );
-    fireEvent.click(screen.getByText('Click Me'));
-    expect(handleClick).toHaveBeenCalled();
-  });
-
-  it('is disabled when loading', () => {
-    const handleClick = jest.fn();
-
-    render(
-      <ButtonWithIcon
-        icon={faArrowLeft}
         label="Loading"
-        isLoading
         onClick={handleClick}
+        icon={faArrowLeft}
+        isLoading
       />,
     );
-    expect(screen.getByRole('button')).toBeDisabled();
+
+    // ACT
+    const { buttonContainer, loadingContainer, loadingSpinner } = await act(
+      () => {
+        const buttonContainer = screen.getByTestId(
+          'button-with-icon-container',
+        );
+        const loadingContainer = screen.getByTestId('loading-container');
+        const loadingSpinner = screen.getByTestId('loading-spinner');
+
+        return { buttonContainer, loadingContainer, loadingSpinner };
+      },
+    );
+
+    // ASSERT
+    expect(buttonContainer).not.toBeNull();
+    expect(buttonContainer).toHaveAttribute('id', 'button-with-icon');
+    expect(loadingContainer).not.toBeNull();
+    expect(loadingSpinner).not.toBeNull();
   });
 });

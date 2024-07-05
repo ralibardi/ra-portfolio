@@ -22,7 +22,7 @@ const NavLink = ({ route, isActive }: { route: IRoute; isActive: boolean }) => (
 
 const Topbar: React.FC = () => {
   const location = useLocation();
-  const routes = useMemo<IRoute[]>(() => getAppRoutes, []);
+  const routes = useMemo(() => getAppRoutes, []);
 
   return (
     <nav className={styles.container}>

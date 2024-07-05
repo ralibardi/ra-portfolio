@@ -6,8 +6,6 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-
-    /* Aliases */
     "baseUrl": "./src",
     "paths": {
       "@public/*": ["../public/*"],
@@ -26,16 +24,12 @@
       "@type/*": ["types/*"],
       "@utils/*": ["utils/*"]
     },
-
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
-    /* Linting */
     "strict": true
   },
   "include": ["src", "public"],
