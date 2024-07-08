@@ -2,13 +2,13 @@
 @use '@assets\/_fonts.scss' as *;
 
 .button {
-  margin: var(--medium-margin-base);
-  padding: var(--small-padding-base) var(--medium-padding-base);
-  font-size: var(--medium-font-size-base);
+  margin: $medium-margin-base;
+  padding: $small-padding-base $medium-padding-base;
+  font-size: $medium-font-size-base;
   background-color: var(--background-colour);
   color: var(--primary-text-sidebar-canvas);
-  border-radius: var(--medium-base);
-  border: var(--border-size) solid var(--sidebar-canvas);
+  border-radius: $medium-base;
+  border: $border-size solid var(--sidebar-canvas);
   cursor: pointer;
   transition: border-color 0.5s;
 }
@@ -18,8 +18,8 @@
 }
 
 .button:hover {
-  border: var(--border-size) solid var(--primary-text-sidebar-canvas);
-  filter: drop-shadow(0 0 var(--medium-base) var(--primary-text-sidebar-canvas));
+  border: $border-size solid var(--primary-text-sidebar-canvas);
+  filter: drop-shadow(0 0 $medium-base) var(--primary-text-sidebar-canvas);
 }
 
 .content {
@@ -28,5 +28,5 @@
 }
 
 .icon {
-  padding-right: var(--medium-base);
+  padding-right: $medium-base;
 }

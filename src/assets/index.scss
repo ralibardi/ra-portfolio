@@ -1,22 +1,51 @@
 @use './_colours.scss' as *;
 @use './_fonts.scss' as *;
 @use './_breakpoints.scss' as *;
+@use './_variables.scss' as *;
+
+@mixin theme($mode: light) {
+  @if $mode ==light {
+    --accent-colour: #{$medium-primary-light};
+    --black-colour: #{dark-black-light};
+    --white-colour: #{dark-white-light};
+
+    --text-colour: #{$text-colour-light};
+    --light-canvas: #{$light-white-light};
+    --primary-text-light-canvas: #{$medium-primary-light};
+    --secondary-text-light-canvas: #{$medium-secondary-light};
+    --inline-text-light-canvas: #{$medium-inline-light};
+    --link-text-light-canvas: #{$medium-link-light};
+    --disabled-light-canvas: #{$medium-disabled-light};
+    --sidebar-canvas: #{$light-white-light};
+    --primary-text-sidebar-canvas: #{$medium-primary-light};
+    --secondary-text-sidebar-canvas: #{$medium-secondary-light};
+    --inline-text-sidebar-canvas: #{$medium-inline-light};
+    --link-text-sidebar-canvas: #{$medium-link-light};
+    --disabled-sidebar-canvas: #{$medium-disabled-light};
+  }
+
+  @else if $mode ==dark {
+    --accent-colour: #{$medium-primary-dark};
+    --black-colour: #{dark-black-dark};
+    --white-colour: #{dark-white-dark};
+
+    --text-colour: #{$text-colour-dark};
+    --light-canvas: #{$light-white-dark};
+    --primary-text-light-canvas: #{$medium-primary-dark};
+    --secondary-text-light-canvas: #{$medium-secondary-dark};
+    --inline-text-light-canvas: #{$medium-inline-dark};
+    --link-text-light-canvas: #{$medium-link-dark};
+    --disabled-light-canvas: #{$medium-disabled-dark};
+    --sidebar-canvas: #{$light-white-dark};
+    --primary-text-sidebar-canvas: #{$medium-primary-dark};
+    --secondary-text-sidebar-canvas: #{$medium-secondary-dark};
+    --inline-text-sidebar-canvas: #{$medium-inline-dark};
+    --link-text-sidebar-canvas: #{$medium-link-dark};
+    --disabled-sidebar-canvas: #{$medium-disabled-dark};
+  }
+}
 
 :root {
-  --small-font-size-base: .5rem;
-  --medium-font-size-base: 1rem;
-  --large-font-size-base: 1.5rem;
-  --small-margin-base: .5rem;
-  --medium-margin-base: 1rem;
-  --large-margin-base: 1.5rem;
-  --small-padding-base: .5rem;
-  --medium-padding-base: 1rem;
-  --large-padding-base: 1.5rem;
-  --small-base: .5rem;
-  --medium-base: 1rem;
-  --large-base: 1.5rem;
-  --border-size: 1px;
-
   font-family: $font-main;
   line-height: $font-height-normal;
   font-weight: $font-weight-regular;
@@ -24,65 +53,37 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  width: 100vw;
 }
 
 html,
 body {
-  height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
 }
 
 body {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 main {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  width: 100%;
+  overflow: hidden;
 }
 
 body,
 header,
 footer {
-  --text-colour: #{$text-colour-light};
-  --light-canvas: #{$light-white-light};
-  --primary-text-light-canvas: #{$medium-primary-light};
-  --secondary-text-light-canvas: #{$medium-secondary-light};
-  --inline-text-light-canvas: #{$medium-inline-light};
-  --link-text-light-canvas: #{$medium-link-light};
-  --disabled-light-canvas: #{$medium-disabled-light};
-  --sidebar-canvas: #{$light-white-light};
-  --primary-text-sidebar-canvas: #{$medium-primary-light};
-  --secondary-text-sidebar-canvas: #{$medium-secondary-light};
-  --inline-text-sidebar-canvas: #{$medium-inline-light};
-  --link-text-sidebar-canvas: #{$medium-link-light};
-  --disabled-sidebar-canvas: #{$medium-disabled-light};
+  @include theme(light);
 }
 
 body.dark-mode,
 header.dark-mode,
 footer.dark-mode {
-  --text-colour: #{$text-colour-dark};
-  --light-canvas: #{$light-white-dark};
-  --primary-text-light-canvas: #{$medium-primary-dark};
-  --secondary-text-light-canvas: #{$medium-secondary-dark};
-  --inline-text-light-canvas: #{$medium-inline-dark};
-  --link-text-light-canvas: #{$medium-link-dark};
-  --disabled-light-canvas: #{$medium-disabled-dark};
-  --sidebar-canvas: #{$light-white-dark};
-  --primary-text-sidebar-canvas: #{$medium-primary-dark};
-  --secondary-text-sidebar-canvas: #{$medium-secondary-dark};
-  --inline-text-sidebar-canvas: #{$medium-inline-dark};
-  --link-text-sidebar-canvas: #{$medium-link-dark};
-  --disabled-sidebar-canvas: #{$medium-disabled-dark};
+  @include theme(dark);
 }

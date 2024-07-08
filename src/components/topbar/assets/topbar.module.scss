@@ -3,7 +3,7 @@
 .container {
   display: flex;
   gap: 1.5rem;
-  background-color: var(--medium-grey);
+  background-color: $medium-grey;
   padding: 0.5rem 1.5rem;
   border-radius: 1.5rem;
 }

@@ -11,9 +11,7 @@ const BasePage: React.FC = () => {
     <main className={styles.container}>
       <Header />
       <div className={styles.content}>
-        <div className={styles.body}>
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
       <Footer />
     </main>

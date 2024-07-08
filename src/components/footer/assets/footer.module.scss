@@ -1,18 +1,18 @@
 @use '@assets\/_colours.scss' as *;
 
 .container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
-  background-color: var(--background-colour);
-  width: 100%;
   margin-top: auto;
+  padding: $large-padding-base;
+  background-color: var(--sidebar-canvas);
 }
 
 .copyright {
   color: var(--text-colour);
-  padding-top: 0.8rem;
-  font-size: 0.8rem;
+  padding-top: $small-padding-base;
+  font-size: $small-font-size-base;
 }
