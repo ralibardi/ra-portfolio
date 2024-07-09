@@ -1,18 +1,34 @@
-    $small-font-size-base: .75rem;
-    $medium-font-size-base: 1rem;
-    $large-font-size-base: 1.5rem;
-    $small-margin-base: .5rem;
-    $medium-margin-base: 1rem;
-    $large-margin-base: 1.5rem;
-    $small-padding-base: .5rem;
-    $medium-padding-base: 1rem;
-    $large-padding-base: 1.5rem;
-    $small-base: .5rem;
-    $medium-base: 1rem;
-    $large-base: 1.5rem;
-    $border-size: 1px;
-    $small-spinner-size: 4rem;
-    $medium-spinner-size: 8rem;
-    $large-spinner-size: 12rem;
-    $spinner-border-size: .75rem;
-    $spinner-margin-size: 1rem;
+    // Spacing
+    $spacing-0: 0;
+    $spacing-3xs: .125rem;
+    $spacing-2xs: .25rem;
+    $spacing-xs: .5rem;
+    $spacing-sm: .75rem;
+    $spacing-md: 1rem;
+    $spacing-lg: 1.5rem;
+    $spacing-xl: 2rem;
+    $spacing-2xl: 4rem;
+    $spacing-3xl: 8rem;
+    $spacing-4xl: 12rem;
+
+    // Border Sizes
+    $border-xs: .0625rem;
+    $border-sm: 0.125rem;
+    $border-md: .25rem;
+    $border-lg: .5rem;
+    $border-xl: .75rem;
+    $border-2xl: 1rem;
+    $border-3xl: 1.5rem;
+    $border-4xl: 2rem;
+
+    // Percentage
+    $percentage-0: 0%;
+    $percentage-25: 25%;
+    $percentage-50: 50%;
+    $percentage-75: 75%;
+    $percentage-100: 100%;
+
+    // Transitions
+    $transition-fast: 0.2s;
+    $transition-medium: 0.5s;
+    $transition-slow: 1s;

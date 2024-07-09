@@ -4,9 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import { generateManifest } from './manifestGenerator';
 import path from 'path';
 
-// Function to generate environment-specific configurations
 export default ({ mode }: ConfigEnv) => {
-  // Base configuration common to both development and production
   let baseConfig: UserConfig = {
     resolve: {
       alias: {
@@ -36,13 +34,11 @@ export default ({ mode }: ConfigEnv) => {
     },
   };
 
-  // Extend or override the base configuration for production
   if (mode === 'production') {
     baseConfig = {
       ...baseConfig,
       build: {
         ...baseConfig.build,
-        // Production-specific configurations
         rollupOptions: {
           output: {
             chunkFileNames: 'static/js/[name]-[hash].js',
@@ -50,16 +46,14 @@ export default ({ mode }: ConfigEnv) => {
             assetFileNames: 'static/assets/[name]-[hash].[ext]',
           },
         },
-        sourcemap: true, // Enable sourcemaps in production for debugging
+        sourcemap: true,
       },
     };
   }
 
-  // Extend or override the base configuration for development
   if (mode === 'development') {
     baseConfig = {
       ...baseConfig,
-      // Development-specific configurations
     };
   }
 

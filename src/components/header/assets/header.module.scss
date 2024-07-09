@@ -1,15 +1,15 @@
-@use '@assets\/_colours.scss' as *;
+@use '@assets\/global' as *;
 
 .container {
-    display: flex;
-    height: fit-content;
-    justify-content: center;
-    padding: $large-padding-base;
+    @include flexbox(row, center);
+    height: auto;
+    width: 100%;
+    padding: $spacing-lg;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(var(--white-colour), var(--black-colour));
+    background-color: linear-gradient($black, $white);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 1000;

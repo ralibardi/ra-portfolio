@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { errorMessageTitleKey, goBackKey } from '@app/i18n/keys';
 
-import styles from './errorBoundary.module.scss'; // Assuming CSS module usage
+import styles from '../assets/error-boundary.module.scss';
 
 interface IErrorBoundaryProps extends WithTranslation {
   children: React.ReactNode;
@@ -26,7 +26,6 @@ class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    // Catch errors in any components below and re-render with error message
     this.setState({
       hasError: true,
       error,
@@ -36,7 +35,6 @@ class ErrorBoundary extends React.Component<
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
       return (
         <div className={styles.container}>
           <div className={styles.header}>
@@ -60,7 +58,6 @@ class ErrorBoundary extends React.Component<
       );
     }
 
-    // Normally, just render children
     return this.props.children;
   }
 }

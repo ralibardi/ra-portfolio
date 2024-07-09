@@ -3,7 +3,6 @@ import { initReactI18next } from 'react-i18next';
 import translation from './en/translation.json';
 
 async function initializeI18n() {
-  // Make the function async
   await i18next.use(initReactI18next).init({
     lng: 'en',
     debug: false,
@@ -21,4 +20,4 @@ initializeI18n()
   })
   .catch((error) => {
     console.error('Error initializing i18next:', error);
-  }); // Call the async function
+  });

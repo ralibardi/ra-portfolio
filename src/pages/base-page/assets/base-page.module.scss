@@ -1,15 +1,12 @@
-@use '@assets\/_colours.scss' as *;
+@use '@assets\/global' as *;
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flexbox(column, center, center);
 }
 
 .content {
   overflow: auto;
-  display: flex;
+  @include flexbox(row);
   flex-direction: row;
   position: relative;
   overflow: hidden;

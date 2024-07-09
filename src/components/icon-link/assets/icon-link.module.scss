@@ -1,0 +1,25 @@
+@use '@assets\/global' as *;
+
+.container {
+  height: $spacing-lg;
+  display: inline-flex;
+  text-decoration: none;
+  align-items: center;
+}
+
+.icon {
+  width: $spacing-lg;
+  height: $spacing-lg;
+  padding-right: $spacing-md;
+  color: var(--accent-colour);
+}
+
+.icon:hover {
+  color: var(--secondary-colour);
+  @include box-shadow();
+}
+
+.label {
+  padding-right: $spacing-md;
+  @include font-style($font-md, $font-weight-medium, var(--text-colour));
+}

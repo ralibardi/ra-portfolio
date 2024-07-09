@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
-import { getAppRoutes } from '@utils/getAppRoutes';
+import { getAppRoutes } from '@utils/get-app-routes';
 import IRoute from '@type/route';
-import { rootPath } from '@utils/routePaths';
+import { rootPath } from '@utils/route-paths';
 
 const Loading = lazy(() => import('@components/loading'));
 const BasePage = lazy(() => import('@pages/base-page'));

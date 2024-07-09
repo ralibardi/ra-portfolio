@@ -1,49 +1,4 @@
-@use './_colours.scss' as *;
-@use './_fonts.scss' as *;
-@use './_breakpoints.scss' as *;
-@use './_variables.scss' as *;
-
-@mixin theme($mode: light) {
-  @if $mode ==light {
-    --accent-colour: #{$medium-primary-light};
-    --black-colour: #{dark-black-light};
-    --white-colour: #{dark-white-light};
-
-    --text-colour: #{$text-colour-light};
-    --light-canvas: #{$light-white-light};
-    --primary-text-light-canvas: #{$medium-primary-light};
-    --secondary-text-light-canvas: #{$medium-secondary-light};
-    --inline-text-light-canvas: #{$medium-inline-light};
-    --link-text-light-canvas: #{$medium-link-light};
-    --disabled-light-canvas: #{$medium-disabled-light};
-    --sidebar-canvas: #{$light-white-light};
-    --primary-text-sidebar-canvas: #{$medium-primary-light};
-    --secondary-text-sidebar-canvas: #{$medium-secondary-light};
-    --inline-text-sidebar-canvas: #{$medium-inline-light};
-    --link-text-sidebar-canvas: #{$medium-link-light};
-    --disabled-sidebar-canvas: #{$medium-disabled-light};
-  }
-
-  @else if $mode ==dark {
-    --accent-colour: #{$medium-primary-dark};
-    --black-colour: #{dark-black-dark};
-    --white-colour: #{dark-white-dark};
-
-    --text-colour: #{$text-colour-dark};
-    --light-canvas: #{$light-white-dark};
-    --primary-text-light-canvas: #{$medium-primary-dark};
-    --secondary-text-light-canvas: #{$medium-secondary-dark};
-    --inline-text-light-canvas: #{$medium-inline-dark};
-    --link-text-light-canvas: #{$medium-link-dark};
-    --disabled-light-canvas: #{$medium-disabled-dark};
-    --sidebar-canvas: #{$light-white-dark};
-    --primary-text-sidebar-canvas: #{$medium-primary-dark};
-    --secondary-text-sidebar-canvas: #{$medium-secondary-dark};
-    --inline-text-sidebar-canvas: #{$medium-inline-dark};
-    --link-text-sidebar-canvas: #{$medium-link-dark};
-    --disabled-sidebar-canvas: #{$medium-disabled-dark};
-  }
-}
+@use 'global' as *;
 
 :root {
   font-family: $font-main;
@@ -63,16 +18,13 @@ body {
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexbox(column, center, center);
 }
 
 main {
+  @include flexbox(column);
   width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
 }
 

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import IRoute from '@type/route';
-import { getAppRoutes } from '@utils/getAppRoutes';
+import { getAppRoutes } from '@utils/get-app-routes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLocation, Link } from 'react-router-dom';
 import classNames from 'classnames';

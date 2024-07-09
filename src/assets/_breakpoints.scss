@@ -1,23 +1,19 @@
-@mixin respond-to($breakpoint) {
-  @media (min-width: $breakpoint) {
-    @content;
+@mixin breakpoint($size) {
+  @if $size =='small' {
+    @media (max-width: 600px) {
+      @content;
+    }
   }
-}
 
-@mixin respond-between($min, $max) {
-  @media (min-width: $min) and (max-width: $max) {
-    @content;
+  @else if $size =='medium' {
+    @media (min-width: 601px) and (max-width: 960px) {
+      @content;
+    }
   }
-}
 
-@mixin respond-up($breakpoint) {
-  @media (min-width: $breakpoint) {
-    @content;
-  }
-}
-
-@mixin respond-down($breakpoint) {
-  @media (max-width: $breakpoint) {
-    @content;
+  @else if $size =='large' {
+    @media (min-width: 961px) {
+      @content;
+    }
   }
 }

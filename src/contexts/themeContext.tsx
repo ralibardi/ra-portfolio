@@ -1,15 +1,12 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-// Define the theme type
 type Theme = 'light' | 'dark' | 'system';
 
-// Define the context interface
 interface IThemeContext {
   theme: Theme;
   toggleTheme: () => void;
 }
 
-// Create the context with default values
 const ThemeContext = createContext<IThemeContext | null>(null);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -18,7 +15,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    // Check system preference on mount
     const prefersDark =
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;

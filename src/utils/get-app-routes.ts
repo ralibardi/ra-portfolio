@@ -15,7 +15,7 @@ import {
   gamingPagePath,
   homePagePath,
   photographyPagePath,
-} from './routePaths';
+} from './route-paths';
 
 const HomePage = lazy(() => import('@pages/home-page'));
 const CodingPage = lazy(() => import('@pages/coding-page'));

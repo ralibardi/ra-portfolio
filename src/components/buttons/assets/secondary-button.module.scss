@@ -1,32 +1,29 @@
-@use '@assets\/_colours.scss' as *;
-@use '@assets\/_fonts.scss' as *;
+@use '@assets\/global' as *;
 
 .button {
-  margin: $medium-margin-base;
-  padding: $small-padding-base $medium-padding-base;
-  font-size: $medium-font-size-base;
+  margin: $spacing-md;
+  padding: $spacing-xs $spacing-md;
   background-color: var(--background-colour);
-  color: var(--primary-text-sidebar-canvas);
-  border-radius: $medium-base;
-  border: $border-size solid var(--sidebar-canvas);
+  color: $white;
+  border-radius: border-radius();
+  border: $border-xs solid $white;
   cursor: pointer;
-  transition: border-color 0.5s;
+  transition: transition(border-color);
 }
 
 .label {
-  color: var(--text-colour);
+  @include font-style($font-md, $font-weight-medium, var(--text-colour));
 }
 
 .button:hover {
-  border: $border-size solid var(--sidebar-canvas);
-  filter: drop-shadow(0 0 $medium-base) var(--sidebar-canvas);
+  border: $border-xs solid $white;
+  filter: drop-shadow(0 0 $spacing-lg) $white;
 }
 
 .content {
-  display: flex;
-  align-items: center;
+  @include flexbox(row, flex-start, center);
 }
 
 .icon {
-  padding-right: $medium-base;
+  padding-right: $spacing-md;
 }

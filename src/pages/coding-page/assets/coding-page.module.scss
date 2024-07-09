@@ -1,5 +1,5 @@
-@use '@assets\/_colours.scss' as *;
+@use '@assets\/global' as *;
 
 .container {
-  display: flex;
+  @include flexbox();
 }

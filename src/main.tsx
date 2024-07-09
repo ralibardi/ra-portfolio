@@ -2,7 +2,7 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ReactDOM from 'react-dom/client';
 import App from '@app/app';
-import ErrorBoundary from '@utils/errorBoundary';
+import ErrorBoundary from '@components/error-boundary';
 
 import '@assets/index.scss';
 

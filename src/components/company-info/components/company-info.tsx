@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { companyNameKey } from '@app/i18n/keys';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
-import { homePagePath } from '@utils/routePaths';
+import { homePagePath } from '@utils/route-paths';
 
 import styles from '../assets/company-info.module.scss';
 

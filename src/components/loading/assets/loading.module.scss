@@ -1,39 +1,31 @@
-@use '@assets\/_colours.scss' as *;
+@use '@assets\/global' as *;
 
 .container {
   width: 100% !important;
   height: 100% !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexbox(row, center, center);
 }
 
 .spinner {
-  width: $small-spinner-size;
-  height: $small-spinner-size;
-  border: $spinner-border-size var(--accent-colour) double;
+  width: $spacing-2xl;
+  height: $spacing-2xl;
+  border: $spacing-sm var(--accent-colour) double;
   border-left-style: solid;
-  border-radius: 50%;
-  animation: spinner-animation 0.75s infinite linear;
+  @include border-radius($percentage-50);
+  animation: spin 0.75s infinite linear;
 }
 
 .small {
-  width: $small-spinner-size;
-  height: $small-spinner-size;
+  width: $spacing-2xl;
+  height: $spacing-2xl;
 }
 
 .medium {
-  width: $medium-spinner-size;
-  height: $medium-spinner-size;
+  width: $spacing-3xl;
+  height: $spacing-3xl;
 }
 
 .large {
-  width: $large-spinner-size;
-  height: $large-spinner-size;
-}
-
-@keyframes spinner-animation {
-  to {
-    transform: rotate(360deg);
-  }
+  width: $spacing-4xl;
+  height: $spacing-4xl;
 }
