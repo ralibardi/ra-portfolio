@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { FunctionComponent, lazy } from 'react';
 
 const Loading = lazy(() => import('@components/loading'));
 
