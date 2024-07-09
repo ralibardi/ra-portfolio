@@ -1,7 +1,7 @@
 {
     "id": "com.ronnyalibardi.portfolio",
     "short_name": "RA - Portfolio",
-    "name": "Portfolio App from Ronny Alibardi",
+    "name": "RA - Portfolio",
     "description": "This is a portfolio application showcasing the work and projects of Ronny Alibardi.",
     "icons": [
         {
@@ -182,7 +182,7 @@
     "screenshots": [
         {
             "src": "screenshots/screenshot-desktop.png",
-            "sizes": "2251x1347",
+            "sizes": "4502x2694",
             "type": "image/png",
             "platform": "desktop",
             "form_factor": "wide"
@@ -195,7 +195,7 @@
         },
         {
             "src": "screenshots/screenshot-tablet.png",
-            "sizes": "931x1243",
+            "sizes": "2732x2048",
             "type": "image/png",
             "platform": "tablet"
         }
