@@ -29,6 +29,7 @@
 
 .companyName {
   white-space: nowrap;
+  @include font-style();
 }
 
 .companyName__hidden {

@@ -1,0 +1,39 @@
+@use '@assets/global' as *;
+
+.container {
+    @include flexbox(row, center, center);
+}
+
+.label {
+    margin-right: $spacing-sm;
+    @include font-style($font-md, $font-weight-medium, var(--text-colour));
+}
+
+.toggle {
+    width: $spacing-2xl;
+    height: $spacing-xl;
+    background-color: var(--light-grey);
+    border-radius: $spacing-xl;
+    position: relative;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+}
+
+.toggle.checked {
+    background-color: var(--accent-colour);
+}
+
+.thumb {
+    position: absolute;
+    top: $spacing-2xs;
+    left: $spacing-2xs;
+    width: $spacing-lg;
+    height: $spacing-lg;
+    background-color: $white;
+    border-radius: $percentage-100;
+    transition: transform $transition-fast;
+}
+
+.toggle.checked .thumb {
+    transform: translateX($spacing-xl);
+}

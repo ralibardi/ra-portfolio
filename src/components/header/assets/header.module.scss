@@ -1,14 +1,20 @@
 @use '@assets\/global' as *;
 
 .container {
-    @include flexbox(row, center);
-    height: auto;
-    width: 100%;
-    padding: $spacing-lg;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    @include flexbox(row, space-between, center);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.subContainer {
+    @include flexbox(row, center);
+    height: auto;
+    width: 100%;
+    padding: $spacing-lg;
     background-color: linear-gradient($black, $white);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
