@@ -1,0 +1,5 @@
+@use '@assets\/global' as *;
+
+.container {
+  @include flexbox();
+}

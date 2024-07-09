@@ -1,0 +1,15 @@
+@use '@assets\/global' as *;
+
+.container {
+  @include flexbox(column, center, center);
+}
+
+.content {
+  @include flexbox(row);
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1;
+  padding-top: 60px;
+  width: 100%;
+  background-color: var(--background-colour);
+}

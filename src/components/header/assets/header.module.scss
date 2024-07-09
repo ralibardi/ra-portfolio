@@ -1,0 +1,21 @@
+@use '@assets\/global' as *;
+
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    @include flexbox(row, space-between, center);
+    overflow: hidden;
+    background-color: linear-gradient(var(--foreground-colour), var(--background-colour));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+.subContainer {
+    @include flexbox(row, center);
+    height: auto;
+    width: 100%;
+    padding: $spacing-lg;
+}

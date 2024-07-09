@@ -1,0 +1,20 @@
+@use '@assets\/global' as *;
+
+.container {
+  @include flexbox(column, center);
+  background-color: var(--background-colour);
+  color: var(--background-colour);
+  padding: $spacing-lg;
+}
+
+.header {
+  display: inline-flex;
+}
+
+.header__title {
+  @include flexbox();
+}
+
+.description {
+  @include flexbox();
+}

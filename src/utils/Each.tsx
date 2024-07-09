@@ -1,5 +1,13 @@
-import { Children, Fragment } from 'react';
+import React, { Children, Fragment } from 'react';
 
-export const Each = <T,>({ render, of }: { render: (item: T, index: number) => JSX.Element; of: T[] }) => (
-  <Fragment>{Children.toArray(of.map((item, index) => render(item, index)))}</Fragment>
+export const Each = <T,>({
+  render,
+  of,
+}: {
+  render: (item: T, index: number) => React.JSX.Element;
+  of: T[];
+}) => (
+  <Fragment>
+    {Children.toArray(of.map((item, index) => render(item, index)))}
+  </Fragment>
 );

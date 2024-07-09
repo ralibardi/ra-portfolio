@@ -1,0 +1,64 @@
+@use 'colours' as *;
+@use 'variables' as *;
+@use 'fonts' as *;
+
+$themes: (
+    light: (--accent-colour: #{$primary-1},
+        --secondary-colour: #{$secondary-2},
+        --light-grey: #{$grey-1},
+        --grey: #{$grey-2},
+        --dark-grey: #{$grey-3},
+        --text-colour: #{$black},
+        --background-colour: #{$white},
+        --foreground-colour: #{$grey-3},
+    ),
+    dark: (--accent-colour: #{$primary-3},
+        --secondary-colour: #{$secondary-2},
+        --light-grey: #{$grey-4},
+        --grey: #{$grey-5},
+        --dark-grey: #{$grey-6},
+        --text-colour: #{$white},
+        --background-colour: #{$black},
+        --foreground-colour: #{$grey-4},
+    )
+);
+
+@mixin theme($mode: light) {
+    @if map-has-key($themes, $mode) {
+        $theme-map: map-get($themes, $mode );
+
+        @each $name, $value in $theme-map {
+            #{$name}: #{$value};
+        }
+    }
+
+    @else {
+        @warn "Unsupported theme mode: #{$mode}";
+    }
+}
+
+@mixin font-style($size: $font-md, $weight: $font-weight-medium, $color: var(--text-colour)) {
+    font-size: $size;
+    font-weight: $weight;
+    font-family: $font-main;
+    color: $color
+}
+
+@mixin flexbox($direction: row, $justify: flex-start, $align: stretch) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin box-shadow($x: 0, $y: $spacing-3xs, $blur: $spacing-2xs, $color: $black) {
+    box-shadow: $x $y $blur $color;
+}
+
+@mixin transition($property: all, $duration: $transition-medium, $timing: ease) {
+    transition: $property $duration $timing;
+}
+
+@mixin border-radius($radius: $border-md) {
+    border-radius: $radius;
+}

@@ -1,6 +1,3 @@
-import React from 'react';
+import { BaseButtonProps } from './baseButtonProps';
 
-export type PrimaryButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    isLoading?: boolean;
-};
+export type PrimaryButtonProps = BaseButtonProps;

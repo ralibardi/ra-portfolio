@@ -1,0 +1,37 @@
+@use 'global' as *;
+
+:root {
+  font-family: $font-main;
+  line-height: $font-height-normal;
+  font-weight: $font-weight-regular;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @include flexbox(column, center, center);
+}
+
+main {
+  @include flexbox(column);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  @include theme(light);
+}
+
+body.dark-mode {
+  @include theme(dark);
+}

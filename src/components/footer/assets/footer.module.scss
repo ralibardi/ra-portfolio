@@ -1,0 +1,15 @@
+@use '@assets\/global' as *;
+
+.container {
+  width: 100%;
+  @include flexbox(column, center, center);
+  margin-top: auto;
+  padding: $spacing-lg;
+  background-color: var(--foreground-colour);
+}
+
+.copyright {
+  color: var(--text-colour);
+  padding-top: $spacing-xs;
+  font-size: $font-sm;
+}

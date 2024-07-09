@@ -1,0 +1,35 @@
+@use '@assets\/global' as *;
+
+.container {
+  position: relative;
+  @include flexbox(column, center, start);
+  overflow: hidden;
+}
+
+.wrapper {
+  @include flexbox(row, flex-start, center);
+  color: var(--background-colour);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: $font-md;
+  padding: 0 $spacing-xs;
+  gap: $spacing-sm;
+}
+
+.imageSmall {
+  height: $spacing-xl;
+  width: $spacing-xl;
+  overflow: hidden;
+  object-fit: cover;
+  @include border-radius($percentage-50);
+  border: $border-sm solid var(--background-colour);
+}
+
+.companyName {
+  white-space: nowrap;
+  @include font-style();
+}
+
+.companyName__hidden {
+  visibility: hidden;
+}

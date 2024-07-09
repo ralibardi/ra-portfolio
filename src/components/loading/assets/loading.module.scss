@@ -1,0 +1,31 @@
+@use '@assets\/global' as *;
+
+.container {
+  width: 100% !important;
+  height: 100% !important;
+  @include flexbox(row, center, center);
+}
+
+.spinner {
+  width: $spacing-2xl;
+  height: $spacing-2xl;
+  border: $spacing-sm var(--accent-colour) double;
+  border-left-style: solid;
+  @include border-radius($percentage-50);
+  animation: spin 0.75s infinite linear;
+}
+
+.small {
+  width: $spacing-2xl;
+  height: $spacing-2xl;
+}
+
+.medium {
+  width: $spacing-3xl;
+  height: $spacing-3xl;
+}
+
+.large {
+  width: $spacing-4xl;
+  height: $spacing-4xl;
+}

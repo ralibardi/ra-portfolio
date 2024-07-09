@@ -1,13 +1,15 @@
-import React from 'react';
-import AllRoutes from '@routes/allRoutes';
-import { ErrorProvider } from '@contexts/errorContext';
+import React, { FunctionComponent, useContext } from 'react';
+import AllRoutes from '@app/routes/all-routes';
 import './i18n/config';
+import ThemeContext from '@contexts/theme-context';
 
-const App: React.FC = () => {
+const App: FunctionComponent = () => {
+  const { theme } = useContext(ThemeContext) ?? {};
+
   return (
-    <ErrorProvider>
+    <div className={theme}>
       <AllRoutes />
-    </ErrorProvider>
+    </div>
   );
 };
 

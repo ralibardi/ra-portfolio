@@ -1,0 +1,9 @@
+@use '@assets/global' as *;
+
+.container {
+  @include flexbox(row, space-between, center);
+  gap: $spacing-xs;
+  background-color: var(--light-grey);
+  padding: $spacing-3xs $spacing-lg;
+  @include border-radius($spacing-lg);
+}
