@@ -10,7 +10,7 @@
 
 .wrapper {
   @include flexbox(row, flex-start, center);
-  color: $white;
+  color: var(--background-colour);
   font-weight: 700;
   text-decoration: none;
   font-size: $font-md;
@@ -24,7 +24,7 @@
   overflow: hidden;
   object-fit: cover;
   @include border-radius($percentage-50);
-  border: $border-sm solid $white;
+  border: $border-sm solid var(--background-colour);
 }
 
 .companyName {

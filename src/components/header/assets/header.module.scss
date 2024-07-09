@@ -7,6 +7,9 @@
     right: 0;
     @include flexbox(row, space-between, center);
     overflow: hidden;
+    background-color: linear-gradient(var(--foreground-colour), var(--background-colour));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     z-index: 1;
 }
 
@@ -15,8 +18,4 @@
     height: auto;
     width: 100%;
     padding: $spacing-lg;
-    background-color: linear-gradient($black, $white);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
 }

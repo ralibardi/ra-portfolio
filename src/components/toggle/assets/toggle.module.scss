@@ -17,6 +17,8 @@
     position: relative;
     cursor: pointer;
     transition: background-color $transition-fast;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .toggle.checked {
@@ -29,7 +31,7 @@
     left: $spacing-2xs;
     width: $spacing-lg;
     height: $spacing-lg;
-    background-color: $white;
+    background-color: var(--background-colour);
     border-radius: $percentage-100;
     transition: transform $transition-fast;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import { companyNameKey } from '@app/i18n/keys';
@@ -12,7 +12,9 @@ interface ICompanyInfoProps {
   isLabelHidden?: boolean;
 }
 
-const CompanyInfo: React.FC<ICompanyInfoProps> = ({ isLabelHidden }) => {
+const CompanyInfo: FunctionComponent<ICompanyInfoProps> = ({
+  isLabelHidden,
+}) => {
   const { t } = useTranslation();
 
   const labelClassName = cn(styles.companyName, {

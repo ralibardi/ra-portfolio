@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { FunctionComponent, lazy } from 'react';
 
 const Topbar = lazy(() => import('@components/topbar'));
 const CompanyInfo = lazy(() => import('@components/company-info'));
@@ -6,7 +6,7 @@ const ThemeToggle = lazy(() => import('@components/theme-toggle'));
 
 import styles from '../assets/header.module.scss';
 
-const Header: React.FC = () => {
+const Header: FunctionComponent = () => {
   return (
     <header className={styles.container}>
       <div className={styles.subContainer}>

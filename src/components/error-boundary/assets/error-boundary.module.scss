@@ -3,7 +3,7 @@
 .container {
   @include flexbox(column, center);
   background-color: var(--background-colour);
-  color: $white;
+  color: var(--background-colour);
   padding: $spacing-lg;
 }
 

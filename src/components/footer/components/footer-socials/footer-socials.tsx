@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { FunctionComponent, lazy } from 'react';
 import { Each } from '@utils/each';
 import { getSocialLinks } from '../../utils/getSocialLinks';
 
@@ -6,7 +6,7 @@ const IconLink = lazy(() => import('@components/icon-link'));
 
 import styles from '../../assets/footer-socials.module.scss';
 
-const FooterSocials: React.FC = () => {
+const FooterSocials: FunctionComponent = () => {
   const socialLinks = getSocialLinks();
 
   return (

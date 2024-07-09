@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import ThemeContext from '@contexts/theme-context';
+import React, { lazy } from 'react';
+import { useTheme } from '@hooks/use-theme';
 
-import Toggle from '@components/toggle/components/toggle';
+const Toggle = lazy(() => import('@components/toggle'));
 
 const ThemeToggle = () => {
-  const themeContext = useContext(ThemeContext);
+  const themeContext = useTheme();
 
   if (!themeContext) {
     return null;

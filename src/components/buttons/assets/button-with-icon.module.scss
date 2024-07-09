@@ -4,9 +4,9 @@
   margin: $spacing-md;
   padding: $spacing-xs $spacing-md;
   background-color: var(--background-colour);
-  color: $white;
+  color: var(--background-colour);
   border-radius: border-radius();
-  border: $border-xs solid $white;
+  border: $border-xs solid var(--background-colour);
   cursor: pointer;
   transition: transition(border-color);
 }
@@ -16,8 +16,8 @@
 }
 
 .button:hover {
-  border: $border-xs solid $white;
-  filter: drop-shadow(0 0 $spacing-lg) $white;
+  border: $border-xs solid var(--background-colour);
+  filter: drop-shadow(0 0 $spacing-lg) var(--background-colour);
 }
 
 .content {

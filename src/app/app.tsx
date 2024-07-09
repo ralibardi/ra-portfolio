@@ -1,16 +1,15 @@
-import React, { useContext } from 'react';
+import React, { FunctionComponent, useContext } from 'react';
 import AllRoutes from '@app/routes/all-routes';
 import './i18n/config';
-import ThemeContext, { ThemeProvider } from '@contexts/theme-context';
+import ThemeContext from '@contexts/theme-context';
 
-const App: React.FC = () => {
+const App: FunctionComponent = () => {
   const { theme } = useContext(ThemeContext) ?? {};
+
   return (
-    <ThemeProvider>
-      <div className={theme}>
-        <AllRoutes />
-      </div>
-    </ThemeProvider>
+    <div className={theme}>
+      <AllRoutes />
+    </div>
   );
 };
 

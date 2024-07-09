@@ -1,10 +1,10 @@
-import React, { lazy } from 'react';
+import React, { FunctionComponent, lazy } from 'react';
 
 const Loading = lazy(() => import('@components/loading'));
 
 import styles from '../assets/contact-page.module.scss';
 
-const ContactPage: React.FC = () => {
+const ContactPage: FunctionComponent = () => {
   return (
     <div className={styles.container}>
       <Loading />

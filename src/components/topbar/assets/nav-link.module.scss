@@ -1,0 +1,46 @@
+@use '@assets/global' as *;
+
+.link,
+.link:hover,
+.active {
+    @include flexbox(row, center, center);
+    padding: $spacing-2xs $spacing-sm;
+    text-decoration: none;
+    color: var(--text-colour);
+    height: $spacing-lg;
+
+    &:hover,
+    &.active {
+        @include border-radius($spacing-lg);
+        width: auto;
+    }
+
+    &:hover {
+        background-color: var(--grey);
+    }
+
+    &.active {
+        background-color: var(--background-colour);
+    }
+
+    &:not(.active):hover {
+        animation: extendEffect 0.5s ease-in forwards;
+    }
+}
+
+.icon {
+    @include flexbox();
+    color: var(--accent-colour);
+    margin-right: $spacing-xs;
+}
+
+.label {
+    @include flexbox(row, center, center);
+    @include font-style($font-md, $font-weight-medium, var(--accent-colour));
+    display: none;
+
+    .link:hover &,
+    .active & {
+        display: block;
+    }
+}

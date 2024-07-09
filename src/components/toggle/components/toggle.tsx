@@ -1,10 +1,10 @@
-import React, { MouseEventHandler, useState } from 'react';
+import React, { FunctionComponent, MouseEventHandler, useState } from 'react';
 import cn from 'classnames';
 import { IToggleProps } from '../types/toggle-props';
 
 import styles from '../assets/toggle.module.scss';
 
-const Toggle: React.FC<IToggleProps> = ({ label, onClick }) => {
+const Toggle: FunctionComponent<IToggleProps> = ({ label, onClick }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleToggle: MouseEventHandler<HTMLDivElement> = (

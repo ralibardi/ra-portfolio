@@ -1,10 +1,10 @@
-import React, { lazy } from 'react';
+import React, { FunctionComponent, lazy } from 'react';
 
 const Loading = lazy(() => import('@components/loading'));
 
 import styles from '../assets/about-page.module.scss';
 
-const AboutPage: React.FC = () => {
+const AboutPage: FunctionComponent = () => {
   return (
     <div className={styles.container}>
       <Loading />

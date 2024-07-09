@@ -4,7 +4,7 @@ const Loading = lazy(() => import('@components/loading'));
 
 import styles from '../assets/home-page.module.scss';
 
-const HomePage: React.FC = () => {
+const HomePage: FunctionComponent = () => {
   return (
     <div className={styles.container}>
       <Loading />
