@@ -6,13 +6,14 @@ import path from 'path';
 
 export default ({ mode }: ConfigEnv) => {
   let baseConfig: UserConfig = {
+    publicDir: 'public',
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),
         '@assets': path.resolve(__dirname, 'src/assets'),
       },
     },
-    assetsInclude: ['**/*.jpeg', '**/*.jpg', '**/*.svg'],
+    assetsInclude: ['**/*.jpeg', '**/*.jpg', '**/*.svg', '**/*.png'],
     plugins: [
       react(),
       tsconfigPaths(),
@@ -48,12 +49,23 @@ export default ({ mode }: ConfigEnv) => {
         },
         sourcemap: true,
       },
+      server: {
+        https: {
+          key: 'key.pem',
+          cert: 'cert.pem',
+        },
+      },
     };
   }
 
   if (mode === 'development') {
     baseConfig = {
       ...baseConfig,
+      build: {
+        ...baseConfig.build,
+
+        sourcemap: true,
+      },
     };
   }
 

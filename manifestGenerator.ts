@@ -11,19 +11,15 @@ export function generateManifest() {
   const cssResult = sass.compileString(scssContent);
   console.log(cssResult.css);
 
-  // Extract primary colour value
-  const primaryColourMatch = cssResult.css.match(
-    /--primary-colour:\s*(#[0-9a-fA-F]{6});/,
+  // Extract primary-1 colour value
+  const primaryColourMatch = scssContent.match(
+    /\$primary-1:\s*(#[0-9a-fA-F]{6});/,
   );
   const primaryColour = primaryColourMatch ? primaryColourMatch[1] : '#ffffff';
 
-  // Extract background colour value
-  const backgroundColourMatch = cssResult.css.match(
-    /--background-colour:\s*(#[0-9a-fA-F]{6});/,
-  );
-  const backgroundColour = backgroundColourMatch
-    ? backgroundColourMatch[1]
-    : '#000000';
+  // Extract white colour value
+  const whiteColourMatch = scssContent.match(/\$white:\s*(#[0-9a-fA-F]{6});/);
+  const whiteColour = whiteColourMatch ? whiteColourMatch[1] : '#000000';
 
   // Read manifest.hbs template
   const manifestTemplate = fs.readFileSync('manifest.hbs', 'utf8');
@@ -32,7 +28,7 @@ export function generateManifest() {
   const template = handlebars.compile(manifestTemplate);
 
   // Generate manifest.json with dynamic color
-  const manifestContent = template({ primaryColour, backgroundColour });
+  const manifestContent = template({ primaryColour, whiteColour });
 
   // Write the final manifest.json to the dist folder
   fs.writeFileSync('./manifest.json', manifestContent);
