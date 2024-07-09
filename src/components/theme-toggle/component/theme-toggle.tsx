@@ -12,9 +12,11 @@ const ThemeToggle = () => {
 
   const { theme, toggleTheme } = themeContext;
 
-  const label = theme === 'light' ? 'Dark mode' : 'Light mode';
+  const label = theme === 'light' ? 'Light mode' : 'Dark mode';
 
-  return <Toggle onClick={toggleTheme} label={label} />;
+  return (
+    <Toggle onClick={toggleTheme} label={label} checked={theme === 'dark'} />
+  );
 };
 
 export default ThemeToggle;

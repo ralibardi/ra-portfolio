@@ -4,8 +4,6 @@
   position: relative;
   @include flexbox(column, center, start);
   overflow: hidden;
-  height: $spacing-2xl;
-  padding-bottom: $spacing-md;
 }
 
 .wrapper {

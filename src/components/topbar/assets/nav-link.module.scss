@@ -7,7 +7,7 @@
     padding: $spacing-2xs $spacing-sm;
     text-decoration: none;
     color: var(--text-colour);
-    height: $spacing-lg;
+    height: $spacing-xl;
 
     &:hover,
     &.active {
@@ -30,17 +30,25 @@
 
 .icon {
     @include flexbox();
-    color: var(--accent-colour);
+    color: var(--black-colour);
     margin-right: $spacing-xs;
+
+    .active & {
+        @include font-style($font-md, $font-weight-medium, var(--accent-colour));
+    }
 }
 
 .label {
     @include flexbox(row, center, center);
-    @include font-style($font-md, $font-weight-medium, var(--accent-colour));
+    @include font-style($font-md, $font-weight-medium, var(--text-colour));
     display: none;
 
     .link:hover &,
     .active & {
         display: block;
+    }
+
+    .active & {
+        @include font-style($font-md, $font-weight-medium, var(--accent-colour));
     }
 }

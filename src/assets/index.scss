@@ -28,14 +28,10 @@ main {
   overflow: hidden;
 }
 
-body,
-header,
-footer {
+body {
   @include theme(light);
 }
 
-body.dark-mode,
-header.dark-mode,
-footer.dark-mode {
+body.dark-mode {
   @include theme(dark);
 }
