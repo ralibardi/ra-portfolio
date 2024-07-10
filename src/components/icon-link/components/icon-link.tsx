@@ -9,10 +9,6 @@ const IconLink = memo(function buttonWithIcon({
   linkUrl,
   title,
 }: IconLinkProps) {
-  if (!linkUrl) {
-    return null;
-  }
-
   return (
     <a
       href={linkUrl}
@@ -20,9 +16,18 @@ const IconLink = memo(function buttonWithIcon({
       rel="noopener noreferrer"
       aria-label={title ?? icon?.iconName ?? 'Link'}
       className={styles.container}
+      data-testid="icon-link"
     >
-      <FontAwesomeIcon icon={icon} className={styles.icon} />
-      {title && <span className={styles.label}>{title}</span>}
+      <FontAwesomeIcon
+        icon={icon}
+        className={styles.icon}
+        data-testid="icon-link-icon"
+      />
+      {title && (
+        <span className={styles.label} data-testid="icon-link-label">
+          {title}
+        </span>
+      )}
     </a>
   );
 });

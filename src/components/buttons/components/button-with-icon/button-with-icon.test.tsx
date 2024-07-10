@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render, screen } from '@testing-library/react';
+import { act, customRender, screen } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { ButtonWithIcon } from '../buttons';
@@ -9,7 +9,7 @@ describe('ButtonWithIcon', () => {
   test('renders correctly', async () => {
     // ARRANGE
     const handleClick = jest.fn();
-    render(
+    customRender(
       <ButtonWithIcon label="Test" onClick={handleClick} icon={faArrowLeft} />,
     );
 
@@ -37,7 +37,7 @@ describe('ButtonWithIcon', () => {
   test('handles click events', async () => {
     // ARRANGE
     const handleClick = jest.fn();
-    render(
+    customRender(
       <ButtonWithIcon label="Test" onClick={handleClick} icon={faArrowLeft} />,
     );
 
@@ -71,7 +71,7 @@ describe('ButtonWithIcon', () => {
   test('shows spinner when loading', async () => {
     // ARRANGE
     const handleClick = jest.fn();
-    render(
+    customRender(
       <ButtonWithIcon
         label="Loading"
         onClick={handleClick}

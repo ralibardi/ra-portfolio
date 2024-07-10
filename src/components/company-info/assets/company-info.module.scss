@@ -25,11 +25,7 @@
   border: $border-sm solid var(--background-colour);
 }
 
-.companyName {
+.label {
   white-space: nowrap;
   @include font-style();
-}
-
-.companyName__hidden {
-  visibility: hidden;
 }

@@ -10,9 +10,11 @@ const Footer: FunctionComponent = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className={styles.container}>
+    <footer className={styles.container} data-testid="footer">
       <FooterSocials />
-      <span className={styles.copyright}>{t(footerCopyrightKey)}</span>
+      <span className={styles.copyright} data-testid="footer-copyright">
+        {t(footerCopyrightKey)}
+      </span>
     </footer>
   );
 };

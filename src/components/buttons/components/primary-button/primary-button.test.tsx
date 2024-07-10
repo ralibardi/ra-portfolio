@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render, screen } from '@testing-library/react';
+import { act, customRender, screen } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { PrimaryButton } from '../buttons';
@@ -8,7 +8,7 @@ describe('PrimaryButton', () => {
   test('renders correctly', async () => {
     // ARRANGE
     const handleClick = jest.fn();
-    render(<PrimaryButton label="Test" onClick={handleClick} />);
+    customRender(<PrimaryButton label="Test" onClick={handleClick} />);
 
     // ACT
     const { buttonContainer, labelContainer, label } = await act(() => {
@@ -32,7 +32,7 @@ describe('PrimaryButton', () => {
   test('handles click events', async () => {
     // ARRANGE
     const handleClick = jest.fn();
-    render(<PrimaryButton label="Test" onClick={handleClick} />);
+    customRender(<PrimaryButton label="Test" onClick={handleClick} />);
 
     // ACT
     const { buttonContainer, labelContainer, label } = await act(async () => {
@@ -58,7 +58,9 @@ describe('PrimaryButton', () => {
   test('shows spinner when loading', async () => {
     // ARRANGE
     const handleClick = jest.fn();
-    render(<PrimaryButton label="Loading" onClick={handleClick} isLoading />);
+    customRender(
+      <PrimaryButton label="Loading" onClick={handleClick} isLoading />,
+    );
 
     // ACT
     const { buttonContainer, loadingContainer, loadingSpinner } = await act(

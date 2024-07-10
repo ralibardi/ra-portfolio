@@ -10,6 +10,7 @@ const config: Config = {
   transform: {
     '\\.[jt]sx?$': 'babel-jest',
     '\\.scss$': 'jest-transform-css',
+    '\\.(svg|png|jpg|jpeg)$': 'jest-transform-stub',
   },
   collectCoverageFrom: [
     'src/**/*.{js,jsx,tsx}',

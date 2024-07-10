@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import translation from './en/translation.json';
 
-async function initializeI18n() {
+export async function initializeI18n() {
   await i18next.use(initReactI18next).init({
     lng: 'en',
     debug: false,
@@ -15,9 +15,7 @@ async function initializeI18n() {
 }
 
 initializeI18n()
-  .then(() => {
-    console.log('i18next initialized successfully');
-  })
+  .then()
   .catch((error) => {
     console.error('Error initializing i18next:', error);
   });
