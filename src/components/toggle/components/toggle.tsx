@@ -1,6 +1,6 @@
-import React, { FunctionComponent, MouseEventHandler, useState } from 'react';
-import cn from 'classnames';
+import React, { FunctionComponent, useState } from 'react';
 import { IToggleProps } from '../types/toggle-props';
+import { motion } from 'framer-motion';
 
 import styles from '../assets/toggle.module.scss';
 
@@ -9,16 +9,12 @@ const Toggle: FunctionComponent<IToggleProps> = ({
   checked = false,
   onClick,
 }) => {
-  const [isChecked, setIsChecked] = useState(checked);
+  const [isOn, setIsOn] = useState(checked);
 
-  const handleToggle: MouseEventHandler<HTMLDivElement> = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
-    onClick(event);
-    setIsChecked(!isChecked);
+  const toggleSwitch = (event: React.MouseEvent<HTMLDivElement>) => {
+    setIsOn(!isOn);
+    onClick && onClick(event);
   };
-
-  const className = cn(styles.toggle, { [styles.checked]: isChecked });
 
   return (
     <div className={styles.container} data-testid="toggle-container">
@@ -26,14 +22,27 @@ const Toggle: FunctionComponent<IToggleProps> = ({
         {label}
       </label>
       <div
-        className={className}
-        onClick={handleToggle}
+        className={styles.toggle}
+        data-ison={isOn}
+        onClick={toggleSwitch}
         data-testid="toggle-thumb-container"
       >
-        <div className={styles.thumb} data-testid="toggle-thumb" />
+        <motion.div
+          className={styles.thumb}
+          data-testid="toggle-thumb"
+          layout
+          transition={spring}
+        />
       </div>
     </div>
   );
+};
+
+const spring = {
+  type: 'spring',
+  stiffness: 700,
+  damping: 30,
+  x: '2rem',
 };
 
 export default Toggle;
