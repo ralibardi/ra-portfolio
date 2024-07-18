@@ -1,0 +1,21 @@
+name: Release Please
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+env:
+  AZURE_WEBAPP_NAME: ra-portfolio
+
+jobs:
+  release-please:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: GoogleCloudPlatform/release-please-action@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          package-name: ${{ env.AZURE_WEBAPP_NAME }}
+
