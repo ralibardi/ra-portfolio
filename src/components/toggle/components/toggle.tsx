@@ -21,10 +21,16 @@ const Toggle: FunctionComponent<IToggleProps> = ({
   const className = cn(styles.toggle, { [styles.checked]: isChecked });
 
   return (
-    <div className={styles.container}>
-      <label className={styles.label}>{label}</label>
-      <div className={className} onClick={handleToggle}>
-        <div className={styles.thumb} />
+    <div className={styles.container} data-testid="toggle-container">
+      <label className={styles.label} data-testid="toggle-label">
+        {label}
+      </label>
+      <div
+        className={className}
+        onClick={handleToggle}
+        data-testid="toggle-thumb-container"
+      >
+        <div className={styles.thumb} data-testid="toggle-thumb" />
       </div>
     </div>
   );

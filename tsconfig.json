@@ -29,10 +29,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "strict": true
   },
-  "include": ["src", "public"],
+  "include": ["src", "public", "jest.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "types": ["jest", "@testing-library/jest-dom"]
 }

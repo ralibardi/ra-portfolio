@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "subscriptionId": {
+      "value": "91d20e1a-5da1-482d-8a04-327e49a543d3"
+    },
+    "resourceGroupName": {
+      "value": "RA-portforlio"
+    },
+    "name": {
+      "value": "ra-portfolio"
+    },
+    "location": {
+      "value": "UK West"
+    },
+    "hostingPlanName": {
+      "value": "ASP-RAportforlio-8ff2"
+    },
+    "serverFarmResourceGroup": {
+      "value": "RA-portforlio"
+    },
+    "alwaysOn": {
+      "value": false
+    },
+    "ftpsState": {
+      "value": "FtpsOnly"
+    },
+    "sku": {
+      "value": "Free"
+    },
+    "skuCode": {
+      "value": "F1"
+    },
+    "workerSize": {
+      "value": "0"
+    },
+    "workerSizeId": {
+      "value": "0"
+    },
+    "numberOfWorkers": {
+      "value": "1"
+    },
+    "currentStack": {
+      "value": "node"
+    },
+    "phpVersion": {
+      "value": "OFF"
+    },
+    "nodeVersion": {
+      "value": "~18"
+    }
+  }
+}
+

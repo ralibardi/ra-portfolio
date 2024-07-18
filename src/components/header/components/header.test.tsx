@@ -1,0 +1,65 @@
+import React from 'react';
+import { act, customRender, screen } from '@utils/test-utilities';
+import Header from './header';
+
+// Mock components
+jest.mock('@components/company-info', () => {
+  const CompanyInfoMock: React.FC = () => (
+    <div data-testid="company-info">Mock CompanyInfo</div>
+  );
+  return CompanyInfoMock;
+});
+jest.mock('@components/topbar', () => {
+  const TopbarMock: React.FC = () => (
+    <div data-testid="topbar">Mock Topbar</div>
+  );
+  return TopbarMock;
+});
+jest.mock('@components/theme-toggle', () => {
+  const ThemeToggleMock: React.FC = () => (
+    <div data-testid="theme-toggle">Mock ThemeToggle</div>
+  );
+  return ThemeToggleMock;
+});
+
+describe('Header', () => {
+  test('renders without crashing', async () => {
+    await act(() => customRender(<Header />));
+  });
+
+  test('renders the Topbar component', async () => {
+    customRender(<Header />);
+
+    const { topbarElement } = await act(() => {
+      const topbarElement = screen.getByTestId('topbar');
+
+      return { topbarElement };
+    });
+
+    expect(topbarElement).not.toBeNull();
+  });
+
+  test('renders the CompanyInfo component', async () => {
+    customRender(<Header />);
+
+    const { topbarElement } = await act(() => {
+      const topbarElement = screen.getByTestId('company-info');
+
+      return { topbarElement };
+    });
+
+    expect(topbarElement).not.toBeNull();
+  });
+
+  test('renders the ThemeToggle component', async () => {
+    customRender(<Header />);
+
+    const { topbarElement } = await act(() => {
+      const topbarElement = screen.getByTestId('theme-toggle');
+
+      return { topbarElement };
+    });
+
+    expect(topbarElement).not.toBeNull();
+  });
+});
