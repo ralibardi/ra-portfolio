@@ -51,10 +51,10 @@ jobs:
           EXISTS=$(az webapp list --query "[?name=='${{ env.AZURE_WEBAPP_NAME }}'].name" -o tsv)
           if [ -z "$EXISTS" ]; then
             echo "WebApp does not exist, setting CREATE_APP to true."
-            echo "::set-output name=CREATE_APP::true"
+            echo "CREATE_APP=true" >> $GITHUB_ENV
           else
             echo "WebApp exists, no need to create."
-            echo "::set-output name=CREATE_APP::false"
+            echo "CREATE_APP=false" >> $GITHUB_ENV
           fi
 
       - name: Create Web App if it does not exist
