@@ -3,19 +3,50 @@
 .container {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
-    @include flexbox(row, space-between, center);
+    width: 100%;
+    @include flexbox(column, space-between, center);
     overflow: hidden;
     background-color: linear-gradient(var(--foreground-colour), var(--background-colour));
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 1;
+
+    @include breakpoint('medium') {
+        @include flexbox(row, space-between, center);
+    }
+
+    @include breakpoint('large') {
+        @include flexbox(row, space-between, center);
+    }
+
+    @include breakpoint('extra-large') {
+        @include flexbox(row, space-between, center);
+    }
 }
 
 .subContainer {
-    @include flexbox(row, center);
-    height: auto;
-    width: 100%;
+    @include flexbox(row, space-between, center);
+    order: -1;
+
+    @include breakpoint('medium') {
+        order: 2;
+    }
+
+    @include breakpoint('large') {
+        order: 2;
+    }
+
+    @include breakpoint('extra-large') {
+        order: 2;
+    }
+}
+
+.companyInfo,
+.topbar,
+.themeToggle {
     padding: $spacing-lg;
+}
+
+.topbar {
+    order: 1;
 }

@@ -32,12 +32,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        continue-on-error: false
 
       - name: Build
         run: npm run build --if-present
+        continue-on-error: false
 
       - name: Run tests
         run: npm run test:coverage --if-present
+        continue-on-error: false
 
       - name: Login to Azure
         uses: azure/login@v1
