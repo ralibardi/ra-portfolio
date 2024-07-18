@@ -1,5 +1,5 @@
 import React, { FunctionComponent, lazy } from 'react';
-import { Each } from '@utils/each';
+import { ComponentArray } from '@utils/component-array';
 import { getSocialLinks } from '../../utils/getSocialLinks';
 
 const IconLink = lazy(() => import('@components/icon-link'));
@@ -11,7 +11,7 @@ const FooterSocials: FunctionComponent = () => {
 
   return (
     <div className={styles.container}>
-      <Each
+      <ComponentArray
         render={({ icon, link }) => <IconLink icon={icon} linkUrl={link} />}
         of={socialLinks}
       />

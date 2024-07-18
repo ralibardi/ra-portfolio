@@ -2,7 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react';
 import IRoute from '@type/route';
 import { getAppRoutes } from '@utils/get-app-routes';
 import { useLocation } from 'react-router-dom';
-import { Each } from '@utils/each';
+import { ComponentArray } from '@utils/component-array';
 import NavLink from '../nav-link/nav-link';
 
 import styles from '../../assets/topbar.module.scss';
@@ -13,7 +13,7 @@ const Topbar: FunctionComponent = () => {
 
   return (
     <nav className={styles.container}>
-      <Each
+      <ComponentArray
         render={(route: IRoute) => (
           <NavLink
             key={route.path}
