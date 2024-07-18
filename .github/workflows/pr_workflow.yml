@@ -1,0 +1,28 @@
+name: Pull Request Workflow
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+env:
+  NODE_VERSION: '18.x' # Node.js version to use
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build --if-present
+
+      - name: Run tests
+        run: npm run test:coverage --if-present
+

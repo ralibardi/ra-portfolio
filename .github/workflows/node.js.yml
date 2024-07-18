@@ -5,35 +5,34 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Use Node.js 18
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
-        cache: 'npm'
-        
-    - name: Install Dependencies
-      run: npm install
-      
-    - name: Run lint
-      run: npm run lint
-      
-    - name: Compile App
-      run: npm run build
-      
-    - name: Run tests and collect coverage
-      run: npm run test
-      
-    - run: npm publish
-      if: github.event_name == 'push'
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Compile App
+        run: npm run build
+
+      - name: Run tests and collect coverage
+        run: npm run test:coverage
+
+      - run: npm publish
+        if: github.event_name == 'push'
