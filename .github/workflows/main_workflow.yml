@@ -46,6 +46,7 @@ jobs:
 
       - name: Check if Web App exists
         id: check_app
+        shell: bash
         run: |
           EXISTS=$(az webapp list --query "[?name=='${{ env.AZURE_WEBAPP_NAME }}'].name" -o tsv)
           if [ -z "$EXISTS" ]; then
