@@ -21,22 +21,22 @@
       "value": "RA-portforlio"
     },
     "alwaysOn": {
-      "value": false
+      "value": true
     },
     "ftpsState": {
       "value": "FtpsOnly"
     },
     "sku": {
-      "value": "Free"
+      "value": "Basic"
     },
     "skuCode": {
-      "value": "F1"
+      "value": "B1"
     },
     "workerSize": {
-      "value": "0"
+      "value": "1"
     },
     "workerSizeId": {
-      "value": "0"
+      "value": "1"
     },
     "numberOfWorkers": {
       "value": "1"
@@ -52,4 +52,3 @@
     }
   }
 }
-

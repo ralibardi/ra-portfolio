@@ -107,7 +107,7 @@
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "microsoft.insights/components/ra-portfolio",
+        "[concat('microsoft.insights/components/', parameters('resourceGroupName'))]",
         "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
       ],
       "properties": {

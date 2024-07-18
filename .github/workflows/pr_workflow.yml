@@ -27,7 +27,7 @@ jobs:
         run: npm run lint
 
       - name: Compile App
-        run: npm run build
+        run: npm run build:dev
 
       - name: Run tests and collect coverage
         run: npm run test:coverage
