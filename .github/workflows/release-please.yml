@@ -14,9 +14,19 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: ra-portfolio
+  NODE_VERSION: '18.x'
 
 jobs:
+  setup-node:
+    runs-on: windows-latest
+    steps:
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
   release-please:
+    needs: setup-node
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
