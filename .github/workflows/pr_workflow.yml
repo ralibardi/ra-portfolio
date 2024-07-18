@@ -4,8 +4,6 @@
 name: PR Workflow
 
 on:
-  push:
-    branches: ['main']
   pull_request:
     branches: ['main']
 
@@ -33,6 +31,3 @@ jobs:
 
       - name: Run tests and collect coverage
         run: npm run test:coverage
-
-      - run: npm publish
-        if: github.event_name == 'push'
