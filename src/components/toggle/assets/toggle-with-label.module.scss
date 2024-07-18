@@ -1,5 +1,14 @@
 @use '@assets/global' as *;
 
+.container {
+    @include flexbox(row, center, center);
+}
+
+.label {
+    margin-right: $spacing-sm;
+    @include font-style($font-md, $font-weight-medium, var(--text-colour));
+}
+
 .toggle {
     width: $spacing-2xl;
     height: $spacing-lg;
@@ -7,7 +16,7 @@
     border-radius: $spacing-4xl;
     padding: $spacing-2xs;
     cursor: pointer;
-    @include flexbox(row, center, center);
+    @include flexbox(row, 'flex-start');
     -webkit-user-select: none;
     user-select: none;
 }

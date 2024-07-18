@@ -7,30 +7,20 @@ describe('ThemeToggle', () => {
   test('displays the toggle component', async () => {
     customRender(<ThemeToggle />);
 
-    const {
-      toggleContainer,
-      labelElement,
-      toggleThumbContainerElement,
-      toggleThumbContainer,
-    } = await act(() => {
-      const toggleContainer = screen.getByTestId('toggle-container');
-      const labelElement = screen.getByTestId('toggle-label');
-      const toggleThumbContainerElement = screen.getByTestId(
-        'toggle-thumb-container',
-      );
-      const toggleThumbContainer = screen.getByTestId('toggle-thumb');
+    const { toggleThumbContainerElement, toggleThumbContainer } = await act(
+      () => {
+        const toggleThumbContainerElement = screen.getByTestId(
+          'toggle-thumb-container',
+        );
+        const toggleThumbContainer = screen.getByTestId('toggle-thumb');
 
-      return {
-        toggleContainer,
-        labelElement,
-        toggleThumbContainerElement,
-        toggleThumbContainer,
-      };
-    });
+        return {
+          toggleThumbContainerElement,
+          toggleThumbContainer,
+        };
+      },
+    );
 
-    expect(toggleContainer).not.toBeNull();
-    expect(labelElement).not.toBeNull();
-    expect(labelElement).toHaveTextContent('Light mode');
     expect(toggleThumbContainerElement).not.toBeNull();
     expect(toggleThumbContainer).not.toBeNull();
   });
@@ -38,21 +28,27 @@ describe('ThemeToggle', () => {
   test('updates the theme prop when toggled', async () => {
     customRender(<ThemeToggle />);
 
-    const { labelElement, toggleThumbContainerElement } = await act(() => {
-      const toggleThumbContainerElement = screen.getByTestId(
-        'toggle-thumb-container',
-      );
-      const labelElement = screen.getByTestId('toggle-label');
+    const { toggleThumbContainerElement, iconLeftElement, iconRightElement } =
+      await act(() => {
+        const toggleThumbContainerElement = screen.getByTestId(
+          'toggle-thumb-container',
+        );
+        const iconLeftElement = screen.getByTestId('toggle-icon-left');
+        const iconRightElement = screen.getByTestId('toggle-icon-right');
 
-      return { labelElement, toggleThumbContainerElement };
-    });
+        return {
+          toggleThumbContainerElement,
+          iconLeftElement,
+          iconRightElement,
+        };
+      });
 
-    expect(labelElement).toHaveTextContent('Light mode');
+    expect(iconLeftElement).toBeVisible();
 
     await userEvent.click(toggleThumbContainerElement);
-    expect(labelElement).toHaveTextContent('Dark mode');
+    expect(iconRightElement).toBeVisible();
 
     await userEvent.click(toggleThumbContainerElement);
-    expect(labelElement).toHaveTextContent('Light mode');
+    expect(iconLeftElement).toBeVisible();
   });
 });

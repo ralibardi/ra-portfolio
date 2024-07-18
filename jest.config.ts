@@ -33,6 +33,7 @@ const config: Config = {
     '^@tests/(.*)$': '<rootDir>/src/tests/$1',
     '^@type/(.*)$': '<rootDir>/src/types/$1',
     '^@utils/(.*)$': '<rootDir>/src/utils/$1',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
 };
 

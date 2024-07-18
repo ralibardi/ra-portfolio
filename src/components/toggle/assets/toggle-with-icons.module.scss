@@ -1,7 +1,7 @@
 @use '@assets/global' as *;
 
 .toggle {
-    width: $spacing-2xl;
+    width: calc($spacing-2xl);
     height: $spacing-lg;
     background-color: var(--light-grey);
     border-radius: $spacing-4xl;
@@ -14,7 +14,6 @@
 
 .toggle[data-ison="true"] {
     background-color: var(--accent-colour);
-    justify-content: flex-end;
 }
 
 .thumb {
@@ -22,4 +21,23 @@
     height: $spacing-lg;
     background-color: var(--background-colour);
     border-radius: $percentage-100;
+}
+
+.iconLeft {
+    width: $spacing-lg;
+    height: $spacing-lg;
+    color: $grey-2;
+    padding-right: $spacing-sm;
+}
+
+.iconRight {
+    width: $spacing-lg;
+    height: $spacing-lg;
+    color: var(--accent-colour);
+    padding-left: $spacing-sm;
+}
+
+.disabled {
+    cursor: not-allowed;
+    display: none;
 }

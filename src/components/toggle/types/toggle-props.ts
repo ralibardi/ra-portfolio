@@ -1,5 +1,4 @@
-export interface IToggleProps {
-  label: string;
+export type IToggleProps = {
   checked?: boolean;
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-}
+};

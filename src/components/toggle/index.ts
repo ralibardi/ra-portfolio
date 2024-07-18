@@ -1,3 +1,1 @@
-import Toggle from './components/toggle';
-
-export default Toggle;
+export { Toggle, ToggleWithIcons, ToggleWithLabel } from './components/toggles';

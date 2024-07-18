@@ -42,24 +42,24 @@ describe('Header', () => {
   test('renders the CompanyInfo component', async () => {
     customRender(<Header />);
 
-    const { topbarElement } = await act(() => {
-      const topbarElement = screen.getByTestId('company-info');
+    const { companyInfoElement } = await act(() => {
+      const companyInfoElement = screen.getByTestId('company-info');
 
-      return { topbarElement };
+      return { companyInfoElement };
     });
 
-    expect(topbarElement).not.toBeNull();
+    expect(companyInfoElement).not.toBeNull();
   });
 
   test('renders the ThemeToggle component', async () => {
     customRender(<Header />);
 
-    const { topbarElement } = await act(() => {
-      const topbarElement = screen.getByTestId('theme-toggle');
+    const { themeToggleElement } = await act(() => {
+      const themeToggleElement = screen.getByTestId('theme-toggle');
 
-      return { topbarElement };
+      return { themeToggleElement };
     });
 
-    expect(topbarElement).not.toBeNull();
+    expect(themeToggleElement).not.toBeNull();
   });
 });

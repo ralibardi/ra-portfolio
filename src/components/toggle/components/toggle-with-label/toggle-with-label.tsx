@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState } from 'react';
-import { IToggleProps } from '../types/toggle-props';
+import { IToggleWithLabelProps } from '../../types/toggle-with-label-props';
 import { motion } from 'framer-motion';
 
-import styles from '../assets/toggle.module.scss';
+import styles from '../../assets/toggle.module.scss';
 
-const Toggle: FunctionComponent<IToggleProps> = ({
+const ToggleWithLabel: FunctionComponent<IToggleWithLabelProps> = ({
   label,
   checked = false,
   onClick,
@@ -45,4 +45,4 @@ const spring = {
   x: '2rem',
 };
 
-export default Toggle;
+export default ToggleWithLabel;
