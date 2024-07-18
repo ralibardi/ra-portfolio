@@ -32,7 +32,7 @@
     "jsx": "react",
     "strict": true
   },
-  "include": ["src", "public", "jest.config.ts", "sw.ts"],
+  "include": ["src", "public", "jest.config.ts", "/sw.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "types": ["jest", "@testing-library/jest-dom"]
 }
