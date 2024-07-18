@@ -9,8 +9,8 @@ name: Release Please
 
 on:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - '*'
 
 env:
   AZURE_WEBAPP_NAME: ra-portfolio
