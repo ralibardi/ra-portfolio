@@ -23,14 +23,12 @@ root.render(
 );
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('/public/sw.ts')
-      .then((registration) => {
-        console.log('Service worker registered:', registration);
-      })
-      .catch((error) => {
-        console.error('Service worker registration failed:', error);
-      });
-  });
+  navigator.serviceWorker
+    .register('/public/sw.js')
+    .then(function (registration) {
+      console.log('Service Worker registered with scope:', registration.scope);
+    })
+    .catch(function (error) {
+      console.log('Service Worker registration failed:', error);
+    });
 }
