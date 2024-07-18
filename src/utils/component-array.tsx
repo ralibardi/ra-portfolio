@@ -1,6 +1,6 @@
 import React, { Children, Fragment } from 'react';
 
-export const Each = <T,>({
+export const ComponentArray = <T,>({
   render,
   of,
 }: {
