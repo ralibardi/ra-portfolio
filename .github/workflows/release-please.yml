@@ -1,3 +1,10 @@
+# This GitHub Actions workflow is designed to automate the release process for a Node.js project.
+# It triggers on push events, except for pushes to the main branch. The workflow utilizes the Release Please Action
+# to automatically generate release PRs, manage versioning, and update changelogs based on conventional commit messages.
+#
+# Prerequisites:
+# - A GitHub secret named TOKEN_GITHUB with the Github credentials as it's value.
+
 name: Release Please
 
 on:
@@ -15,7 +22,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: GoogleCloudPlatform/release-please-action@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TOKEN_GITHUB }}
           release-type: node
           package-name: ${{ env.AZURE_WEBAPP_NAME }}
 
