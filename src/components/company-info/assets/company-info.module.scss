@@ -31,11 +31,11 @@
 
   @include font-style();
 
-  @include breakpoint('large') {
+  @include breakpoint('tablet-landscape') {
     display: block;
   }
 
-  @include breakpoint('extra-large') {
+  @include breakpoint('desktop') {
     display: block;
   }
 }

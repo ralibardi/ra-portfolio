@@ -22,16 +22,11 @@
     &.active {
         background-color: var(--background-colour);
     }
-
-    &:not(.active):hover {
-        animation: extendEffect 0.5s ease-in forwards;
-    }
 }
 
 .icon {
     @include flexbox();
     color: var(--black-colour);
-    margin-right: $spacing-xs;
 
     .active & {
         @include font-style($font-md, $font-weight-medium, var(--accent-colour));
@@ -41,14 +36,18 @@
 .label {
     @include flexbox(row, center, center);
     @include font-style($font-md, $font-weight-medium, var(--text-colour));
+    margin-left: $spacing-xs;
     display: none;
-
-    .link:hover &,
-    .active & {
-        display: block;
-    }
 
     .active & {
         @include font-style($font-md, $font-weight-medium, var(--accent-colour));
+    }
+
+    @include breakpoint('tablet-landscape') {
+        display: block;
+    }
+
+    @include breakpoint('desktop') {
+        display: block;
     }
 }

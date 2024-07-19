@@ -11,15 +11,19 @@
     backdrop-filter: blur(10px);
     z-index: 1;
 
-    @include breakpoint('medium') {
+    @include breakpoint('mobile-landscape') {
         @include flexbox(row, space-between, center);
     }
 
-    @include breakpoint('large') {
+    @include breakpoint('tablet') {
         @include flexbox(row, space-between, center);
     }
 
-    @include breakpoint('extra-large') {
+    @include breakpoint('tablet-landscape') {
+        @include flexbox(row, space-between, center);
+    }
+
+    @include breakpoint('desktop') {
         @include flexbox(row, space-between, center);
     }
 }
@@ -28,15 +32,15 @@
     @include flexbox(row, space-between, center);
     order: -1;
 
-    @include breakpoint('medium') {
+    @include breakpoint('tablet') {
         order: 2;
     }
 
-    @include breakpoint('large') {
+    @include breakpoint('tablet-landscape') {
         order: 2;
     }
 
-    @include breakpoint('extra-large') {
+    @include breakpoint('desktop') {
         order: 2;
     }
 }

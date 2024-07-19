@@ -10,11 +10,11 @@ name: Release Please
 on:
   push:
     branches:
-      - '*'
+      - main
 
 env:
   AZURE_WEBAPP_NAME: ra-portfolio
-  NODE_VERSION: '18.x'
+  NODE_VERSION: '20.x'
 
 jobs:
   setup-node:
