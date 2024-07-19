@@ -102,16 +102,39 @@
   "variables": {},
   "resources": [
     {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2020-12-01",
+      "name": "[parameters('hostingPlanName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "Tier": "[parameters('sku')]",
+        "Name": "[parameters('skuCode')]"
+      },
+      "properties": {
+        "name": "[parameters('hostingPlanName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeId": "[parameters('workerSizeId')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]",
+        "zoneRedundant": false
+      }
+    },
+    {
       "type": "Microsoft.Web/sites",
       "apiVersion": "2022-03-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
+      "sku": {
+        "Tier": "[parameters('sku')]",
+        "Name": "[parameters('skuCode')]"
+      },
       "dependsOn": [
         "[concat('microsoft.insights/components/', parameters('resourceGroupName'))]",
         "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
       ],
       "properties": {
         "name": "[parameters('name')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]",
+        "httpsOnly": true,
         "siteConfig": {
           "appSettings": [
             {
@@ -146,10 +169,7 @@
           "alwaysOn": "[parameters('alwaysOn')]",
           "ftpsState": "[parameters('ftpsState')]"
         },
-        "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
         "clientAffinityEnabled": true,
-        "virtualNetworkSubnetId": null,
-        "httpsOnly": true,
         "publicNetworkAccess": "Enabled"
       },
       "resources": [
@@ -178,36 +198,13 @@
       ]
     },
     {
-      "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2020-12-01",
-      "name": "[parameters('hostingPlanName')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [],
-      "sku": {
-        "Tier": "[parameters('sku')]",
-        "Name": "[parameters('skuCode')]"
-      },
-      "kind": "",
-      "properties": {
-        "name": "[parameters('hostingPlanName')]",
-        "workerSize": "[parameters('workerSize')]",
-        "workerSizeId": "[parameters('workerSizeId')]",
-        "numberOfWorkers": "[parameters('numberOfWorkers')]",
-        "zoneRedundant": false
-      }
-    },
-    {
       "type": "microsoft.insights/components",
       "apiVersion": "2020-02-02-preview",
       "name": "ra-portfolio",
-      "location": "ukwest",
-      "dependsOn": ["newWorkspaceTemplate"],
+      "location": "[parameters('location')]",
+      "dependsOn": [],
       "properties": {
-        "ApplicationId": "[parameters('name')]",
-        "Request_Source": "rest",
-        "Flow_Type": "Bluefield",
-        "Application_Type": "web",
-        "WorkspaceResourceId": "/subscriptions/91d20e1a-5da1-482d-8a04-327e49a543d3/resourceGroups/DefaultResourceGroup-WUK/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-91d20e1a-5da1-482d-8a04-327e49a543d3-WUK"
+        "Application_Type": "web"
       }
     },
     {
