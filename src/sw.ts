@@ -24,7 +24,7 @@ registerRoute(
     if (url.pathname.startsWith('/_')) {
       return false;
     }
-    if (url.pathname.match(fileExtensionRegexp)) {
+    if (RegExp(fileExtensionRegexp).exec(url.pathname)) {
       return false;
     }
     return true;
