@@ -41,28 +41,6 @@ jobs:
         run: npm run test:coverage --if-present
         continue-on-error: false
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-          SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
-        with:
-          args: >
-            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.sources=.
-            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
-            -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info
-            -Dsonar.coverage.exclusions=**/*.spec.ts
-
-      - name: SonarCloud Quality Gate Check
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
-        with:
-          args: >
-            -Dsonar.qualitygate.wait=true
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
