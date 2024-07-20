@@ -18,7 +18,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -57,10 +57,6 @@ jobs:
         with:
           name: build-artifact
           path: ./dist
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Check if Web App exists
         id: check_app
@@ -82,7 +78,7 @@ jobs:
 
       - name: Prepare prod.parameters.json
         run: |
-          $json = Get-Content -Path ./prod.parameters.json -Raw | ConvertFrom-Json
+          $json = Get-Content -Path .azuredevops/prod.parameters.json -Raw | ConvertFrom-Json
           $json.parameters.subscriptionId.value = "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
           $json.parameters.resourceGroupName.value = "${{ secrets.AZURE_RESOURCE_GROUP }}"
           $json.parameters.name.value = "${{ secrets.AZURE_WEBAPP_NAME }}"
