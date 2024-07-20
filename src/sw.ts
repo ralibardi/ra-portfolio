@@ -15,7 +15,7 @@ clientsClaim();
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-const fileExtensionRegexp = /\/[^/?]+\.[^/]+$/;
+const fileExtensionRegexp = /\/[^/?]+(?:\.[^/]+)?$/;
 registerRoute(
   ({ request, url }: { request: Request; url: URL }) => {
     if (request.mode !== 'navigate') {
@@ -24,7 +24,7 @@ registerRoute(
     if (url.pathname.startsWith('/_')) {
       return false;
     }
-    if (RegExp(fileExtensionRegexp).exec(url.pathname)) {
+    if (fileExtensionRegexp.test(url.pathname)) {
       return false;
     }
     return true;
