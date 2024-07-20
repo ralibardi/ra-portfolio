@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from '@app/app';
 import ErrorBoundary from '@components/error-boundary';
 import { ThemeProvider } from '@contexts/theme-context';
+import { register as registerServiceWorker } from './swRegistration';
 
 import '@assets/index.scss';
 
@@ -22,13 +23,4 @@ root.render(
   </React.StrictMode>,
 );
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('/sw.ts')
-    .then(function (registration) {
-      console.log('Service Worker registered with scope:', registration.scope);
-    })
-    .catch(function (error) {
-      console.log('Service Worker registration failed:', error);
-    });
-}
+registerServiceWorker();
