@@ -1,6 +1,6 @@
 # RA Portfolio
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ralibardi_ra-portfolio&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ralibardi_ra-portfolio)[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ralibardi_ra-portfolio&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ralibardi_ra-portfolio)[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ralibardi_ra-portfolio&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ralibardi_ra-portfolio)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ralibardi_ra-portfolio&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ralibardi_ra-portfolio) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ralibardi_ra-portfolio&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ralibardi_ra-portfolio) [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ralibardi_ra-portfolio&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ralibardi_ra-portfolio)
 
 ## Description
 
