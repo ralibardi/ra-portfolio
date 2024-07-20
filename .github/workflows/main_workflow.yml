@@ -74,6 +74,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
         with:
           args: >
+            -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.qualitygate.wait=true
 
   deploy:
