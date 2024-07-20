@@ -73,7 +73,8 @@ jobs:
             -Dsonar.sources=.
             -Dsonar.tests=.
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
-            -Dsonar.coverage.exclusions=**/node_modules/**,**/coverage/**,**/dist/**
+            -Dsonar.test.exclusions=**/web.config,**/tests/**,**/node_modules/**,**/coverage/**,**/dist/**
+            -Dsonar.coverage.exclusions=**/web.config,**/tests/**,**/node_modules/**,**/coverage/**,**/dist/**
 
       - name: SonarCloud Quality Gate Check
         uses: SonarSource/sonarcloud-github-action@master
