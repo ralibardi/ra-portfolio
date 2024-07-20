@@ -18,6 +18,7 @@ env:
 
 jobs:
   build:
+    name: Build
     runs-on: windows-latest
     steps:
       - name: Checkout code
@@ -48,6 +49,7 @@ jobs:
           path: ./dist
 
   sonarcloud:
+    needs: build
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
@@ -59,13 +61,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
-      - name: SonarCloud Scan
+        with:
+          args: >
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.coverage.exclusions=**/*.spec.ts
+
+      - name: SonarCloud Quality Gate Check
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          SONAR_TOKEN: ${{ secrets. TOKEN_SONAR }}
+          SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
+        with:
+          args: >
+            -Dsonar.qualitygate.wait=true
 
   deploy:
-    needs: build
+    needs: sonarcloud
+    name: Deploy to Azure
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
