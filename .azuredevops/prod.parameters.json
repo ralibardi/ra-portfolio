@@ -3,22 +3,22 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "subscriptionId": {
-      "value": "91d20e1a-5da1-482d-8a04-327e49a543d3"
+      "value": ""
     },
     "resourceGroupName": {
-      "value": "RA-portforlio"
+      "value": ""
     },
     "name": {
-      "value": "ra-portfolio"
+      "value": ""
     },
     "location": {
-      "value": "UK West"
+      "value": ""
     },
     "hostingPlanName": {
-      "value": "ASP-RAportforlio-8ff2"
+      "value": ""
     },
     "serverFarmResourceGroup": {
-      "value": "RA-portforlio"
+      "value": ""
     },
     "alwaysOn": {
       "value": true
@@ -48,7 +48,7 @@
       "value": "OFF"
     },
     "nodeVersion": {
-      "value": "~18"
+      "value": "~20"
     }
   }
 }
