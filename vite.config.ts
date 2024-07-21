@@ -41,12 +41,7 @@ export default ({ mode }: ConfigEnv) => {
       ...baseConfig,
       build: {
         ...baseConfig.build,
-        rollupOptions: {
-          output: {
-            chunkFileNames: 'static/js/[name]-[hash].js',
-            entryFileNames: 'static/js/[name]-[hash].js',
-          },
-        },
+
         sourcemap: true,
       },
     };
