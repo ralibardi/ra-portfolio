@@ -14,7 +14,14 @@ export const ThemeProvider: FunctionComponent<{
 }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     const storedTheme = localStorage.getItem('theme');
-    return (storedTheme as Theme) || 'light';
+    if (storedTheme) {
+      return storedTheme as Theme;
+    } else {
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return prefersDark ? 'dark' : 'light';
+    }
   });
 
   useEffect(() => {
