@@ -71,7 +71,6 @@ jobs:
             -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
-            -Dsonar.inclusions=**/src/*.ts, **/src/*.tsx
             -Dsonar.exclusions=**/src/service-worker.ts,**/src/serviceWorkerRegistration.ts, **/*.spec.ts, **/*.spec.tsx
             -Dsonar.qualitygate.wait=true
 
