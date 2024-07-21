@@ -31,5 +31,5 @@ export function generateManifest() {
   const manifestContent = template({ primaryColour, whiteColour });
 
   // Write the final manifest.json to the dist folder
-  fs.writeFileSync('./manifest.json', manifestContent);
+  fs.writeFileSync('public/manifest.json', manifestContent);
 }
