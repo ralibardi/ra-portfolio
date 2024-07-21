@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import Loading from '@components/loading';
-import { ButtonWithIconProps } from '../../types/buttonWithIconProps';
+import { ButtonWithIconProps } from '../../types/button-with-icon-props';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from '../../assets/button-with-icon.module.scss';
