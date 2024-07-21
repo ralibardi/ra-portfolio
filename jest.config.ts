@@ -16,6 +16,9 @@ const config: Config = {
     'src/**/*.{js,jsx,tsx}',
     '!**/node_modules/**',
     '!**.stories.{js,jsx,tsx}',
+    '!manifestGenerator.ts',
+    '!src/service-worker.ts',
+    '!src/serviceWorkerRegistration.ts',
   ],
   moduleNameMapper: {
     '^@public/(.*)$': '<rootDir>/public/$1',
