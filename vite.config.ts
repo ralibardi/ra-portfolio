@@ -26,6 +26,7 @@ export default ({ mode }: ConfigEnv) => {
       },
     ],
     build: {
+      outDir: 'dist',
       terserOptions: {
         compress: {
           drop_console: true,

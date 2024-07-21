@@ -45,7 +45,7 @@ jobs:
       - name: Check manifest.json presence
         shell: bash
         run: |
-          if [ ! -f ./dist/manifest.json ]; then
+          if [ ! -f ./dist/static/assets/manifest.json ]; then
             echo "manifest.json not found in ./dist";
             exit 1;
           fi
