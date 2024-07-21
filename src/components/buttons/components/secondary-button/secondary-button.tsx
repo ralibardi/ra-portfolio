@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import Loading from '@components/loading';
-import { PrimaryButtonProps } from '../../types/primaryButtonProps';
+import { SecondaryButtonProps } from '../../types/secondary-button-props';
 
 import styles from '../../assets/secondary-button.module.scss';
 
@@ -9,7 +9,7 @@ const SecondaryButton = memo(function secondaryButton({
   label,
   isLoading = false,
   ...props
-}: PrimaryButtonProps) {
+}: SecondaryButtonProps) {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!isLoading) {
