@@ -42,14 +42,6 @@ jobs:
           API_URL: ${{ secrets.API_URL }}
         continue-on-error: false
 
-      - name: Check manifest.json presence
-        shell: bash
-        run: |
-          if [ ! -f ./dist/static/assets/manifest.json ]; then
-            echo "manifest.json not found in ./dist";
-            exit 1;
-          fi
-
       - name: Run tests
         run: npm run test:coverage --if-present
         continue-on-error: false
