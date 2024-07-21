@@ -53,7 +53,6 @@ jobs:
             -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
-            -Dsonar.exclusions=service-worker.ts, serviceWorkerRegistration.ts
             -Dsonar.sources=.
             -Dsonar.verbose=true
         continue-on-error: false
