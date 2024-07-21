@@ -38,15 +38,6 @@ jobs:
         run: npm run test:coverage
         continue-on-error: false
 
-  sonarcloud:
-    needs: build
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
