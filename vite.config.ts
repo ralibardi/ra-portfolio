@@ -45,7 +45,6 @@ export default ({ mode }: ConfigEnv) => {
           output: {
             chunkFileNames: 'static/js/[name]-[hash].js',
             entryFileNames: 'static/js/[name]-[hash].js',
-            assetFileNames: 'static/assets/[name].[ext]',
           },
         },
         sourcemap: true,
