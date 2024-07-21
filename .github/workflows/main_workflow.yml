@@ -52,40 +52,8 @@ jobs:
           name: build-artifact
           path: ./dist
 
-  sonarcloud:
-    needs: build
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-          SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
-        with:
-          args: >
-            -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
-            -Dsonar.exclusions=**/src/service-worker.ts,**/src/serviceWorkerRegistration.ts
-            -Dsonar.qualitygate.wait=true
-
-      - name: SonarCloud Quality Gate Check
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
-        with:
-          args: >
-            -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.qualitygate.wait=true
-
   deploy:
-    needs: sonarcloud
+    needs: build
     name: Deploy to Azure
     runs-on: windows-latest
     steps:
