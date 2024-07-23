@@ -1,7 +1,6 @@
 import React from 'react';
 import { act, customRender, screen } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom';
 import { ButtonWithIcon } from '../buttons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 

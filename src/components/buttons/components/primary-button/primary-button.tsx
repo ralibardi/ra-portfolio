@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import Loading from '@components/loading';
-import { PrimaryButtonProps } from '../../types/primaryButtonProps';
+import { PrimaryButtonProps } from '../../types/primary-button-props';
 
 import styles from '../../assets/primary-button.module.scss';
 

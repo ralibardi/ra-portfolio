@@ -14,7 +14,14 @@ export const ThemeProvider: FunctionComponent<{
 }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     const storedTheme = localStorage.getItem('theme');
-    return (storedTheme as Theme) || 'light';
+    if (storedTheme) {
+      return storedTheme as Theme;
+    } else {
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return prefersDark ? 'dark' : 'light';
+    }
   });
 
   useEffect(() => {
@@ -35,12 +42,17 @@ export const ThemeProvider: FunctionComponent<{
     );
   }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = React.useCallback(() => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
+  }, [setTheme]);
+
+  const contextValue = React.useMemo(
+    () => ({ theme, toggleTheme }),
+    [theme, toggleTheme],
+  );
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );
