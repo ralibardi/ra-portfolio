@@ -58,6 +58,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
+        with:
+          args: >
+            -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
         continue-on-error: false
 
       - name: SonarCloud Quality Gate Check
