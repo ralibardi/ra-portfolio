@@ -7,6 +7,7 @@ interface IRoute {
   component: React.FC;
   label: string;
   icon: IconDefinition;
+  enabled?: boolean;
   children?: IRoute[];
 }
 

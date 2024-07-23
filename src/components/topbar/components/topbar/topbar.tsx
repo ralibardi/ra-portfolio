@@ -21,7 +21,7 @@ const Topbar: FunctionComponent = () => {
             isActive={location.pathname === route.path}
           />
         )}
-        of={routes}
+        of={routes.filter((r) => r.enabled)}
       />
     </nav>
   );

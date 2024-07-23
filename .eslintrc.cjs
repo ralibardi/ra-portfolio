@@ -17,7 +17,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': ['warn', { endOfLine: 'crlf' }],
+    'prettier/prettier': ['error', { endOfLine: 'crlf' }],
     'no-unused-vars': 'off',
     'no-undef': 'off',
     'react-hooks/rules-of-hooks': 'error',
@@ -40,14 +40,14 @@ module.exports = {
       {
         selector: 'parameter',
         format: ['camelCase'],
-        leadingUnderscore: 'forbid',
+        leadingUnderscore: 'allow',
         trailingUnderscore: 'forbid',
       },
       {
         selector: 'memberLike',
         modifiers: ['private'],
         format: ['camelCase'],
-        leadingUnderscore: 'forbid',
+        leadingUnderscore: 'allow',
         trailingUnderscore: 'forbid',
       },
       {
