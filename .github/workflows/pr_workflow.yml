@@ -68,6 +68,8 @@ jobs:
           args: >
             -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.projectName=${{ secrets.SONAR_PROJECT_NAME }}
+
         continue-on-error: false
 
       - name: SonarCloud Quality Gate Check
