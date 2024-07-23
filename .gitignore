@@ -16,7 +16,6 @@ lerna-debug.log*
 /dev-dist
 /dist-ssr
 /storybook-static
-/coverage
 
 ## Environment files
 *.local
