@@ -34,6 +34,16 @@ jobs:
         run: npm run lint
         continue-on-error: false
 
+      - name: Run tests and collect coverage
+        run: npm run test:coverage
+        continue-on-error: false
+
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-artifact
+          path: ./coverage
+
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
@@ -43,15 +53,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v4
+      - name: Download coverage artifact
+        uses: actions/download-artifact@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-
-      - name: Run tests and collect coverage
-        run: npm run test:coverage
-        continue-on-error: false
+          name: coverage-artifact
+          path: ./coverage
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
