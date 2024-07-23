@@ -5,7 +5,7 @@ name: Pull Request Workflow
 
 on:
   pull_request:
-    branches: ['main']
+    types: [opened, synchronize, reopened]
 
 env:
   NODE_VERSION: '20.x'
@@ -39,15 +39,17 @@ jobs:
         continue-on-error: false
 
   sonarcloud:
-    needs: build
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-          SONAR_TOKEN: ${{ secrets. TOKEN_SONAR }}
+          SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
         continue-on-error: false
 
       - name: SonarCloud Quality Gate Check
