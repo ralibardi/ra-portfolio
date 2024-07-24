@@ -13,13 +13,16 @@ const config: Config = {
     '\\.(svg|png|jpg|jpeg)$': 'jest-transform-stub',
   },
   collectCoverageFrom: [
-    'src/**/*.{js,jsx,tsx}',
+    'src/**/*.{js,ts,jsx,tsx}',
     '!**/node_modules/**',
-    '!**.stories.{js,jsx,tsx}',
+    '!**/*.stories.{js,ts,jsx,tsx}',
     '!manifestGenerator.ts',
     '!src/service-worker.ts',
     '!src/serviceWorkerRegistration.ts',
     '!**/app/i18n/**',
+    '!src/main.tsx',
+    '!**/types/**',
+    '!**/index.ts',
   ],
   moduleNameMapper: {
     '^@public/(.*)$': '<rootDir>/public/$1',

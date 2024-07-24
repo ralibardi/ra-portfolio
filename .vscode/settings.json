@@ -1,0 +1,56 @@
+{
+  "sonarlint.connectedMode.project": {
+    "connectionId": "ralibardi",
+    "projectKey": "ralibardi_ra-portfolio"
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, .env",
+    "manifestGenerator.*": "manifest.hbs",
+    "vite.config.ts": ".eslintrc.*, .gitignore, .prettierrc.*, .babelrc, .editorconfig, commitlint.*, sonar-project.*, web.*",
+    "index.html": "README.md",
+    "jest.config.ts": "setupTests.ts",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.js, ${capture}.stories.*, ${capture}.test.*, ${capture}.scss",
+    "*.ts": "${capture}.ts, ${capture}.stories.*, ${capture}.test.*, ${capture}.scss",
+    "*.jsx": "${capture}.jsx, ${capture}.stories.*, ${capture}.test.*, ${capture}.scss",
+    "*.tsx": "${capture}.tsx, ${capture}.stories.*, ${capture}.test.*, ${capture}.scss"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "never"
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n"
+}
+

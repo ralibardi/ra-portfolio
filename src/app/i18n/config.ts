@@ -1,6 +1,7 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import translation from './en/translation.json';
+import englishTranslation from './en/translation.json';
+import spanishTranslation from './es/translation.json';
 
 export async function initializeI18n() {
   await i18next.use(initReactI18next).init({
@@ -8,10 +9,15 @@ export async function initializeI18n() {
     debug: false,
     resources: {
       en: {
-        translation,
+        translation: englishTranslation,
+      },
+      es: {
+        translation: spanishTranslation,
       },
     },
   });
+
+  return i18next;
 }
 
 initializeI18n()

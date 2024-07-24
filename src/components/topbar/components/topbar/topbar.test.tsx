@@ -10,11 +10,11 @@ describe('Topbar', () => {
     }));
   });
 
-  it('customRenders without crashing', () => {
+  it('renders without crashing', () => {
     customRender(<Topbar />);
   });
 
-  it('customRenders the correct number of nav links', () => {
+  it('renders the correct number of nav links', () => {
     customRender(<Topbar />);
 
     const navLinks = screen.getAllByRole('link');

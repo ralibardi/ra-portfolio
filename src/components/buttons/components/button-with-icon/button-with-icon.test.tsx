@@ -1,7 +1,7 @@
 import React from 'react';
 import { act, customRender, screen } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
-import { ButtonWithIcon } from '../buttons';
+import { ButtonWithIcon } from '..';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 describe('ButtonWithIcon', () => {

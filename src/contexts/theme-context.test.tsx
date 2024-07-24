@@ -6,7 +6,7 @@ import { IThemeContext } from '@type/theme-context';
 import { useTheme } from '@hooks/use-theme';
 
 describe('ThemeProvider', () => {
-  it('customRenders children correctly', () => {
+  it('renders children correctly', () => {
     // ACT
     customRender(
       <ThemeProvider>

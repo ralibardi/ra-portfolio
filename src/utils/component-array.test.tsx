@@ -5,7 +5,7 @@ import { ComponentArray } from './component-array';
 describe('ComponentArray', () => {
   const items = ['Item 1', 'Item 2', 'Item 3'];
 
-  it('customRenders all items correctly', () => {
+  it('renders all items correctly', () => {
     const { getByText } = customRender(
       <ComponentArray render={(item) => <div>{item}</div>} of={items} />,
     );
@@ -15,7 +15,7 @@ describe('ComponentArray', () => {
     });
   });
 
-  it('customRenders items with correct index', () => {
+  it('renders items with correct index', () => {
     const { container } = customRender(
       <ComponentArray render={(_, index) => <div>{index}</div>} of={items} />,
     );
@@ -26,7 +26,7 @@ describe('ComponentArray', () => {
     });
   });
 
-  it('customRenders no items when the array is empty', () => {
+  it('renders no items when the array is empty', () => {
     const { container } = customRender(
       <ComponentArray render={(item) => <div>{item}</div>} of={[]} />,
     );

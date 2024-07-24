@@ -1,1 +1,1 @@
-export { Toggle, ToggleWithIcons, ToggleWithLabel } from './components/toggles';
+export { Toggle, ToggleWithIcons, ToggleWithLabel } from './components';

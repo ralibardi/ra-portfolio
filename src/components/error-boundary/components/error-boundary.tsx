@@ -36,23 +36,24 @@ class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className={styles.container}>
-          <div className={styles.header}>
+        <div className={styles.container} data-testid="error-container">
+          <div className={styles.header} data-testid="error-header-container">
             <button
               className={styles.button}
               onClick={() => window.history.back()}
+              data-testid="error-back-button"
             >
               <FontAwesomeIcon icon={faArrowLeft} />
               {this.props.t(goBackKey)}
             </button>
-            <h1 className={styles.header__title}>
+            <h1 className={styles.header__title} data-testid="error-title">
               {this.props.t(errorMessageTitleKey)}
             </h1>
           </div>
-          <details className={styles.description}>
-            {this.state.error && this.state.error.toString()}
+          <details className={styles.description} data-testid="error-details">
+            {this.state.error?.toString()}
             <br />
-            {this.state.errorInfo && this.state.errorInfo.componentStack}
+            {this.state.errorInfo?.componentStack}
           </details>
         </div>
       );
