@@ -19,6 +19,7 @@ const Topbar: FunctionComponent = () => {
             key={route.path}
             route={route}
             isActive={location.pathname === route.path}
+            data-testid="nav-link"
           />
         )}
         of={routes.filter((r) => r.enabled)}

@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react';
-import { act, render, screen } from '@testing-library/react';
+import { act, customRender, screen } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
 import ThemeContext, { ThemeProvider } from './theme-context';
 import { IThemeContext } from '@type/theme-context';
 import { useTheme } from '@hooks/use-theme';
 
 describe('ThemeProvider', () => {
-  it('renders children correctly', () => {
+  it('customRenders children correctly', () => {
     // ACT
-    render(
+    customRender(
       <ThemeProvider>
         <div data-testid="child">Test Child</div>
       </ThemeProvider>,
@@ -27,7 +27,7 @@ describe('ThemeProvider', () => {
     };
 
     // ACT
-    render(
+    customRender(
       <ThemeProvider>
         <TestComponent />
       </ThemeProvider>,
@@ -52,7 +52,7 @@ describe('ThemeProvider', () => {
       );
     };
 
-    render(
+    customRender(
       <ThemeProvider>
         <TestComponent />
       </ThemeProvider>,
@@ -89,7 +89,7 @@ describe('ThemeProvider - system theme preference and toggle functionality', () 
     });
 
     // ACT
-    render(
+    customRender(
       <ThemeProvider>
         <div data-testid="child">Test Child</div>
       </ThemeProvider>,
@@ -114,7 +114,7 @@ describe('ThemeProvider - system theme preference and toggle functionality', () 
     };
 
     // ACT
-    render(
+    customRender(
       <ThemeProvider>
         <TestComponent />
       </ThemeProvider>,
@@ -142,7 +142,7 @@ describe('ThemeProvider - system theme preference and toggle functionality', () 
     };
 
     // ACT
-    render(
+    customRender(
       <ThemeProvider>
         <TestComponent />
       </ThemeProvider>,
@@ -166,7 +166,7 @@ describe('ThemeProvider - system theme preference and toggle functionality', () 
     });
 
     // ACT
-    render(
+    customRender(
       <ThemeProvider>
         <div data-testid="child">Test Child</div>
       </ThemeProvider>,
@@ -188,7 +188,7 @@ describe('ThemeProvider - localStorage and system preference', () => {
     localStorage.setItem('theme', 'dark');
 
     // ACT
-    render(
+    customRender(
       <ThemeProvider>
         <div data-testid="child">Test Child</div>
       </ThemeProvider>,
@@ -209,7 +209,7 @@ describe('ThemeProvider - localStorage and system preference', () => {
     });
 
     // ACT
-    render(
+    customRender(
       <ThemeProvider>
         <div data-testid="child">Test Child</div>
       </ThemeProvider>,

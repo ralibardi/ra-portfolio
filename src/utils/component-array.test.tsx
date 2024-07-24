@@ -1,12 +1,12 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { customRender } from '@utils/test-utilities';
 import { ComponentArray } from './component-array';
 
 describe('ComponentArray', () => {
   const items = ['Item 1', 'Item 2', 'Item 3'];
 
-  it('renders all items correctly', () => {
-    const { getByText } = render(
+  it('customRenders all items correctly', () => {
+    const { getByText } = customRender(
       <ComponentArray render={(item) => <div>{item}</div>} of={items} />,
     );
 
@@ -15,8 +15,8 @@ describe('ComponentArray', () => {
     });
   });
 
-  it('renders items with correct index', () => {
-    const { container } = render(
+  it('customRenders items with correct index', () => {
+    const { container } = customRender(
       <ComponentArray render={(_, index) => <div>{index}</div>} of={items} />,
     );
 
@@ -26,8 +26,8 @@ describe('ComponentArray', () => {
     });
   });
 
-  it('renders no items when the array is empty', () => {
-    const { container } = render(
+  it('customRenders no items when the array is empty', () => {
+    const { container } = customRender(
       <ComponentArray render={(item) => <div>{item}</div>} of={[]} />,
     );
 
