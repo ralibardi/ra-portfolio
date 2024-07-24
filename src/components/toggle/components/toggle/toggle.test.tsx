@@ -2,7 +2,7 @@ import React from 'react';
 import { act, customRender, screen } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { Toggle } from '../toggles';
+import { Toggle } from '..';
 
 describe('Toggle', () => {
   test('renders correctly', async () => {

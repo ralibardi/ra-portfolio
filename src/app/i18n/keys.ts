@@ -1,6 +1,14 @@
 // Company
 export const companyNameKey = 'company_name';
 
+// Pages
+export const homePageKey = 'home';
+export const aboutPageKey = 'about';
+export const contactPageKey = 'contact';
+export const codingPageKey = 'coding';
+export const photographyPageKey = 'photography';
+export const gamingPageKey = 'gaming';
+
 // Header
 export const headerTitleKey = 'header_title';
 

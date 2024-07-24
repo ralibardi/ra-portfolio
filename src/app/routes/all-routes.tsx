@@ -13,14 +13,16 @@ const AllRoutes: FunctionComponent = () => {
       <BrowserRouter>
         <Routes>
           <Route path={rootPath} element={<BasePage />}>
-            {getAppRoutes.map((route: IRoute) => (
-              <Route
-                key={route.path}
-                path={route.path}
-                index={route.index}
-                element={<route.component />}
-              />
-            ))}
+            {getAppRoutes
+              .filter((r) => r.enabled)
+              .map((route: IRoute) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  index={route.index}
+                  element={<route.component />}
+                />
+              ))}
           </Route>
         </Routes>
       </BrowserRouter>

@@ -2,7 +2,7 @@ import React from 'react';
 import { act, customRender, screen } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { PrimaryButton } from '../buttons';
+import { PrimaryButton } from '..';
 
 describe('PrimaryButton', () => {
   test('renders correctly', async () => {
