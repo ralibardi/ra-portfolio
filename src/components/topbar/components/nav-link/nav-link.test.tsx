@@ -7,7 +7,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 describe('NavLink', () => {
   const route: IRoute = {
     path: '/home',
-    label: 'Home',
+    labelKey: 'Home',
     index: false,
     component: () => null,
     icon: faHome,
@@ -19,7 +19,7 @@ describe('NavLink', () => {
     expect(linkElement).toBeInTheDocument();
   });
 
-  it('should customRender the correct label', () => {
+  it('should customRender the correct labelKey', () => {
     customRender(<NavLink route={route} isActive={false} />);
     const linkElement = screen.getByRole('link');
     expect(linkElement).toHaveTextContent('Home');

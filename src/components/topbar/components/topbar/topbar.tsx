@@ -11,6 +11,10 @@ const Topbar: FunctionComponent = () => {
   const location = useLocation();
   const routes = useMemo(() => getAppRoutes, []);
 
+  if (!routes) {
+    return null;
+  }
+
   return (
     <nav className={styles.container}>
       <ComponentArray
