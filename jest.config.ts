@@ -19,6 +19,7 @@ const config: Config = {
     '!manifestGenerator.ts',
     '!src/service-worker.ts',
     '!src/serviceWorkerRegistration.ts',
+    '!**/i18n/**',
   ],
   moduleNameMapper: {
     '^@public/(.*)$': '<rootDir>/public/$1',
