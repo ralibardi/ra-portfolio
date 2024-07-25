@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { companyNameKey } from '@app/i18n/keys';
+import { company_name_key } from '@app/i18n/keys';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
 import { homePagePath } from '@utils/route-paths';
@@ -31,7 +31,7 @@ const CompanyInfo: FunctionComponent<ICompanyInfoProps> = ({
         />
         {!isLabelHidden && (
           <span className={styles.label} data-testid="company-info-label">
-            {t(companyNameKey)}
+            {t(company_name_key)}
           </span>
         )}
       </Link>

@@ -9,24 +9,27 @@ import styles from '../../assets/topbar.module.scss';
 
 const Topbar: FunctionComponent = () => {
   const location = useLocation();
-  const routes = useMemo(() => getAppRoutes, []);
+  const enabledRoutes = useMemo(
+    () => getAppRoutes.filter((r) => r.enabled),
+    [],
+  );
 
-  if (!routes) {
+  if (!enabledRoutes || enabledRoutes.length <= 1) {
     return null;
   }
 
   return (
-    <nav className={styles.container}>
+    <nav className={styles.container} data-testid="topbar-container">
       <ComponentArray
         render={(route: IRoute) => (
           <NavLink
             key={route.path}
             route={route}
             isActive={location.pathname === route.path}
-            data-testid="nav-link"
+            data-testid="topbar-nav-link"
           />
         )}
-        of={routes.filter((r) => r.enabled)}
+        of={enabledRoutes}
       />
     </nav>
   );

@@ -21,10 +21,12 @@ const NavLink: FunctionComponent<INavLinkProps> = ({ route, isActive }) => {
       to={route.path}
       className={cn(styles.link, { [styles.active]: isActive })}
     >
-      <div className={styles.icon}>
+      <div className={styles.icon} data-testid="nav-link-icon">
         <FontAwesomeIcon icon={route.icon} />
       </div>
-      <div className={styles.label}>{label}</div>
+      <div className={styles.label} data-testid="nav-link-label">
+        {label}
+      </div>
     </Link>
   );
 };

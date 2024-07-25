@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import {
   faAddressCard,
   faCamera,
+  faFile,
   faGamepad,
   faHome,
   faTerminal,
@@ -15,6 +16,7 @@ import {
   gamingPagePath,
   homePagePath,
   photographyPagePath,
+  cvPagePath,
 } from './route-paths';
 
 const HomePage = lazy(() => import('@pages/home-page'));
@@ -23,13 +25,14 @@ const PhotographyPage = lazy(() => import('@pages/photography-page'));
 const GamingPage = lazy(() => import('@pages/gaming-page'));
 const AboutPage = lazy(() => import('@pages/about-page'));
 const ContactPage = lazy(() => import('@pages/contact-page'));
+const CVPage = lazy(() => import('@pages/cv-page'));
 
 export const getAppRoutes: IRoute[] = [
   {
     path: homePagePath,
     index: true,
     component: HomePage,
-    labelKey: 'homeKey',
+    labelKey: 'home_key',
     icon: faHome,
     enabled: true,
   },
@@ -37,7 +40,7 @@ export const getAppRoutes: IRoute[] = [
     path: codingPagePath,
     index: true,
     component: CodingPage,
-    labelKey: 'codingKey',
+    labelKey: 'coding_key',
     icon: faTerminal,
     enabled: false,
   },
@@ -45,7 +48,7 @@ export const getAppRoutes: IRoute[] = [
     path: photographyPagePath,
     index: true,
     component: PhotographyPage,
-    labelKey: 'photographyKey',
+    labelKey: 'photography_key',
     icon: faCamera,
     enabled: false,
   },
@@ -53,7 +56,7 @@ export const getAppRoutes: IRoute[] = [
     path: gamingPagePath,
     index: true,
     component: GamingPage,
-    labelKey: 'gamingKey',
+    labelKey: 'gaming_key',
     icon: faGamepad,
     enabled: false,
   },
@@ -61,7 +64,7 @@ export const getAppRoutes: IRoute[] = [
     path: aboutPagePath,
     index: true,
     component: AboutPage,
-    labelKey: 'aboutKey',
+    labelKey: 'about_key',
     icon: faUser,
     enabled: false,
   },
@@ -69,8 +72,16 @@ export const getAppRoutes: IRoute[] = [
     path: contactPagePath,
     index: true,
     component: ContactPage,
-    labelKey: 'contactKey',
+    labelKey: 'contact_key',
     icon: faAddressCard,
     enabled: false,
+  },
+  {
+    path: cvPagePath,
+    index: true,
+    component: CVPage,
+    labelKey: 'cv_key',
+    icon: faFile,
+    enabled: true,
   },
 ];
