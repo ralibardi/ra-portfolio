@@ -1,0 +1,84 @@
+@use '@assets/global' as *;
+
+.container {
+    margin-left: 1em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 4px 8px;
+    cursor: pointer;
+    @include border-radius();
+}
+
+.enabled {
+    background-color: var($white);
+}
+
+.disabled {
+    background-color: var($black);
+}
+
+.container input {
+    display: none;
+}
+
+.container input+div {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    box-shadow: inset 8px -8px 0 0 var($black, #000);
+    transform: scale(1) rotate(-2deg);
+    transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
+    @include border-radius();
+}
+
+.container input+div::before {
+    content: "";
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: background 0.3s ease;
+    @include border-radius();
+}
+
+.container input+div::after {
+    content: "";
+    width: 4px;
+    height: 4px;
+    margin: -2px 0 0 -2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 -13px 0 var($white, #eee),
+        0 13px 0 var($white, #eee),
+        13px 0 0 var($white, #eee),
+        -13px 0 0 var($white, #eee),
+        9px 9px 0 var($white, #eee),
+        -9px 9px 0 var($white, #eee),
+        9px -9px 0 var($white, #eee),
+        -9px -9px 0 var($white, #eee);
+    transform: scale(0);
+    transition: all 0.3s ease;
+    @include border-radius();
+}
+
+.container input:checked+div {
+    box-shadow: inset 32px -32px 0 0 #fff;
+    transform: scale(0.5) rotate(0deg);
+    transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
+}
+
+.container input:checked+div::before {
+    background: var($white, #eee);
+    transition: background 0.3s ease 0.1s;
+}
+
+.container input:checked+div::after {
+    transform: scale(1.5);
+    transition: transform 0.5s ease 0.15s;
+}

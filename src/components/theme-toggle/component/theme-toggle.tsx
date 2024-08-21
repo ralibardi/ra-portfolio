@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@hooks/use-theme';
-import { ToggleWithIcons } from '@components/toggle';
+import { ToggleSwitcher } from '@components/toggle';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 const ThemeToggle = () => {
@@ -13,11 +13,12 @@ const ThemeToggle = () => {
   const { theme, toggleTheme } = themeContext;
 
   return (
-    <ToggleWithIcons
-      onClick={toggleTheme}
+    <ToggleSwitcher
       checked={theme === 'dark'}
-      iconLeft={faSun}
-      iconRight={faMoon}
+      onChange={() => toggleTheme()}
+      iconEnabled={faSun}
+      iconDisabled={faMoon}
+      invertedIconLogic={false}
     />
   );
 };

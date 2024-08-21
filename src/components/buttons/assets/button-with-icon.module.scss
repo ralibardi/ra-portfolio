@@ -5,10 +5,10 @@
   padding: $spacing-xs $spacing-md;
   background-color: var(--background-colour);
   color: var(--background-colour);
-  border-radius: border-radius();
   border: $border-xs solid var(--background-colour);
   cursor: pointer;
-  transition: transition(border-color);
+  @include transition(border-color);
+  @include border-radius();
 }
 
 .label {

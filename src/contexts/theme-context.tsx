@@ -5,6 +5,8 @@ import React, {
   useState,
   useEffect,
   FunctionComponent,
+  useCallback,
+  useMemo,
 } from 'react';
 
 const ThemeContext = createContext<IThemeContext | null>(null);
@@ -17,36 +19,25 @@ export const ThemeProvider: FunctionComponent<{
     if (storedTheme) {
       return storedTheme as Theme;
     } else {
-      const prefersDark =
+      const preferedTheme =
         window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return prefersDark ? 'dark' : 'light';
+      return preferedTheme ? 'dark' : 'light';
     }
   });
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
-
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark && theme === 'system') {
-      setTheme('dark');
-    } else if (!prefersDark && theme === 'system') {
-      setTheme('light');
-    }
-
-    document.body.classList.toggle(
-      'dark-mode',
-      theme === 'dark' || (theme === 'system' && prefersDark),
-    );
+    document.body.className = theme;
   }, [theme]);
 
-  const toggleTheme = React.useCallback(() => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  }, [setTheme]);
+  const toggleTheme = useCallback(() => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  }, [theme]);
 
-  const contextValue = React.useMemo(
+  const contextValue = useMemo(
     () => ({ theme, toggleTheme }),
     [theme, toggleTheme],
   );

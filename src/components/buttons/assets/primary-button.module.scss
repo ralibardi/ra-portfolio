@@ -4,26 +4,22 @@
   margin: $spacing-md;
   padding: $spacing-xs $spacing-md;
   background-color: var(--background-colour);
-  color: var(--background-colour);
-  border-radius: border-radius();
-  border: $border-xs solid var(--background-colour);
+  border: $border-xs solid var(--grey);
   cursor: pointer;
-  transition: transition(border-color);
+  @include transition(border-color);
+  @include border-radius($border-3xl);
 }
 
 .label {
-  @include font-style($font-md, $font-weight-medium, var(--text-colour));
+  @include font-style($font-md, $font-weight-medium, var(--accent-colour));
 }
 
 .button:hover {
-  border: $border-xs solid var(--background-colour);
-  filter: drop-shadow(0 0 $spacing-lg) var(--background-colour);
+  border: $border-xs solid var(--accent-colour);
+  filter: drop-shadow(0 0 $spacing-lg var(--accent-colour));
 }
 
 .content {
   @include flexbox(row, flex-start, center);
-}
-
-.icon {
-  padding-right: $spacing-md;
+  height: $font-md;
 }

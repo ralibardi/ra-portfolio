@@ -4,12 +4,12 @@
     width: calc($spacing-2xl);
     height: $spacing-lg;
     background-color: var(--light-grey);
-    border-radius: $spacing-4xl;
     padding: $spacing-2xs;
     cursor: pointer;
     @include flexbox(row, center, center);
     -webkit-user-select: none;
     user-select: none;
+    @include border-radius($spacing-4xl);
 }
 
 .toggle[data-ison="true"] {
@@ -20,7 +20,7 @@
     width: $spacing-lg;
     height: $spacing-lg;
     background-color: var(--background-colour);
-    border-radius: $percentage-100;
+    @include border-radius($percentage-100);
 }
 
 .iconLeft {
