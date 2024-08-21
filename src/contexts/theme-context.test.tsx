@@ -96,7 +96,7 @@ describe('ThemeProvider - system theme preference and toggle functionality', () 
     );
 
     // ASSERT
-    expect(document.body.classList.contains('dark-mode')).toBe(false);
+    expect(document.body.classList.contains('dark')).toBe(false);
   });
 
   it('toggles theme from light to dark and updates localStorage', async () => {
@@ -124,7 +124,7 @@ describe('ThemeProvider - system theme preference and toggle functionality', () 
 
     // ASSERT
     expect(localStorage.getItem('theme')).toBe('dark');
-    expect(document.body.classList.contains('dark-mode')).toBe(true);
+    expect(document.body.classList.contains('dark')).toBe(true);
   });
 
   it('toggles theme from dark to light and updates localStorage', async () => {
@@ -152,7 +152,7 @@ describe('ThemeProvider - system theme preference and toggle functionality', () 
 
     // ASSERT
     expect(localStorage.getItem('theme')).toBe('light');
-    expect(document.body.classList.contains('dark-mode')).toBe(false);
+    expect(document.body.classList.contains('dark')).toBe(false);
   });
 
   it('does not toggle theme when system preference is set and updates accordingly', () => {
@@ -173,7 +173,7 @@ describe('ThemeProvider - system theme preference and toggle functionality', () 
     );
 
     // ASSERT
-    expect(document.body.classList.contains('dark-mode')).toBe(true);
+    expect(document.body.classList.contains('dark')).toBe(true);
   });
 });
 
@@ -195,7 +195,7 @@ describe('ThemeProvider - localStorage and system preference', () => {
     );
 
     // ASSERT
-    expect(document.body.classList.contains('dark-mode')).toBe(true);
+    expect(document.body.classList.contains('dark')).toBe(true);
   });
 
   it('initializes theme to dark if system preference is dark and no localStorage', () => {
@@ -216,6 +216,6 @@ describe('ThemeProvider - localStorage and system preference', () => {
     );
 
     // ASSERT
-    expect(document.body.classList.contains('dark-mode')).toBe(true);
+    expect(document.body.classList.contains('dark')).toBe(true);
   });
 });

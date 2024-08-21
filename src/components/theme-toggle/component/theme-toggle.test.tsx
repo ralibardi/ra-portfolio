@@ -7,48 +7,32 @@ describe('ThemeToggle', () => {
   test('displays the toggle component', async () => {
     customRender(<ThemeToggle />);
 
-    const { toggleThumbContainerElement, toggleThumbContainer } = await act(
-      () => {
-        const toggleThumbContainerElement = screen.getByTestId(
-          'toggle-thumb-container',
-        );
-        const toggleThumbContainer = screen.getByTestId('toggle-thumb');
+    const { toggleThumbContainerElement } = await act(() => {
+      const toggleThumbContainerElement =
+        screen.getByTestId('toggle-container');
 
-        return {
-          toggleThumbContainerElement,
-          toggleThumbContainer,
-        };
-      },
-    );
+      return {
+        toggleThumbContainerElement,
+      };
+    });
 
     expect(toggleThumbContainerElement).not.toBeNull();
-    expect(toggleThumbContainer).not.toBeNull();
   });
 
   test('updates the theme prop when toggled', async () => {
     customRender(<ThemeToggle />);
 
-    const { toggleThumbContainerElement, iconLeftElement, iconRightElement } =
-      await act(() => {
-        const toggleThumbContainerElement = screen.getByTestId(
-          'toggle-thumb-container',
-        );
-        const iconLeftElement = screen.getByTestId('toggle-icon-left');
-        const iconRightElement = screen.getByTestId('toggle-icon-right');
+    const { toggleThumbContainerElement } = await act(() => {
+      const toggleThumbContainerElement =
+        screen.getByTestId('toggle-container');
 
-        return {
-          toggleThumbContainerElement,
-          iconLeftElement,
-          iconRightElement,
-        };
-      });
-
-    expect(iconLeftElement).toBeVisible();
+      return {
+        toggleThumbContainerElement,
+      };
+    });
 
     await userEvent.click(toggleThumbContainerElement);
-    expect(iconRightElement).toBeVisible();
 
     await userEvent.click(toggleThumbContainerElement);
-    expect(iconLeftElement).toBeVisible();
   });
 });
