@@ -12,13 +12,13 @@ type Story = StoryObj<typeof meta>;
 
 export const DefaultState: Story = {
   args: {
-    onChange: () => alert('Clicked'),
+    onClick: () => alert('Clicked'),
   },
 };
 
 export const Checked: Story = {
   args: {
     checked: true,
-    onChange: () => alert('Clicked'),
+    onClick: () => alert('Clicked'),
   },
 };
