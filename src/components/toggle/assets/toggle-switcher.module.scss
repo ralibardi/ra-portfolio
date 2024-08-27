@@ -1,24 +1,21 @@
 @use '@assets/global' as *;
 
 .container {
-    margin-left: 1em;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    padding: 4px 8px;
+    padding: $spacing-2xs $spacing-xs;
+    margin-left: $spacing-md;
     cursor: pointer;
+    @include size($spacing-xl, $spacing-xl);
     @include border-radius();
+    @include flexbox(flex-start, center, center);
 }
 
 .enabled {
-    background-color: var($white);
+    background-color: $white;
 }
 
 .disabled {
-    background-color: var($black);
+    background-color: $black;
 }
 
 .container input {
@@ -26,59 +23,54 @@
 }
 
 .container input+div {
-    width: 20px;
-    height: 20px;
     position: relative;
-    box-shadow: inset 8px -8px 0 0 var($black, #000);
-    transform: scale(1) rotate(-2deg);
-    transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
-    @include border-radius();
+    @include size($spacing-md, $spacing-md);
+    @include transition(box-shadow $transition-medium ease $transition-0, transform $transition-medium ease $transition-fast);
+    @include box-shadow(inset, $spacing-xs, -calc($spacing-xs));
+    @include transform(1, -2deg)
 }
 
 .container input+div::before {
     content: "";
-    width: inherit;
-    height: inherit;
     position: absolute;
-    left: 0;
-    top: 0;
-    transition: background 0.3s ease;
+    left: $spacing-0;
+    top: $spacing-0;
+    @include transition(background $transition-fast ease);
     @include border-radius();
 }
 
 .container input+div::after {
     content: "";
-    width: 4px;
-    height: 4px;
-    margin: -2px 0 0 -2px;
+    margin: -calc($spacing-3xs) $spacing-0 $spacing-0 -calc($spacing-3xs);
     position: absolute;
-    top: 50%;
-    left: 50%;
-    box-shadow: 0 -13px 0 var($white, #eee),
-        0 13px 0 var($white, #eee),
-        13px 0 0 var($white, #eee),
-        -13px 0 0 var($white, #eee),
-        9px 9px 0 var($white, #eee),
-        -9px 9px 0 var($white, #eee),
-        9px -9px 0 var($white, #eee),
-        -9px -9px 0 var($white, #eee);
-    transform: scale(0);
-    transition: all 0.3s ease;
+    top: $percentage-50;
+    left: $percentage-50;
+    box-shadow: $spacing-0 -calc($spacing-sm) $spacing-0 $white,
+        $spacing-0 $spacing-sm $spacing-0 $white,
+        $spacing-sm $spacing-0 $spacing-0 $white,
+        -calc($spacing-sm) $spacing-0 $spacing-0 $white,
+        $spacing-xs $spacing-xs $spacing-0 $white,
+        -calc($spacing-xs) $spacing-xs $spacing-0 $white,
+        $spacing-xs -calc($spacing-xs) $spacing-0 $white,
+        -calc($spacing-xs) -calc($spacing-xs) $spacing-0 $white;
+    @include size($spacing-2xs, $spacing-2xs);
+    @include transform(0);
+    @include transition(all $transition-fast ease);
     @include border-radius();
 }
 
 .container input:checked+div {
-    box-shadow: inset 32px -32px 0 0 #fff;
-    transform: scale(0.5) rotate(0deg);
-    transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
+    box-shadow: inset 3$spacing-3xs -3$spacing-3xs $spacing-0 $spacing-0 $white;
+    @include transform(0.5);
+    @include transition(transform $transition-fast ease $transition-fast, box-shadow $transition-fast ease $transition-0);
 }
 
 .container input:checked+div::before {
-    background: var($white, #eee);
-    transition: background 0.3s ease 0.1s;
+    background: $white;
+    @include transition(background $transition-fast ease $transition-fast);
 }
 
 .container input:checked+div::after {
-    transform: scale(1.5);
-    transition: transform 0.5s ease 0.15s;
+    @include transform(1.5);
+    @include transition(transform $transition-slow ease $transition-fast);
 }

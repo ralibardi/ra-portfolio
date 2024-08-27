@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Toggle from './toggle';
+import ToggleSwitcher from './toggle-switcher';
 
-const meta: Meta<typeof Toggle> = {
-  title: 'Toggles/Toggle',
-  component: Toggle,
+const meta: Meta<typeof ToggleSwitcher> = {
+  title: 'Toggles/ToggleSwitcher',
+  component: ToggleSwitcher,
 };
 
 export default meta;
@@ -22,3 +22,12 @@ export const Checked: Story = {
     onChange: () => alert('Clicked'),
   },
 };
+
+export const InvertedLogic: Story = {
+  args: {
+    checked: false,
+    invertedIconLogic: true,
+    onChange: () => {},
+  },
+};
+

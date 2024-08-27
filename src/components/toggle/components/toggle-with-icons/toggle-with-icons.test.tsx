@@ -1,6 +1,6 @@
 import React from 'react';
 import { act, customRender, screen } from '@utils/test-utilities';
-import { fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import ToggleWithIcons from './toggle-with-icons';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -42,7 +42,7 @@ describe('ToggleWithIcons', () => {
     customRender(<ToggleWithIcons onClick={jest.fn()} />);
 
     const { toggle } = await act(() => {
-      const toggle = screen.getByTestId('toggle-thumb-container');
+      const toggle = screen.getByTestId('toggle-container');
 
       return { toggle };
     });
@@ -54,14 +54,16 @@ describe('ToggleWithIcons', () => {
     const onClick = jest.fn();
     customRender(<ToggleWithIcons onClick={onClick} />);
 
-    const { toggle } = await act(() => {
-      const toggle = screen.getByTestId('toggle-thumb-container');
+    const { toggle } = await act(async () => {
+      const toggle = screen.getByTestId('toggle-container');
 
       return { toggle };
     });
 
-    fireEvent.click(toggle);
+    expect(toggle).not.toBeNull();
 
-    expect(onClick).toHaveBeenCalledTimes(1);
+    await userEvent.click(toggle);
+
+    expect(onClick.mock.calls.length).toEqual(1);
   });
 });

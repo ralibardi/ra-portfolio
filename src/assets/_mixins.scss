@@ -44,6 +44,11 @@ $themes: (
     color: $color
 }
 
+@mixin size($width: auto, $height: auto) {
+    width: $width;
+    height: $height;
+}
+
 @mixin flexbox($direction: row, $justify: flex-start, $align: stretch) {
     display: flex;
     flex-direction: $direction;
@@ -51,14 +56,42 @@ $themes: (
     align-items: $align;
 }
 
-@mixin box-shadow($x: 0, $y: $spacing-3xs, $blur: $spacing-2xs, $color: $black) {
+@mixin box-shadow($x: $spacing-0, $y: $spacing-3xs, $blur: $spacing-2xs, $color: $black) {
     box-shadow: $x $y $blur $color;
+}
+
+@mixin box-shadow($inset: inset, $x: $spacing-0, $y: $spacing-3xs, $blur: $spacing-2xs, $color: $black) {
+    box-shadow: $inset $x $y $blur $color;
 }
 
 @mixin transition($property: all, $duration: $transition-medium, $timing: ease) {
     transition: $property $duration $timing;
 }
 
+@mixin transition($property: all, $duration: $transition-medium, $timing: ease, $delay: $transition-0) {
+    transition: $property $duration $timing $delay;
+}
+
+@mixin transition($transitions...) {
+    $transition: null;
+
+    @each $transition in $transitions {
+        @if $transition == nth($transitions, -1) {
+            $transition: $transition;
+        }
+
+        @else {
+            $transition: $transition,;
+        }
+    }
+
+    transition: $transition;
+}
+
 @mixin border-radius($radius: $border-md) {
     border-radius: $radius;
+}
+
+@mixin transform($scale: 1, $rotate: 0deg) {
+    transform: scale($scale) rotate($rotate);
 }

@@ -46,6 +46,11 @@ jobs:
         run: npm run test:coverage --if-present
         continue-on-error: false
 
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:

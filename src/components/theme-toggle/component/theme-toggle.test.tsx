@@ -7,32 +7,30 @@ describe('ThemeToggle', () => {
   test('displays the toggle component', async () => {
     customRender(<ThemeToggle />);
 
-    const { toggleThumbContainerElement } = await act(() => {
-      const toggleThumbContainerElement =
-        screen.getByTestId('toggle-container');
+    const { toggleLabelElement } = await act(() => {
+      const toggleLabelElement = screen.getByTestId('toggle-label');
 
       return {
-        toggleThumbContainerElement,
+        toggleLabelElement,
       };
     });
 
-    expect(toggleThumbContainerElement).not.toBeNull();
+    expect(toggleLabelElement).not.toBeNull();
   });
 
   test('updates the theme prop when toggled', async () => {
     customRender(<ThemeToggle />);
 
-    const { toggleThumbContainerElement } = await act(() => {
-      const toggleThumbContainerElement =
-        screen.getByTestId('toggle-container');
+    const { toggleInputElement } = await act(() => {
+      const toggleInputElement = screen.getByTestId('toggle-input');
 
       return {
-        toggleThumbContainerElement,
+        toggleInputElement,
       };
     });
 
-    await userEvent.click(toggleThumbContainerElement);
+    await userEvent.click(toggleInputElement);
 
-    await userEvent.click(toggleThumbContainerElement);
+    await userEvent.click(toggleInputElement);
   });
 });

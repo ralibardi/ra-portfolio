@@ -15,7 +15,11 @@ const ToggleSwitcher: FunctionComponent<IToggleSwitcherProps> = ({
   });
 
   return (
-    <div data-testid="toggle-container">
+    <label
+      className={containerClassName}
+      htmlFor="toggle-switch"
+      data-testid="toggle-label"
+    >
       <input
         type="checkbox"
         id="toggle-switch"
@@ -23,14 +27,8 @@ const ToggleSwitcher: FunctionComponent<IToggleSwitcherProps> = ({
         defaultChecked={invertedIconLogic ? !checked : checked}
         onChange={onChange}
       />
-      <label
-        className={containerClassName}
-        htmlFor="toggle-switch"
-        data-testid="toggle-label"
-      >
-        Toggle Switch
-      </label>
-    </div>
+      <div />
+    </label>
   );
 };
 

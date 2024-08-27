@@ -15,7 +15,7 @@ const ToggleWithIcons: FunctionComponent<IToggleWithIconsProps> = ({
 }) => {
   const [isOn, setIsOn] = useState(checked);
 
-  const toggleSwitch = (event: React.MouseEvent<HTMLDivElement>) => {
+  const toggleSwitch = (event: React.MouseEvent<HTMLButtonElement>) => {
     setIsOn(!isOn);
     onClick && onClick(event);
   };
@@ -24,11 +24,11 @@ const ToggleWithIcons: FunctionComponent<IToggleWithIconsProps> = ({
   const iconRightClassName = cn(styles.iconRight, { [styles.disabled]: isOn });
 
   return (
-    <div
+    <button
       className={styles.toggle}
       data-ison={isOn}
       onClick={toggleSwitch}
-      data-testid="toggle-thumb-container"
+      data-testid="toggle-container"
     >
       {iconLeft && (
         <FontAwesomeIcon
@@ -38,8 +38,8 @@ const ToggleWithIcons: FunctionComponent<IToggleWithIconsProps> = ({
         />
       )}
       <motion.div
-        className={styles.thumb}
-        data-testid="toggle-thumb"
+        className={styles.switch}
+        data-testid="toggle-switch"
         layout
         transition={spring}
       />
@@ -50,7 +50,7 @@ const ToggleWithIcons: FunctionComponent<IToggleWithIconsProps> = ({
           data-testid="toggle-icon-right"
         />
       )}
-    </div>
+    </button>
   );
 };
 

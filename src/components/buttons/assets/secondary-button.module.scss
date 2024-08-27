@@ -1,6 +1,9 @@
 @use '@assets\/global' as *;
 
 .button {
+  height: calc($spacing-xl + $spacing-3xs);
+  width: $spacing-3xl;
+  line-height: calc($spacing-xl + $spacing-3xs);
   margin: $spacing-md;
   padding: $spacing-xs $spacing-md;
   background-color: var(--background-colour);
@@ -20,9 +23,6 @@
 }
 
 .content {
-  @include flexbox(row, flex-start, center);
-}
-
-.icon {
-  padding-right: $spacing-md;
+  @include flexbox(row, center, center);
+  height: 100%;
 }

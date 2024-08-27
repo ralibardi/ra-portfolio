@@ -1,29 +1,28 @@
 @use '@assets\/global' as *;
 
 .button {
+  height: calc($spacing-xl + $spacing-3xs);
+  width: $spacing-3xl;
+  line-height: calc($spacing-xl + $spacing-3xs);
   margin: $spacing-md;
   padding: $spacing-xs $spacing-md;
   background-color: var(--background-colour);
-  color: var(--background-colour);
-  border: $border-xs solid var(--background-colour);
+  border: $border-xs solid var(--grey);
   cursor: pointer;
   @include transition(border-color);
-  @include border-radius();
+  @include border-radius($border-3xl);
 }
 
 .label {
-  @include font-style($font-md, $font-weight-medium, var(--text-colour));
+  @include font-style($font-md, $font-weight-medium, var(--accent-colour));
 }
 
 .button:hover {
-  border: $border-xs solid var(--background-colour);
-  filter: drop-shadow(0 0 $spacing-lg) var(--background-colour);
+  border: $border-xs solid var(--accent-colour);
+  filter: drop-shadow(0 0 $spacing-lg var(--accent-colour));
 }
 
 .content {
-  @include flexbox(row, flex-start, center);
-}
-
-.icon {
-  padding-right: $spacing-md;
+  @include flexbox(row, space-between, center);
+  height: 100%;
 }
