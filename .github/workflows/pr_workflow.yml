@@ -25,6 +25,7 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+        continue-on-error: false
 
       - name: Compile App
         run: npm run build:dev
@@ -36,6 +37,10 @@ jobs:
 
       - name: Run tests and collect coverage
         run: npm run test:coverage
+        continue-on-error: false
+
+      - name: Run Storybook
+        run: npm run storybook
         continue-on-error: false
 
       - name: Run Chromatic

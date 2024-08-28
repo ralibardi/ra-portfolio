@@ -19,5 +19,5 @@
 .switch {
     background-color: var(--background-colour);
     @include border-radius($percentage-100);
-    @include size($spacing-lg, $spacing-lg);
+    @include size($spacing-md, $spacing-md);
 }
