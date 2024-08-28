@@ -1,15 +1,14 @@
 @use '@assets/global' as *;
 
 .toggle {
-    width: $spacing-2xl;
-    height: $spacing-lg;
     background-color: var(--light-grey);
     padding: $spacing-2xs;
     cursor: pointer;
-    @include flexbox(row, center, center);
     -webkit-user-select: none;
     user-select: none;
+    @include flexbox(row, flex-start, center);
     @include border-radius($spacing-4xl);
+    @include size($spacing-2xl, $spacing-lg);
 }
 
 .toggle[data-ison="true"] {
@@ -18,8 +17,7 @@
 }
 
 .switch {
-    width: $spacing-lg;
-    height: $spacing-lg;
     background-color: var(--background-colour);
     @include border-radius($percentage-100);
+    @include size($spacing-lg, $spacing-lg);
 }

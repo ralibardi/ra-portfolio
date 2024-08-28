@@ -56,8 +56,8 @@ $themes: (
     align-items: $align;
 }
 
-@mixin box-shadow($x: $spacing-0, $y: $spacing-3xs, $blur: $spacing-2xs, $color: $black) {
-    box-shadow: $x $y $blur $color;
+@mixin box-shadow($x: $spacing-0, $y: $spacing-3xs, $blur: $spacing-2xs, $spread: $spacing-2xs, $color: $black) {
+    box-shadow: $x $y $blur $spread $color;
 }
 
 @mixin box-shadow($inset: inset, $x: $spacing-0, $y: $spacing-3xs, $blur: $spacing-2xs, $color: $black) {

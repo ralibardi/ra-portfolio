@@ -1,76 +1,85 @@
 @use '@assets/global' as *;
 
 .container {
-    position: relative;
-    padding: $spacing-2xs $spacing-xs;
-    margin-left: $spacing-md;
-    cursor: pointer;
-    @include size($spacing-xl, $spacing-xl);
-    @include border-radius();
-    @include flexbox(flex-start, center, center);
+  margin-left: $spacing-md;
+  position: relative;
+  padding: $spacing-2xs $spacing-xs;
+  cursor: pointer;
+  @include size(calc($spacing-xl + $spacing-xs), calc($spacing-xl + $spacing-xs));
+  @include box-shadow($spacing-0, $spacing-0, $spacing-sm, $spacing-3xs, var(--text-colour));
+  @include border-radius($spacing-xl);
+  @include flexbox(row, center, center);
 }
 
-.enabled {
-    background-color: $white;
+.light {
+  background-color: $black;
 }
 
-.disabled {
-    background-color: $black;
+.dark {
+  background-color: $white;
 }
 
 .container input {
-    display: none;
+  display: none;
 }
 
-.container input+div {
-    position: relative;
-    @include size($spacing-md, $spacing-md);
-    @include transition(box-shadow $transition-medium ease $transition-0, transform $transition-medium ease $transition-fast);
-    @include box-shadow(inset, $spacing-xs, -calc($spacing-xs));
-    @include transform(1, -2deg)
+.container input + div {
+  position: relative;
+  box-shadow: inset $spacing-xs calc(-1 * $spacing-xs) $spacing-0 $spacing-0
+    $white;
+  transform: scale(1) rotate(-2deg);
+  transition:
+    box-shadow $transition-medium ease $transition-0,
+    transform $transition-medium ease $transition-0;
+  @include size(calc($spacing-md + $spacing-2xs), calc($spacing-md + $spacing-2xs));
+  @include border-radius(50%);
 }
 
-.container input+div::before {
-    content: "";
-    position: absolute;
-    left: $spacing-0;
-    top: $spacing-0;
-    @include transition(background $transition-fast ease);
-    @include border-radius();
+.container input + div::before {
+  content: '';
+  position: absolute;
+  left: $spacing-0;
+  top: $spacing-0;
+  transition: background $transition-fast ease;
+  @include size(inherit, inherit);
+  @include border-radius(inherit);
 }
 
-.container input+div::after {
-    content: "";
-    margin: -calc($spacing-3xs) $spacing-0 $spacing-0 -calc($spacing-3xs);
-    position: absolute;
-    top: $percentage-50;
-    left: $percentage-50;
-    box-shadow: $spacing-0 -calc($spacing-sm) $spacing-0 $white,
-        $spacing-0 $spacing-sm $spacing-0 $white,
-        $spacing-sm $spacing-0 $spacing-0 $white,
-        -calc($spacing-sm) $spacing-0 $spacing-0 $white,
-        $spacing-xs $spacing-xs $spacing-0 $white,
-        -calc($spacing-xs) $spacing-xs $spacing-0 $white,
-        $spacing-xs -calc($spacing-xs) $spacing-0 $white,
-        -calc($spacing-xs) -calc($spacing-xs) $spacing-0 $white;
-    @include size($spacing-2xs, $spacing-2xs);
-    @include transform(0);
-    @include transition(all $transition-fast ease);
-    @include border-radius();
+.container input + div::after {
+  content: '';
+  margin: calc(-1 * $spacing-3xs) $spacing-0 $spacing-0 calc(-1 * $spacing-3xs);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-shadow:
+    $spacing-0 calc(-1 * $spacing-sm) $spacing-0 $black,
+    $spacing-0 $spacing-sm $spacing-0 $black,
+    $spacing-sm $spacing-0 $spacing-0 $black,
+    calc(-1 * $spacing-sm) $spacing-0 $spacing-0 $black,
+    $spacing-xs $spacing-xs $spacing-0 $black,
+    calc(-1 * $spacing-xs) $spacing-xs $spacing-0 $black,
+    $spacing-xs calc(-1 * $spacing-xs) $spacing-0 $black,
+    calc(-1 * $spacing-xs) calc(-1 * $spacing-xs) $spacing-0 $black;
+  transform: scale(0);
+  transition: all $transition-fast ease;
+  @include size($spacing-2xs, $spacing-2xs);
+  @include border-radius(50%);
 }
 
-.container input:checked+div {
-    box-shadow: inset 3$spacing-3xs -3$spacing-3xs $spacing-0 $spacing-0 $white;
-    @include transform(0.5);
-    @include transition(transform $transition-fast ease $transition-fast, box-shadow $transition-fast ease $transition-0);
+.container input:checked + div {
+  box-shadow: inset $spacing-xl calc(-1 * $spacing-xl) $spacing-0 $spacing-0 $black;
+  transform: scale(0.5) rotate(0deg);
+  transition:
+    box-shadow $transition-medium ease $transition-0,
+    transform $transition-medium ease $transition-0;
 }
 
-.container input:checked+div::before {
-    background: $white;
-    @include transition(background $transition-fast ease $transition-fast);
+.container input:checked + div::before {
+  background: $black;
+  transition: background $transition-fast ease $transition-0;
 }
 
-.container input:checked+div::after {
-    @include transform(1.5);
-    @include transition(transform $transition-slow ease $transition-fast);
+.container input:checked + div::after {
+  transform: scale(1.5);
+  transition: transform $transition-medium ease $transition-0;
 }
