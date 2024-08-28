@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import ToggleSwitcher from './toggle-switcher';
 
 describe('ToggleSwitcher', () => {
-  it('renders without errors', async () => {
+  it('renders without errors', () => {
     customRender(
       <ToggleSwitcher
         checked={false}
@@ -78,4 +78,3 @@ describe('ToggleSwitcher', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 });
-

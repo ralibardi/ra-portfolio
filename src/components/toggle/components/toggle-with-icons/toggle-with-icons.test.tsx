@@ -54,7 +54,7 @@ describe('ToggleWithIcons', () => {
     const onClick = jest.fn();
     customRender(<ToggleWithIcons onClick={onClick} />);
 
-    const { toggle } = await act(async () => {
+    const { toggle } = await act(() => {
       const toggle = screen.getByTestId('toggle-container');
 
       return { toggle };

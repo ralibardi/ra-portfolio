@@ -30,4 +30,3 @@ export const InvertedLogic: Story = {
     onChange: () => {},
   },
 };
-

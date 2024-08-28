@@ -13,6 +13,7 @@ i18next
     interpolation: {
       escapeValue: false,
     },
-  });
+  })
+  .catch((error) => console.error('i18n error:', error));
 
 export default i18next;

@@ -31,4 +31,3 @@ export const LargeSize: Story = {
     size: 'large',
   },
 };
-

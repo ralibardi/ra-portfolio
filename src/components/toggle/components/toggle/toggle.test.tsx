@@ -28,7 +28,7 @@ describe('Toggle', () => {
     customRender(<Toggle onClick={onClick} />);
 
     // ACT
-    const { switchContainer, switchElement } = await act(async () => {
+    const { switchContainer, switchElement } = await act(() => {
       const switchContainer = screen.getByTestId('toggle-container');
       const switchElement = screen.getByTestId('toggle-switch');
 

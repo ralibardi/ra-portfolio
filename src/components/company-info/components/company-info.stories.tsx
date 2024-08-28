@@ -19,4 +19,3 @@ export const HiddenLabel: Story = {
     isLabelHidden: true,
   },
 };
-
