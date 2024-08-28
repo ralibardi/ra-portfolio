@@ -2,10 +2,6 @@ import React from 'react';
 import { act, customRender, screen } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
 import ToggleSwitcher from './toggle-switcher';
-import {
-  faArrowAltCircleLeft,
-  faArrowAltCircleRight,
-} from '@fortawesome/free-solid-svg-icons';
 
 describe('ToggleSwitcher', () => {
   it('renders without errors', async () => {
@@ -16,8 +12,6 @@ describe('ToggleSwitcher', () => {
           throw new Error('Function not implemented.');
         }}
         invertedIconLogic={false}
-        iconEnabled={faArrowAltCircleLeft}
-        iconDisabled={faArrowAltCircleRight}
       />,
     );
   });
@@ -30,8 +24,6 @@ describe('ToggleSwitcher', () => {
         checked={false}
         onChange={onChange}
         invertedIconLogic={false}
-        iconEnabled={faArrowAltCircleLeft}
-        iconDisabled={faArrowAltCircleRight}
       />,
     );
 
@@ -51,8 +43,6 @@ describe('ToggleSwitcher', () => {
         checked={false}
         onChange={onChange}
         invertedIconLogic={false}
-        iconEnabled={faArrowAltCircleLeft}
-        iconDisabled={faArrowAltCircleRight}
       />,
     );
 
@@ -74,8 +64,6 @@ describe('ToggleSwitcher', () => {
         onChange={onChange}
         checked={false}
         invertedIconLogic={false}
-        iconEnabled={faArrowAltCircleLeft}
-        iconDisabled={faArrowAltCircleRight}
       />,
     );
 
