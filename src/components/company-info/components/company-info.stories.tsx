@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import CompanyInfo from './company-info';
 
 const meta: Meta<typeof CompanyInfo> = {
-  title: 'CompanyInfo',
+  title: 'Components/CompanyInfo',
   component: CompanyInfo,
 };
 

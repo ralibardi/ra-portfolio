@@ -1,27 +1,18 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import englishTranslation from './en/translation.json';
-import spanishTranslation from './es/translation.json';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import HttpApi from 'i18next-http-backend';
 
-export async function initializeI18n() {
-  await i18next.use(initReactI18next).init({
-    lng: 'en',
+i18next
+  .use(LanguageDetector)
+  .use(HttpApi)
+  .use(initReactI18next)
+  .init({
+    fallbackLng: 'en-US',
     debug: false,
-    resources: {
-      en: {
-        translation: englishTranslation,
-      },
-      es: {
-        translation: spanishTranslation,
-      },
+    interpolation: {
+      escapeValue: false,
     },
   });
 
-  return i18next;
-}
-
-initializeI18n()
-  .then()
-  .catch((error) => {
-    console.error('Error initializing i18next:', error);
-  });
+export default i18next;

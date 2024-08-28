@@ -1,0 +1,43 @@
+{
+  "company": {
+    "name": "Ronny Alibardi"
+  },
+  "pages": {
+    "home": {
+      "name": "Home",
+      "title": "Welcome to the Home Page"
+    },
+    "about": {
+      "name": "About",
+      "title": "Learn More About Us"
+    },
+    "contact": {
+      "name": "Contact",
+      "title": "Get in Touch with Us"
+    },
+    "coding": {
+      "name": "Coding"
+    },
+    "photography": {
+      "name": "Photography"
+    },
+    "gaming": {
+      "name": "Gaming"
+    },
+    "cv": {
+      "name": "CV"
+    },
+    "error": {
+      "name": "Error",
+      "title": "Ooopss... There's something wrong",
+      "404": "Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique taciti duis; lacinia tempus fringilla accumsan. Risus aliquam posuere pellentesque sociosqu facilisi maecenas. Aptent blandit aliquet cras ultrices neque. Risus habitasse eleifend est urna maximus lorem dui? Tellus lectus pulvinar; iaculis torquent augue ad. Luctus quis neque mus; adipiscing sociosqu fringilla auctor. Consectetur dignissim primis tempus sociosqu congue efficitur, cubilia hendrerit enim.",
+      "goBack": "Go back"
+    }
+  },
+  "header": {
+    "title": "Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique taciti duis; lacinia tempus fringilla accumsan. Risus aliquam posuere pellentesque sociosqu facilisi maecenas. Aptent blandit aliquet cras ultrices neque. Risus habitasse eleifend est urna maximus lorem dui? Tellus lectus pulvinar; iaculis torquent augue ad. Luctus quis neque mus; adipiscing sociosqu fringilla auctor. Consectetur dignissim primis tempus sociosqu congue efficitur, cubilia hendrerit enim."
+  },
+  "footer": {
+    "copyright": "© 2024 Ronny Alibardi"
+  }
+}
