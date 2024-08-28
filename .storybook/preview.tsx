@@ -4,6 +4,8 @@ import { MemoryRouter } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../src/app/i18n/config';
 
+import '../src/assets/index.scss';
+
 const withMemoryRouter: Decorator = (Story) => (
   <MemoryRouter>
     <Story />

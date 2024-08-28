@@ -1,4 +1,6 @@
-module.exports = {
+import { StorybookConfig } from '@storybook/react-vite';
+
+const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
 
   addons: [
@@ -9,7 +11,6 @@ module.exports = {
 
   typescript: {
     check: true,
-    checkOptions: {},
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
@@ -25,3 +26,5 @@ module.exports = {
 
   docs: {},
 };
+
+export default config;

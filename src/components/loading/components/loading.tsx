@@ -12,7 +12,7 @@ const Loading: FunctionComponent<ILoadingProps> = ({ size = 'auto' }) => {
 
   return (
     <div className={styles.container} data-testid="loading-container">
-      <div className={className} data-testid="loading-spinner"></div>
+      <div className={className} data-testid="loading-spinner" />
     </div>
   );
 };
