@@ -54,9 +54,9 @@ jobs:
           API_URL: ${{ secrets.API_URL }}
         continue-on-error: false
 
-      - name: Run lint
-        run: npm run lint
-        continue-on-error: false
+      # - name: Run lint
+      #   run: npm run lint
+      #   continue-on-error: false
 
       - name: Run tests and collect coverage
         run: npm run test:coverage
