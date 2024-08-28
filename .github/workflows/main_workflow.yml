@@ -2,8 +2,21 @@
 #
 # Prerequisites:
 # - An Azure Web App created.
-# - A GitHub secret named AZURE_CREDENTIALS with the Azure credentials as it's value.
+# - A GitHub secret named AZURE_CREDENTIALS with the Azure credentials as its value.
 # - A GitHub secret named AZURE_WEBAPP_PUBLISH_PROFILE with the Azure publish profile as its value.
+# - A GitHub secret named AZURE_SUBSCRIPTION_ID with the Azure subscription ID as its value.
+# - A GitHub secret named AZURE_RESOURCE_GROUP with the Azure resource group name as its value.
+# - A GitHub secret named AZURE_LOCATION with the Azure location as its value.
+# - A GitHub secret named AZURE_SERVICE_APP_PLAN with the Azure service app plan name as its value.
+# - A GitHub secret named NODE_VERSION with the Node.js version as its value.
+# - A GitHub secret named PUBLIC_URL with the public URL as its value.
+# - A GitHub secret named API_URL with the API URL as its value.
+# - A GitHub secret named CHROMATIC_PROJECT_TOKEN with the Chromatic project token as its value.
+# - A GitHub secret named SONAR_ORGANISATION with the SonarCloud organization as its value.
+# - A GitHub secret named SONAR_PROJECT_KEY with the SonarCloud project key as its value.
+# - A GitHub secret named SONAR_PROJECT_NAME with the SonarCloud project name as its value.
+# - A GitHub secret named TOKEN_GITHUB with the GitHub token as its value.
+# - A GitHub secret named TOKEN_SONAR with the SonarCloud token as its value.
 
 name: Deploy to Azure Workflow
 
@@ -11,7 +24,7 @@ on:
   push:
     branches:
       - main # Trigger on commits to the main branch
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch: # Allow manual triggering of the workflow
 
 jobs:
   build:
@@ -96,7 +109,6 @@ jobs:
             -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.projectName=${{ secrets.SONAR_PROJECT_NAME }}
-
         continue-on-error: false
 
       - name: SonarCloud Quality Gate Check
