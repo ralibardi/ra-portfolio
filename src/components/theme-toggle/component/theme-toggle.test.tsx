@@ -7,48 +7,30 @@ describe('ThemeToggle', () => {
   test('displays the toggle component', async () => {
     customRender(<ThemeToggle />);
 
-    const { toggleThumbContainerElement, toggleThumbContainer } = await act(
-      () => {
-        const toggleThumbContainerElement = screen.getByTestId(
-          'toggle-thumb-container',
-        );
-        const toggleThumbContainer = screen.getByTestId('toggle-thumb');
+    const { toggleLabelElement } = await act(() => {
+      const toggleLabelElement = screen.getByTestId('toggle-label');
 
-        return {
-          toggleThumbContainerElement,
-          toggleThumbContainer,
-        };
-      },
-    );
+      return {
+        toggleLabelElement,
+      };
+    });
 
-    expect(toggleThumbContainerElement).not.toBeNull();
-    expect(toggleThumbContainer).not.toBeNull();
+    expect(toggleLabelElement).not.toBeNull();
   });
 
   test('updates the theme prop when toggled', async () => {
     customRender(<ThemeToggle />);
 
-    const { toggleThumbContainerElement, iconLeftElement, iconRightElement } =
-      await act(() => {
-        const toggleThumbContainerElement = screen.getByTestId(
-          'toggle-thumb-container',
-        );
-        const iconLeftElement = screen.getByTestId('toggle-icon-left');
-        const iconRightElement = screen.getByTestId('toggle-icon-right');
+    const { toggleInputElement } = await act(() => {
+      const toggleInputElement = screen.getByTestId('toggle-input');
 
-        return {
-          toggleThumbContainerElement,
-          iconLeftElement,
-          iconRightElement,
-        };
-      });
+      return {
+        toggleInputElement,
+      };
+    });
 
-    expect(iconLeftElement).toBeVisible();
+    await userEvent.click(toggleInputElement);
 
-    await userEvent.click(toggleThumbContainerElement);
-    expect(iconRightElement).toBeVisible();
-
-    await userEvent.click(toggleThumbContainerElement);
-    expect(iconLeftElement).toBeVisible();
+    await userEvent.click(toggleInputElement);
   });
 });

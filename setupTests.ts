@@ -1,10 +1,17 @@
 ﻿import '@testing-library/jest-dom';
-import { initializeI18n } from './src/app/i18n/config';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import englishTranslation from './public/locales/en-US/translation.json';
 
-(async () => {
-  await initializeI18n();
-})()
-  .then()
-  .catch((error) => {
-    console.error('Error initializing i18next:', error);
-  });
+i18n
+  .use(initReactI18next)
+  .init({
+    lng: 'en',
+    fallbackLng: 'en',
+    resources: {
+      en: {
+        translation: englishTranslation,
+      },
+    },
+  })
+  .catch((error) => console.error('i18n error:', error));

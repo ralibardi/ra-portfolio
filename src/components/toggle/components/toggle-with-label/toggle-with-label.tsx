@@ -11,7 +11,7 @@ const ToggleWithLabel: FunctionComponent<IToggleWithLabelProps> = ({
 }) => {
   const [isOn, setIsOn] = useState(checked);
 
-  const toggleSwitch = (event: React.MouseEvent<HTMLDivElement>) => {
+  const toggleSwitch = (event: React.MouseEvent<HTMLButtonElement>) => {
     setIsOn(!isOn);
     onClick && onClick(event);
   };
@@ -21,19 +21,19 @@ const ToggleWithLabel: FunctionComponent<IToggleWithLabelProps> = ({
       <label className={styles.label} data-testid="toggle-label">
         {label}
       </label>
-      <div
+      <button
         className={styles.toggle}
         data-ison={isOn}
         onClick={toggleSwitch}
-        data-testid="toggle-thumb-container"
+        data-testid="toggle-switch-container"
       >
         <motion.div
-          className={styles.thumb}
-          data-testid="toggle-thumb"
+          className={styles.switch}
+          data-testid="toggle-switch"
           layout
           transition={spring}
         />
-      </div>
+      </button>
     </div>
   );
 };

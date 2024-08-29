@@ -14,16 +14,19 @@ interface INavLinkProps {
 
 const NavLink: FunctionComponent<INavLinkProps> = ({ route, isActive }) => {
   const { t } = useTranslation();
+  const label = t(route.labelKey);
 
   return (
     <Link
       to={route.path}
       className={cn(styles.link, { [styles.active]: isActive })}
     >
-      <div className={styles.icon}>
+      <div className={styles.icon} data-testid="nav-link-icon">
         <FontAwesomeIcon icon={route.icon} />
       </div>
-      <div className={styles.label}>{t(route.label)}</div>
+      <div className={styles.label} data-testid="nav-link-label">
+        {label}
+      </div>
     </Link>
   );
 };

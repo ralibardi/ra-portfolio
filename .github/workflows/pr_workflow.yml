@@ -1,30 +1,42 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+#
+# Prerequisites:
+# - A GitHub secret named NODE_VERSION with the Node.js version as its value.
+# - A GitHub secret named CHROMATIC_PROJECT_TOKEN with the Chromatic project token as its value.
+# - A GitHub secret named SONAR_ORGANISATION with the SonarCloud organization as its value.
+# - A GitHub secret named SONAR_PROJECT_KEY with the SonarCloud project key as its value.
+# - A GitHub secret named SONAR_PROJECT_NAME with the SonarCloud project name as its value.
+# - A GitHub secret named TOKEN_GITHUB with the GitHub token as its value.
+# - A GitHub secret named TOKEN_SONAR with the SonarCloud token as its value.
 
 name: Pull Request Workflow
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  workflow_dispatch: # Allow manual triggering of the workflow
 
-env:
-  NODE_VERSION: '20.x'
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Set up Node.js ${{ env.NODE_VERSION }}
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: ${{ secrets.NODE_VERSION }}
           cache: 'npm'
 
       - name: Install Dependencies
         run: npm install
+        continue-on-error: false
 
       - name: Compile App
         run: npm run build:dev
@@ -38,6 +50,11 @@ jobs:
         run: npm run test:coverage
         continue-on-error: false
 
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
@@ -49,7 +66,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -69,7 +87,6 @@ jobs:
             -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.projectName=${{ secrets.SONAR_PROJECT_NAME }}
-
         continue-on-error: false
 
       - name: SonarCloud Quality Gate Check

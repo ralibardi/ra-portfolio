@@ -1,8 +1,7 @@
 @use '@assets\/global' as *;
 
 .container {
-  width: 100% !important;
-  height: 100% !important;
+  height: 100%;
   @include flexbox(row, center, center);
 }
 
@@ -13,6 +12,11 @@
   border-left-style: solid;
   @include border-radius($percentage-50);
   animation: spin 0.75s infinite linear;
+}
+
+.auto {
+  width: auto;
+  height: auto;
 }
 
 .small {

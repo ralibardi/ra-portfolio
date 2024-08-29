@@ -1,6 +1,6 @@
 import React, { FunctionComponent, lazy } from 'react';
 import { useTranslation } from 'react-i18next';
-import { footerCopyrightKey } from '@app/i18n/keys';
+import { footer_copyright_key } from '@app/i18n/keys';
 
 const FooterSocials = lazy(() => import('../footer-socials/footer-socials'));
 
@@ -13,7 +13,7 @@ const Footer: FunctionComponent = () => {
     <footer className={styles.container} data-testid="footer">
       <FooterSocials />
       <span className={styles.copyright} data-testid="footer-copyright">
-        {t(footerCopyrightKey)}
+        {t(footer_copyright_key)}
       </span>
     </footer>
   );

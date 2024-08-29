@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import {
   faAddressCard,
   faCamera,
+  faFile,
   faGamepad,
   faHome,
   faTerminal,
@@ -15,7 +16,17 @@ import {
   gamingPagePath,
   homePagePath,
   photographyPagePath,
+  cvPagePath,
 } from './route-paths';
+import {
+  about_page_key,
+  coding_page_key,
+  contact_page_key,
+  cv_page_key,
+  gaming_page_key,
+  home_page_key,
+  photography_page_key,
+} from '@app/i18n/keys';
 
 const HomePage = lazy(() => import('@pages/home-page'));
 const CodingPage = lazy(() => import('@pages/coding-page'));
@@ -23,13 +34,14 @@ const PhotographyPage = lazy(() => import('@pages/photography-page'));
 const GamingPage = lazy(() => import('@pages/gaming-page'));
 const AboutPage = lazy(() => import('@pages/about-page'));
 const ContactPage = lazy(() => import('@pages/contact-page'));
+const CVPage = lazy(() => import('@pages/cv-page'));
 
 export const getAppRoutes: IRoute[] = [
   {
     path: homePagePath,
     index: true,
     component: HomePage,
-    label: 'HomeKey',
+    labelKey: home_page_key,
     icon: faHome,
     enabled: true,
   },
@@ -37,7 +49,7 @@ export const getAppRoutes: IRoute[] = [
     path: codingPagePath,
     index: true,
     component: CodingPage,
-    label: 'CodingKey',
+    labelKey: coding_page_key,
     icon: faTerminal,
     enabled: false,
   },
@@ -45,7 +57,7 @@ export const getAppRoutes: IRoute[] = [
     path: photographyPagePath,
     index: true,
     component: PhotographyPage,
-    label: 'PhotographyKey',
+    labelKey: photography_page_key,
     icon: faCamera,
     enabled: false,
   },
@@ -53,7 +65,7 @@ export const getAppRoutes: IRoute[] = [
     path: gamingPagePath,
     index: true,
     component: GamingPage,
-    label: 'GamingKey',
+    labelKey: gaming_page_key,
     icon: faGamepad,
     enabled: false,
   },
@@ -61,7 +73,7 @@ export const getAppRoutes: IRoute[] = [
     path: aboutPagePath,
     index: true,
     component: AboutPage,
-    label: 'AboutKey',
+    labelKey: about_page_key,
     icon: faUser,
     enabled: false,
   },
@@ -69,8 +81,16 @@ export const getAppRoutes: IRoute[] = [
     path: contactPagePath,
     index: true,
     component: ContactPage,
-    label: 'ContactKey',
+    labelKey: contact_page_key,
     icon: faAddressCard,
     enabled: false,
+  },
+  {
+    path: cvPagePath,
+    index: true,
+    component: CVPage,
+    labelKey: cv_page_key,
+    icon: faFile,
+    enabled: true,
   },
 ];

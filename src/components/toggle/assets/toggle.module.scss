@@ -1,15 +1,14 @@
 @use '@assets/global' as *;
 
 .toggle {
-    width: $spacing-2xl;
-    height: $spacing-lg;
     background-color: var(--light-grey);
-    border-radius: $spacing-4xl;
     padding: $spacing-2xs;
     cursor: pointer;
-    @include flexbox(row, center, center);
     -webkit-user-select: none;
     user-select: none;
+    @include flexbox(row, flex-start, center);
+    @include border-radius($spacing-4xl);
+    @include size($spacing-2xl, $spacing-lg);
 }
 
 .toggle[data-ison="true"] {
@@ -17,9 +16,8 @@
     justify-content: flex-end;
 }
 
-.thumb {
-    width: $spacing-lg;
-    height: $spacing-lg;
+.switch {
     background-color: var(--background-colour);
-    border-radius: $percentage-100;
+    @include border-radius($percentage-100);
+    @include size($spacing-md, $spacing-md);
 }

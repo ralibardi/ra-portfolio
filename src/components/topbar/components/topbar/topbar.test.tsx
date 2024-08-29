@@ -1,24 +1,24 @@
 import React from 'react';
-import { customRender, screen } from '@utils/test-utilities';
+import { act, customRender, screen } from '@utils/test-utilities';
 import Topbar from './topbar';
 import { getAppRoutes } from '@utils/get-app-routes';
 
 describe('Topbar', () => {
-  beforeEach(() => {
-    jest.mock('react-router-dom', () => ({
-      useLocation: jest.fn(() => ({ pathname: '/about' })),
-    }));
-  });
-
-  it('renders without crashing', () => {
-    customRender(<Topbar />);
-  });
-
-  it('renders the correct number of nav links', () => {
+  it('renders without crashing', async () => {
     customRender(<Topbar />);
 
-    const navLinks = screen.getAllByRole('link');
+    const element = await act(() => screen.getByTestId('topbar-container'));
 
-    expect(navLinks.length).toBe(getAppRoutes.filter((r) => r.enabled).length);
+    expect(element).not.toBeNull();
+    expect(element).toBeInTheDocument();
+  });
+
+  it('renders the correct number of nav links', async () => {
+    customRender(<Topbar />);
+
+    const element = await act(() => screen.getAllByTestId('nav-link-label'));
+
+    expect(element).not.toBeNull();
+    expect(element.length).toBe(getAppRoutes.filter((r) => r.enabled).length);
   });
 });

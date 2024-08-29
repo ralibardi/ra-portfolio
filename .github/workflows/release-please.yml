@@ -12,27 +12,28 @@ on:
     branches:
       - main
 
-env:
-  AZURE_WEBAPP_NAME: ra-portfolio
-  NODE_VERSION: '20.x'
-
 jobs:
   setup-node:
     runs-on: windows-latest
     steps:
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: ${{ secrets.NODE_VERSION }}
+          cache: 'npm'
 
   release-please:
     needs: setup-node
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
       - uses: GoogleCloudPlatform/release-please-action@v3
         with:
           token: ${{ secrets.TOKEN_GITHUB }}
           release-type: node
-          package-name: ${{ env.AZURE_WEBAPP_NAME }}
+          package-name: ${{ secrets.AZURE_WEBAPP_NAME }}
 

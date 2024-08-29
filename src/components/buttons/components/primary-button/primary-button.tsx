@@ -27,18 +27,18 @@ const PrimaryButton = memo(function primaryButton({
       onClick={handleClick}
       disabled={isLoading}
     >
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <div
-          className={styles.content}
-          data-testid="primary-button-label-container"
-        >
+      <div
+        className={styles.content}
+        data-testid="primary-button-label-container"
+      >
+        {isLoading ? (
+          <Loading />
+        ) : (
           <span className={styles.label} data-testid="primary-button-label">
             {label}
           </span>
-        </div>
-      )}
+        )}
+      </div>
     </button>
   );
 });

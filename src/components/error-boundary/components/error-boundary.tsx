@@ -2,7 +2,7 @@ import React, { ErrorInfo } from 'react';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { errorMessageTitleKey, goBackKey } from '@app/i18n/keys';
+import { error_message_title_key, go_back_key } from '@app/i18n/keys';
 
 import styles from '../assets/error-boundary.module.scss';
 
@@ -44,10 +44,10 @@ class ErrorBoundary extends React.Component<
               data-testid="error-back-button"
             >
               <FontAwesomeIcon icon={faArrowLeft} />
-              {this.props.t(goBackKey)}
+              {this.props.t(go_back_key)}
             </button>
             <h1 className={styles.header__title} data-testid="error-title">
-              {this.props.t(errorMessageTitleKey)}
+              {this.props.t(error_message_title_key)}
             </h1>
           </div>
           <details className={styles.description} data-testid="error-details">
