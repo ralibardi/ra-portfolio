@@ -1,9 +1,26 @@
-name: Azure Static Web Apps CI/CD
+# This workflow builds and deploys a Node.js application to an Azure Web App upon commits to the main branch.
+#
+# Prerequisites:
+# - A GitHub secret named NODE_VERSION with the Node.js version as its value.
+# - A GitHub secret named PUBLIC_URL with the public URL as its value.
+# - A GitHub secret named API_URL with the API URL as its value.
+# - A GitHub secret named CHROMATIC_PROJECT_TOKEN with the Chromatic project token as its value.
+# - A GitHub secret named SONAR_ORGANISATION with the SonarCloud organization as its value.
+# - A GitHub secret named SONAR_PROJECT_KEY with the SonarCloud project key as its value.
+# - A GitHub secret named SONAR_PROJECT_NAME with the SonarCloud project name as its value.
+# - A GitHub secret named TOKEN_GITHUB with the GitHub token as its value.
+# - A GitHub secret named TOKEN_SONAR with the SonarCloud token as its value.
+# - A GitHub secret named AZURE_STATIC_WEB_APPS_API_TOKEN with the Azure Static Web Apps API token as its value.
+
+name: Deploy to Azure Workflow
 
 on:
   push:
     branches:
-      - main
+      - main 
+
+  workflow_dispatch:
+
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
@@ -105,46 +122,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Check if Web App exists
-        id: check_app
-        shell: bash
-        run: |
-          EXISTS=$(az webapp list --query "[?name=='${{ secrets.AZURE_WEBAPP_NAME }}'].name" -o tsv)
-          if [ -z "$EXISTS" ]; then
-            echo "WebApp does not exist, setting CREATE_APP to true."
-            echo "CREATE_APP=true" >> $GITHUB_ENV
-          else
-            echo "WebApp exists, no need to create."
-            echo "CREATE_APP=false" >> $GITHUB_ENV
-          fi
-
-      - name: Create Web App if it does not exist
-        if: steps.check_app.outputs.CREATE_APP == 'true'
-        run: |
-          az webapp create --name ${{ secrets.AZURE_WEBAPP_NAME }} --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --plan ${{ secrets.AZURE_SERVICE_APP_PLAN }} --runtime "NODE|${{ secrets.NODE_VERSION }}"
-
-      - name: Prepare prod.parameters.json
-        run: |
-          $json = Get-Content -Path .azuredevops/prod.parameters.json -Raw | ConvertFrom-Json
-          $json.parameters.subscriptionId.value = "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-          $json.parameters.resourceGroupName.value = "${{ secrets.AZURE_RESOURCE_GROUP }}"
-          $json.parameters.name.value = "${{ secrets.AZURE_WEBAPP_NAME }}"
-          $json.parameters.location.value = "${{ secrets.AZURE_LOCATION }}"
-          $json.parameters.hostingPlanName.value = "${{ secrets.AZURE_SERVICE_APP_PLAN }}"
-          $json.parameters.serverFarmResourceGroup.value = "${{ secrets.AZURE_RESOURCE_GROUP }}"
-          $json | ConvertTo-Json -Depth 100 | Set-Content -Path ./prod.parameters.json
-        shell: pwsh
-
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ICY_MEADOW_0218FEC03 }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
@@ -163,5 +145,5 @@ jobs:
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ICY_MEADOW_0218FEC03 }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           action: "close"
