@@ -35,3 +35,16 @@ body {
 body.dark-mode {
   @include theme(dark);
 }
+
+.apple-prompt {
+  display: none;
+  position: fixed;
+  text-align: center;
+  border: 1px solid var(--accent-colour);
+  bottom: $spacing-xs;
+  left: $spacing-xs;
+  right: $spacing-xs;
+  background: $white;
+  padding: $spacing-xs;
+  z-index: $z-index-top;
+}

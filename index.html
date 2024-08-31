@@ -2,31 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>RA - Portfolio</title>
+    <title>Ronny Alibardi</title>
     <meta name="description" content="Portfolio by R.A Alibardi" />
-    <meta name="theme-color" content="#000000" />
-    <link rel="icon" href="/appLogo.png" type="image/png" />
-    <link rel="shortcut icon" href="/appLogo.png" type="image/png" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="RA Portfolio" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div id="apple-prompt"></div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <script src="/src/install-prompt.ts" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
