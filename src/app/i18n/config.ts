@@ -8,8 +8,8 @@ i18next
   .use(HttpApi)
   .use(initReactI18next)
   .init({
-    lng: 'en-US',
-    fallbackLng: 'en-US',
+    lng: 'en',
+    fallbackLng: 'en',
     debug: false,
     interpolation: {
       escapeValue: false,

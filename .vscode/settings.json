@@ -7,7 +7,7 @@
   "explorer.fileNesting.patterns": {
     "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, .env",
     "manifestGenerator.*": "manifest.hbs",
-    "vite.config.ts": ".eslintrc.*, .gitignore, .prettierrc.*, .babelrc, .editorconfig, commitlint.*, sonar-project.*, web.*,.npmrc,chromatic.*",
+    "vite.config.ts": "eslint.*, .gitignore, .prettierrc.*, .babelrc, .editorconfig, commitlint.*, sonar-project.*, web.*,.npmrc,chromatic.*",
     "index.html": "README.md",
     "jest.config.ts": "setupTests.ts",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.js, ${capture}.stories.*, ${capture}.test.*, ${capture}.scss",
