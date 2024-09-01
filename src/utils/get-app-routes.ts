@@ -7,6 +7,7 @@ import {
   faHome,
   faTerminal,
   faUser,
+  faStethoscope
 } from '@fortawesome/free-solid-svg-icons';
 import IRoute from '@type/route';
 import {
@@ -17,6 +18,7 @@ import {
   homePagePath,
   photographyPagePath,
   cvPagePath,
+  healthPagePath
 } from './route-paths';
 import {
   about_page_key,
@@ -26,6 +28,7 @@ import {
   gaming_page_key,
   home_page_key,
   photography_page_key,
+  health_page_key
 } from '@app/i18n/keys';
 
 const HomePage = lazy(() => import('@pages/home-page'));
@@ -35,6 +38,7 @@ const GamingPage = lazy(() => import('@pages/gaming-page'));
 const AboutPage = lazy(() => import('@pages/about-page'));
 const ContactPage = lazy(() => import('@pages/contact-page'));
 const CVPage = lazy(() => import('@pages/cv-page'));
+const HealthPage = lazy(() => import('@pages/health-page'));
 
 export const getAppRoutes: IRoute[] = [
   {
@@ -44,6 +48,7 @@ export const getAppRoutes: IRoute[] = [
     labelKey: home_page_key,
     icon: faHome,
     enabled: true,
+    hidden: false,
   },
   {
     path: codingPagePath,
@@ -52,6 +57,7 @@ export const getAppRoutes: IRoute[] = [
     labelKey: coding_page_key,
     icon: faTerminal,
     enabled: false,
+    hidden: false,
   },
   {
     path: photographyPagePath,
@@ -60,6 +66,7 @@ export const getAppRoutes: IRoute[] = [
     labelKey: photography_page_key,
     icon: faCamera,
     enabled: false,
+    hidden: false,
   },
   {
     path: gamingPagePath,
@@ -68,6 +75,7 @@ export const getAppRoutes: IRoute[] = [
     labelKey: gaming_page_key,
     icon: faGamepad,
     enabled: false,
+    hidden: false,
   },
   {
     path: aboutPagePath,
@@ -76,6 +84,7 @@ export const getAppRoutes: IRoute[] = [
     labelKey: about_page_key,
     icon: faUser,
     enabled: false,
+    hidden: false,
   },
   {
     path: contactPagePath,
@@ -84,6 +93,7 @@ export const getAppRoutes: IRoute[] = [
     labelKey: contact_page_key,
     icon: faAddressCard,
     enabled: false,
+    hidden: false,
   },
   {
     path: cvPagePath,
@@ -91,6 +101,16 @@ export const getAppRoutes: IRoute[] = [
     component: CVPage,
     labelKey: cv_page_key,
     icon: faFile,
-    enabled: true,
+    enabled: false,
+    hidden: false,
+  },
+  {
+    path: healthPagePath,
+    index: true,
+    component: HealthPage,
+    labelKey: health_page_key,
+    icon: faStethoscope,
+    enabled: false,
+    hidden: true,
   },
 ];

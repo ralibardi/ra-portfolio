@@ -10,17 +10,13 @@ import styles from '../../assets/topbar.module.scss';
 const Topbar: FunctionComponent = () => {
   const location = useLocation();
   const enabledRoutes = useMemo(
-    () => getAppRoutes.filter((r) => r.enabled),
+    () => getAppRoutes.filter((r) => r.enabled).filter((r) => !r.hidden),
     [],
   );
 
-  if (!enabledRoutes || enabledRoutes.length <= 1) {
-    return null;
-  }
-
   return (
     <nav className={styles.container} data-testid="topbar-container">
-      <ComponentArray
+      {(enabledRoutes && enabledRoutes.length > 1) && <ComponentArray
         render={(route: IRoute) => (
           <NavLink
             key={route.path}
@@ -30,7 +26,7 @@ const Topbar: FunctionComponent = () => {
           />
         )}
         of={enabledRoutes}
-      />
+      />}
     </nav>
   );
 };

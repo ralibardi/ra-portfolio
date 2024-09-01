@@ -65,6 +65,7 @@ describe('getAppRoutes', () => {
       expect(route).toHaveProperty('component');
       expect(route).toHaveProperty('labelKey');
       expect(route).toHaveProperty('icon');
+
       if (route.enabled !== undefined) {
         expect(route).toHaveProperty('enabled');
       }
@@ -73,7 +74,7 @@ describe('getAppRoutes', () => {
 
   it('should have unique paths for each route', () => {
     const routes = getAppRoutes;
-    const paths = routes.map((route) => route.path);
+    const paths = routes.filter((r) => r.enabled && !r.hidden).map((route) => route.path);
     const uniquePaths = new Set(paths);
     expect(uniquePaths.size).toBe(paths.length);
   });

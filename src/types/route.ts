@@ -8,6 +8,7 @@ interface IRoute {
   labelKey: string;
   icon: IconDefinition;
   enabled?: boolean;
+  hidden?: boolean;
   children?: IRoute[];
 }
 

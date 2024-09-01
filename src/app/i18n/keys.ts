@@ -9,6 +9,7 @@ export const coding_page_key = 'pages.coding.name';
 export const photography_page_key = 'pages.photography.name';
 export const gaming_page_key = 'pages.gaming.name';
 export const cv_page_key = 'pages.cv.name';
+export const health_page_key = 'pages.health.name';
 
 // Header
 export const header_title_key = 'header.title';

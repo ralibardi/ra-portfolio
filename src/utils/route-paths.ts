@@ -6,3 +6,4 @@ export const gamingPagePath = '/gaming';
 export const aboutPagePath = '/about';
 export const contactPagePath = '/contact';
 export const cvPagePath = '/cv';
+export const healthPagePath = '/health';
