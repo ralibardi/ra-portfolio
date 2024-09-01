@@ -7,7 +7,7 @@ import {
   faHome,
   faTerminal,
   faUser,
-  faStethoscope
+  faStethoscope,
 } from '@fortawesome/free-solid-svg-icons';
 import IRoute from '@type/route';
 import {
@@ -18,7 +18,7 @@ import {
   homePagePath,
   photographyPagePath,
   cvPagePath,
-  healthPagePath
+  healthPagePath,
 } from './route-paths';
 import {
   about_page_key,
@@ -28,7 +28,7 @@ import {
   gaming_page_key,
   home_page_key,
   photography_page_key,
-  health_page_key
+  health_page_key,
 } from '@app/i18n/keys';
 
 const HomePage = lazy(() => import('@pages/home-page'));

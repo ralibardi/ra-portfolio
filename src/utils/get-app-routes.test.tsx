@@ -74,7 +74,10 @@ describe('getAppRoutes', () => {
 
   it('should have unique paths for each route', () => {
     const routes = getAppRoutes;
-    const paths = routes.filter((r) => r.enabled && !r.hidden).map((route) => route.path);
+    const paths = routes
+      .filter((r) => r.enabled && !r.hidden)
+      .map((route) => route.path);
+
     const uniquePaths = new Set(paths);
     expect(uniquePaths.size).toBe(paths.length);
   });

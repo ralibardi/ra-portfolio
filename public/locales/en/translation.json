@@ -27,6 +27,9 @@
     "cv": {
       "name": "CV"
     },
+    "health": {
+      "name": "Health"
+    },
     "error": {
       "name": "Error",
       "title": "Ooopss... There's something wrong",
