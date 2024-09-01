@@ -22,7 +22,10 @@ describe('ErrorBoundary', () => {
       </ErrorBoundary>,
     );
 
-    const childComponent = await act(() => screen.getByText('Child Component'));
+    const { childComponent } = await act(() => {
+      const childComponent = screen.getByText('Child Component');
+      return { childComponent };
+    });
 
     expect(childComponent).toBeInTheDocument();
   });
@@ -39,9 +42,11 @@ describe('ErrorBoundary', () => {
       </ErrorBoundary>,
     );
 
-    const errorComponent = await act(() =>
-      screen.getByTestId('error-container'),
-    );
+    const { errorComponent } = await act(() => {
+      const errorComponent = screen.getByTestId('error-container');
+      return { errorComponent };
+    });
+
     expect(errorComponent).toBeInTheDocument();
   });
 
@@ -57,9 +62,11 @@ describe('ErrorBoundary', () => {
       </ErrorBoundary>,
     );
 
-    const errorComponent = await act(() =>
-      screen.getByTestId('error-header-container'),
-    );
+    const { errorComponent } = await act(() => {
+      const errorComponent = screen.getByTestId('error-header-container');
+      return { errorComponent };
+    });
+
     expect(errorComponent).toBeInTheDocument();
   });
 
@@ -75,8 +82,12 @@ describe('ErrorBoundary', () => {
       </ErrorBoundary>,
     );
 
-    const errorComponent = await act(() => screen.getByTestId('error-title'));
-    expect(errorComponent).toBeInTheDocument();
+    const { button } = await act(() => {
+      const button = screen.getByTestId('button-with-icon-container');
+      return { button };
+    });
+
+    expect(button).toBeInTheDocument();
   });
 
   it('should render error message when there is an error', async () => {
@@ -91,8 +102,12 @@ describe('ErrorBoundary', () => {
       </ErrorBoundary>,
     );
 
-    const errorComponent = await act(() => screen.getByTestId('error-title'));
-    expect(errorComponent).toBeInTheDocument();
+    const { label } = await act(() => {
+      const label = screen.getByTestId('button-with-icon-label');
+      return { label };
+    });
+
+    expect(label).toBeInTheDocument();
   });
 
   it('should render error details when there is an error', async () => {
@@ -107,7 +122,12 @@ describe('ErrorBoundary', () => {
       </ErrorBoundary>,
     );
 
-    const errorComponent = await act(() => screen.getByTestId('error-details'));
-    expect(errorComponent).toBeInTheDocument();
+    const { details } = await act(() => {
+      const details = screen.getByTestId('error-details');
+
+      return { details };
+    });
+
+    expect(details).toBeInTheDocument();
   });
 });

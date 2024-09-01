@@ -1,66 +1,46 @@
-import React, { ErrorInfo } from 'react';
-import { withTranslation, WithTranslation } from 'react-i18next';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { FunctionComponent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { error_message_title_key, go_back_key } from '@app/i18n/keys';
+import { error_message_title_key } from '@app/i18n/keys';
+import {
+  ErrorBoundary as ReactErrorBoundary,
+  FallbackProps,
+} from 'react-error-boundary';
+import { ButtonWithIcon } from '@components/buttons';
 
 import styles from '../assets/error-boundary.module.scss';
 
-interface IErrorBoundaryProps extends WithTranslation {
+interface IErrorBoundaryProps {
   children: React.ReactNode;
 }
 
-interface IErrorBoundaryState {
-  hasError: boolean;
-  error: Error | null;
-  errorInfo: ErrorInfo | null;
-}
+const ErrorFallback: FunctionComponent<FallbackProps> = ({ error }) => {
+  const { t } = useTranslation();
 
-class ErrorBoundary extends React.Component<
-  IErrorBoundaryProps,
-  IErrorBoundaryState
-> {
-  constructor(props: IErrorBoundaryProps) {
-    super(props);
-    this.state = { hasError: false, error: null, errorInfo: null };
-  }
+  return (
+    <div className={styles.container} data-testid="error-container">
+      <div className={styles.header} data-testid="error-header-container">
+        <ButtonWithIcon
+          icon={faArrowLeft}
+          onClick={() => window.history.back()}
+          label={t(error_message_title_key)}
+        />
+      </div>
+      <details className={styles.description} data-testid="error-details">
+        {error.message}
+        <br />
+        {error.stack.toString()}
+      </details>
+    </div>
+  );
+};
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    this.setState({
-      hasError: true,
-      error,
-      errorInfo,
-    });
-  }
+const ErrorBoundary: React.FC<IErrorBoundaryProps> = ({ children }) => {
+  return (
+    <ReactErrorBoundary FallbackComponent={ErrorFallback}>
+      {children}
+    </ReactErrorBoundary>
+  );
+};
 
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className={styles.container} data-testid="error-container">
-          <div className={styles.header} data-testid="error-header-container">
-            <button
-              className={styles.button}
-              onClick={() => window.history.back()}
-              data-testid="error-back-button"
-            >
-              <FontAwesomeIcon icon={faArrowLeft} />
-              {this.props.t(go_back_key)}
-            </button>
-            <h1 className={styles.header__title} data-testid="error-title">
-              {this.props.t(error_message_title_key)}
-            </h1>
-          </div>
-          <details className={styles.description} data-testid="error-details">
-            {this.state.error?.toString()}
-            <br />
-            {this.state.errorInfo?.componentStack}
-          </details>
-        </div>
-      );
-    }
-
-    return this.props.children;
-  }
-}
-
-export default withTranslation()(ErrorBoundary);
+export default ErrorBoundary;
