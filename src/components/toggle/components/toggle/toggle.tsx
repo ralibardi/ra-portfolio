@@ -10,25 +10,25 @@ const Toggle: FunctionComponent<IToggleProps> = ({
 }) => {
   const [isOn, setIsOn] = useState(checked);
 
-  const toggleSwitch = (event: React.MouseEvent<HTMLDivElement>) => {
+  const toggleSwitch = (event: React.MouseEvent<HTMLButtonElement>) => {
     setIsOn(!isOn);
     onClick && onClick(event);
   };
 
   return (
-    <div
+    <button
       className={styles.toggle}
       data-ison={isOn}
       onClick={toggleSwitch}
-      data-testid="toggle-thumb-container"
+      data-testid="toggle-container"
     >
       <motion.div
-        className={styles.thumb}
-        data-testid="toggle-thumb"
+        className={styles.switch}
+        data-testid="toggle-switch"
         layout
         transition={spring}
       />
-    </div>
+    </button>
   );
 };
 

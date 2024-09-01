@@ -58,7 +58,6 @@ export default ({ mode }: ConfigEnv) => {
       ...baseConfig,
       build: {
         ...baseConfig.build,
-
         sourcemap: true,
       },
     };

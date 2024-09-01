@@ -11,34 +11,36 @@ describe('Toggle', () => {
     customRender(<Toggle onClick={handleClick} />);
 
     // ACT
-    const { thumbContainer, thumb } = await act(() => {
-      const thumbContainer = screen.getByTestId('toggle-thumb-container');
-      const thumb = screen.getByTestId('toggle-thumb');
-      return { thumbContainer, thumb };
+    const { switchContainer, switchElement } = await act(() => {
+      const switchContainer = screen.getByTestId('toggle-container');
+      const switchElement = screen.getByTestId('toggle-switch');
+      return { switchContainer, switchElement };
     });
 
     // ASSERT
-    expect(thumbContainer).not.toBeNull();
-    expect(thumb).not.toBeNull();
+    expect(switchContainer).not.toBeNull();
+    expect(switchElement).not.toBeNull();
   });
 
   test('handles click events', async () => {
     // ARRANGE
-    const handleClick = jest.fn();
-    customRender(<Toggle onClick={handleClick} />);
+    const onClick = jest.fn();
+    customRender(<Toggle onClick={onClick} />);
 
     // ACT
-    const { thumbContainer, thumb } = await act(async () => {
-      const thumbContainer = screen.getByTestId('toggle-thumb-container');
-      const thumb = screen.getByTestId('toggle-thumb');
-      await userEvent.click(thumbContainer);
+    const { switchContainer, switchElement } = await act(() => {
+      const switchContainer = screen.getByTestId('toggle-container');
+      const switchElement = screen.getByTestId('toggle-switch');
 
-      return { thumbContainer, thumb };
+      return { switchContainer, switchElement };
     });
 
     // ASSERT
-    expect(thumbContainer).not.toBeNull();
-    expect(thumb).not.toBeNull();
-    expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(switchContainer).not.toBeNull();
+    expect(switchElement).not.toBeNull();
+
+    await userEvent.click(switchElement);
+
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

@@ -5,24 +5,30 @@ import React, {
   useState,
   useEffect,
   FunctionComponent,
+  useCallback,
+  useMemo,
 } from 'react';
 
 const ThemeContext = createContext<IThemeContext | null>(null);
 
+const getPreferredTheme = () => {
+  const preferredTheme = localStorage.getItem('theme') as Theme;
+
+  if (preferredTheme) {
+    return preferredTheme;
+  }
+
+  const prefersDark =
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  return prefersDark ? 'dark' : 'light';
+};
+
 export const ThemeProvider: FunctionComponent<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(() => {
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      return storedTheme as Theme;
-    } else {
-      const prefersDark =
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return prefersDark ? 'dark' : 'light';
-    }
-  });
+  const [theme, setTheme] = useState<Theme>(getPreferredTheme);
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
@@ -30,11 +36,6 @@ export const ThemeProvider: FunctionComponent<{
     const prefersDark =
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark && theme === 'system') {
-      setTheme('dark');
-    } else if (!prefersDark && theme === 'system') {
-      setTheme('light');
-    }
 
     document.body.classList.toggle(
       'dark-mode',
@@ -42,11 +43,12 @@ export const ThemeProvider: FunctionComponent<{
     );
   }, [theme]);
 
-  const toggleTheme = React.useCallback(() => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  }, [setTheme]);
+  const toggleTheme = useCallback(() => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+  }, [theme]);
 
-  const contextValue = React.useMemo(
+  const contextValue = useMemo(
     () => ({ theme, toggleTheme }),
     [theme, toggleTheme],
   );
