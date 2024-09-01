@@ -1,4 +1,5 @@
-import React, { FunctionComponent, lazy } from 'react';
+import React, { FunctionComponent, lazy, useMemo } from 'react';
+import { getAppRoutes } from '@utils/get-app-routes';
 
 const Topbar = lazy(() => import('@components/topbar'));
 const CompanyInfo = lazy(() => import('@components/company-info'));
@@ -7,10 +8,15 @@ const ThemeToggle = lazy(() => import('@components/theme-toggle'));
 import styles from '../assets/header.module.scss';
 
 const Header: FunctionComponent = () => {
+  const enabledRoutes = useMemo(
+    () => getAppRoutes.filter((r) => r.enabled).filter((r) => !r.hidden),
+    [],
+  );
+
   return (
     <header className={styles.container}>
       <div className={styles.topbar}>
-        <Topbar />
+        <Topbar routes={enabledRoutes} />
       </div>
       <div className={styles.subContainer}>
         <div className={styles.themeToggle}>

@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { act, customRender, screen } from '@utils/test-utilities';
 import Topbar from './topbar';
-import {getAppRoutes} from '@utils/get-app-routes';
 import IRoute from '@type/route';
 import { faAccessibleIcon } from '@fortawesome/free-brands-svg-icons';
 
@@ -27,14 +26,12 @@ describe('Topbar', () => {
       labelKey: 'test2',
       icon: faAccessibleIcon,
       enabled: true,
-      hidden: false
-    }
+      hidden: false,
+    },
   ];
 
-  jest.mock('@utils/get-app-routes');
-
   it('renders without crashing', async () => {
-    customRender(<Topbar />);
+    customRender(<Topbar routes={mockRoutes} />);
 
     const element = await act(() => screen.getByTestId('topbar-container'));
 
@@ -42,16 +39,18 @@ describe('Topbar', () => {
     expect(element).toBeInTheDocument();
   });
 
-  // it('renders the correct number of nav links', async () => {
-  //   customRender(<Topbar />);
+  it('renders the correct number of nav links', async () => {
+    customRender(<Topbar routes={mockRoutes} />);
 
-  //   const { element } = await act(() => {
-  //     const element = screen.getAllByTestId('nav-link-label');
+    const { element } = await act(() => {
+      const element = screen.getAllByTestId('nav-link-label');
 
-  //     return { element };
-  //   });
+      return { element };
+    });
 
-  //   expect(element).not.toBeNull();
-  //   expect(element.length).toBe(getAppRoutes.filter((r) => r.enabled && !r.hidden).length);
-  // });
+    expect(element).not.toBeNull();
+    expect(element.length).toBe(
+      mockRoutes.filter((r) => r.enabled && !r.hidden).length,
+    );
+  });
 });
