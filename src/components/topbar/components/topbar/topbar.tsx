@@ -13,17 +13,19 @@ const Topbar: FunctionComponent<TopbarProps> = ({ routes }) => {
   return (
     <nav className={styles.container} data-testid="topbar-container">
       {routes && routes.length > 1 && (
-        <ComponentArray
-          render={(route: IRoute) => (
-            <NavLink
-              key={route.path}
-              route={route}
-              isActive={location.pathname === route.path}
-              data-testid="topbar-nav-link"
-            />
-          )}
-          of={routes}
-        />
+        <div className={styles.padding}>
+          <ComponentArray
+            render={(route: IRoute) => (
+              <NavLink
+                key={route.path}
+                route={route}
+                isActive={location.pathname === route.path}
+                data-testid="topbar-nav-link"
+              />
+            )}
+            of={routes}
+          />
+        </div>
       )}
     </nav>
   );
