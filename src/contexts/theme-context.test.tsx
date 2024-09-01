@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useContext } from 'react';
 import { act, customRender, screen } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
 import ThemeContext, { ThemeProvider } from './theme-context';
@@ -20,9 +20,9 @@ describe('ThemeProvider', () => {
 
   it('provides a theme context value', () => {
     // ARRANGE
-    let themeContextValue: IThemeContext | null = null;
+    let themeContextValue: IThemeContext | null | Error = null;
     const TestComponent = () => {
-      themeContextValue = React.useContext(ThemeContext);
+      themeContextValue = useContext(ThemeContext);
       return null;
     };
 
@@ -36,15 +36,15 @@ describe('ThemeProvider', () => {
     // ASSERT
     expect(themeContextValue).not.toBeNull();
     expect(themeContextValue).toHaveProperty('theme');
-    expect(themeContextValue!.theme).toBe('light');
+    expect((themeContextValue as unknown as IThemeContext).theme).toBe('light');
   });
 
   it('allows theme to be toggled', async () => {
     // ARRANGE
-    let themeContextValue: IThemeContext | null = null;
+    let themeContextValue: IThemeContext | Error | null = null;
     const TestComponent: FunctionComponent = () => {
       themeContextValue = useTheme();
-      const { toggleTheme } = themeContextValue;
+      const { toggleTheme } = themeContextValue as IThemeContext;
       return (
         <button onClick={toggleTheme} data-testid="button">
           Toggle Theme
@@ -68,7 +68,8 @@ describe('ThemeProvider', () => {
 
     // ASSERT
     expect(buttonContainer).not.toBeNull();
-    expect(themeContextValue!.theme).toBe('dark');
+    expect(themeContextValue).not.toBeNull();
+    expect((themeContextValue as unknown as IThemeContext).theme).toBe('dark');
   });
 });
 
@@ -102,10 +103,9 @@ describe('ThemeProvider - system theme preference and toggle functionality', () 
   it('toggles theme from light to dark and updates localStorage', async () => {
     // ARRANGE
     localStorage.setItem('theme', 'light');
-    let themeContextValue: IThemeContext | null = null;
     const TestComponent: FunctionComponent = () => {
-      themeContextValue = useTheme();
-      const { toggleTheme } = themeContextValue;
+      const themeContextValue = useTheme();
+      const { toggleTheme } = themeContextValue as IThemeContext;
       return (
         <button onClick={toggleTheme} data-testid="toggle-theme">
           Toggle Theme
@@ -130,10 +130,9 @@ describe('ThemeProvider - system theme preference and toggle functionality', () 
   it('toggles theme from dark to light and updates localStorage', async () => {
     // ARRANGE
     localStorage.setItem('theme', 'dark');
-    let themeContextValue: IThemeContext | null = null;
     const TestComponent: FunctionComponent = () => {
-      themeContextValue = useTheme();
-      const { toggleTheme } = themeContextValue;
+      const themeContextValue = useTheme();
+      const { toggleTheme } = themeContextValue as IThemeContext;
       return (
         <button onClick={toggleTheme} data-testid="toggle-theme">
           Toggle Theme
