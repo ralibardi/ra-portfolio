@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from '@app/app';
 import ErrorBoundary from '@components/error-boundary';
 import { ThemeProvider } from '@contexts/theme-context';
+import PWAPrompt from 'react-ios-pwa-prompt';
 
 import '@assets/index.scss';
 
@@ -15,6 +16,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <ErrorBoundary>
         <ThemeProvider>
+          <PWAPrompt />
           <App />
         </ThemeProvider>
       </ErrorBoundary>
