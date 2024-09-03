@@ -1,34 +1,32 @@
 @use '@assets/global' as *;
 
 .container {
-    @include flexbox(row, center, center);
+  @include flexbox(row);
 }
 
 .label {
-    margin-right: $spacing-sm;
-    @include font-style($font-md, $font-weight-medium, var(--text-colour));
+  margin-right: $spacing-sm;
+  @include font-style($font-md, $font-weight-medium, var(--text-colour));
 }
 
 .toggle {
-    width: $spacing-2xl;
-    height: $spacing-lg;
-    background-color: var(--light-grey);
-    padding: $spacing-2xs;
-    cursor: pointer;
-    @include flexbox(row, 'flex-start');
-    -webkit-user-select: none;
-    user-select: none;
-    @include border-radius($spacing-4xl);
+  background-color: var(--light-grey);
+  padding: $spacing-2xs;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  @include flexbox(row, flex-start, center);
+  @include border-radius($spacing-4xl);
+  @include size($spacing-2xl, $spacing-lg);
 }
 
-.toggle[data-ison="true"] {
-    background-color: var(--accent-colour);
-    justify-content: flex-end;
+.toggle[data-ison='true'] {
+  background-color: var(--accent-colour);
+  justify-content: flex-end;
 }
 
 .switch {
-    width: $spacing-lg;
-    height: $spacing-lg;
-    background-color: var(--background-colour);
-    @include border-radius($percentage-100);
+  background-color: var(--background-colour);
+  @include border-radius($percentage-100);
+  @include size($spacing-md, $spacing-md);
 }

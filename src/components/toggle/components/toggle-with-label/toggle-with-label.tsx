@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 import { IToggleWithLabelProps } from '../../types/toggle-with-label-props';
 import { motion } from 'framer-motion';
 
-import styles from '../../assets/toggle.module.scss';
+import styles from '../../assets/toggle-with-label.module.scss';
 
 const ToggleWithLabel: FunctionComponent<IToggleWithLabelProps> = ({
   label,

@@ -1,43 +1,50 @@
 @use '@assets/global' as *;
 
-.toggle {
-    width: calc($spacing-2xl);
-    height: $spacing-lg;
-    background-color: var(--light-grey);
-    padding: $spacing-2xs;
-    cursor: pointer;
-    @include flexbox(row, center, center);
-    -webkit-user-select: none;
-    user-select: none;
-    @include border-radius($spacing-4xl);
+.container {
+  margin-left: $spacing-md;
+  position: relative;
+  padding: $spacing-2xs $spacing-xs;
+  cursor: pointer;
+  @include size(
+    calc($spacing-xl + $spacing-xs),
+    calc($spacing-xl + $spacing-xs)
+  );
+  @include box-shadow(
+    $spacing-0,
+    $spacing-0,
+    $spacing-sm,
+    $spacing-3xs,
+    var(--text-colour)
+  );
+  @include border-radius($spacing-xl);
+  @include flexbox(row, center, center);
 }
 
-.toggle[data-ison="true"] {
-    background-color: var(--accent-colour);
+.toggle[data-ison='true'] {
+  background-color: var(--accent-colour);
+  justify-content: flex-end;
 }
 
 .switch {
-    width: $spacing-lg;
-    height: $spacing-lg;
-    background-color: var(--background-colour);
-    @include border-radius($percentage-100);
+  background-color: var(--background-colour);
+  @include border-radius($percentage-100);
+  @include size($spacing-md, $spacing-md);
 }
 
 .iconLeft {
-    width: $spacing-lg;
-    height: $spacing-lg;
-    color: $grey-2;
-    padding-right: $spacing-sm;
+  color: $grey-2;
+  padding-right: $spacing-sm;
+  @include size($spacing-lg, $spacing-lg);
 }
 
 .iconRight {
-    width: $spacing-lg;
-    height: $spacing-lg;
-    color: var(--accent-colour);
-    padding-left: $spacing-sm;
+  color: var(--accent-colour);
+  padding-left: $spacing-sm;
+  @include size($spacing-lg, $spacing-lg);
+
 }
 
 .disabled {
-    cursor: not-allowed;
-    display: none;
+  cursor: not-allowed;
+  display: none;
 }
