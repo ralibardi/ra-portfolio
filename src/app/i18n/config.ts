@@ -8,13 +8,16 @@ i18next
   .use(HttpApi)
   .use(initReactI18next)
   .init({
-    lng: 'en',
     fallbackLng: 'en',
     debug: false,
     interpolation: {
       escapeValue: false,
     },
+    detection: {
+      order: ['navigator', 'htmlTag', 'path', 'subdomain'],
+      caches: ['localStorage', 'cookie'],
+    },
   })
-  .catch((error) => console.error('i18n error:', error));
+  .catch(console.error);
 
 export default i18next;
