@@ -3,18 +3,6 @@ import { act, render, screen } from '@testing-library/react';
 import ErrorBoundary from './error-boundary';
 
 describe('ErrorBoundary', () => {
-  let consoleSpy: jest.SpyInstance;
-
-  beforeEach(() => {
-    // Mock console.error before each test
-    consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-  });
-
-  afterEach(() => {
-    // Restore console.error after each test
-    consoleSpy.mockRestore();
-  });
-
   it('should render children when there is no error', async () => {
     render(
       <ErrorBoundary>

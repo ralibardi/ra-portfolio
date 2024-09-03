@@ -1,16 +1,18 @@
 import React, { FunctionComponent, lazy } from 'react';
 import { ComponentArray } from '@utils/component-array';
-import { getSocialLinks } from '../../utils/getSocialLinks';
+import { ISocialLink } from '@components/footer/utils/getSocialLinks';
 
 const IconLink = lazy(() => import('@components/icon-link'));
 
 import styles from '../../assets/footer-socials.module.scss';
 
-const FooterSocials: FunctionComponent = () => {
-  const socialLinks = getSocialLinks();
+interface IFooterSocials {
+  socialLinks: ISocialLink[];
+}
 
+const FooterSocials: FunctionComponent<IFooterSocials> = ({ socialLinks }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="test">
       <ComponentArray
         render={({ icon, link }) => <IconLink icon={icon} linkUrl={link} />}
         of={socialLinks}

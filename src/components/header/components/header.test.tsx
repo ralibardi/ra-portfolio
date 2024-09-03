@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { act, customRender, screen } from '@utils/test-utilities';
 import Header from './header';
 
 // Mock components
 jest.mock('@components/company-info', () => {
-  const CompanyInfoMock: React.FC = () => (
+  const CompanyInfoMock: FunctionComponent = () => (
     <div data-testid="company-info">Mock CompanyInfo</div>
   );
   return CompanyInfoMock;
 });
+
 jest.mock('@components/topbar', () => {
-  const TopbarMock: React.FC = () => (
+  const TopbarMock: FunctionComponent = () => (
     <div data-testid="topbar">Mock Topbar</div>
   );
   return TopbarMock;
 });
+
 jest.mock('@components/theme-toggle', () => {
-  const ThemeToggleMock: React.FC = () => (
+  const ThemeToggleMock: FunctionComponent = () => (
     <div data-testid="theme-toggle">Mock ThemeToggle</div>
   );
   return ThemeToggleMock;

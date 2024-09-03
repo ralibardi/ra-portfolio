@@ -1,10 +1,10 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 interface IRoute {
   path: string;
   index: boolean;
-  component: React.FC;
+  component: FunctionComponent;
   labelKey: string;
   icon: IconDefinition;
   enabled?: boolean;

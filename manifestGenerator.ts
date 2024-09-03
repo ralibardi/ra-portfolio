@@ -1,15 +1,10 @@
 // manifestGenerator.js
 import fs from 'fs';
 import handlebars from 'handlebars';
-import * as sass from 'sass';
 
 export function generateManifest() {
   // Read _colours.scss
   const scssContent = fs.readFileSync('src/assets/_colours.scss', 'utf8');
-
-  // Compile SCSS to CSS
-  const cssResult = sass.compileString(scssContent);
-  console.log(cssResult.css);
 
   // Extract primary-1 colour value
   const primaryColourMatch = scssContent.match(

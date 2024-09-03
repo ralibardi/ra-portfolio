@@ -13,7 +13,7 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 import socialLinks from './socialLinks.json';
 
-interface ISocialLink {
+export interface ISocialLink {
   icon: IconDefinition;
   link: string;
   order: number;
