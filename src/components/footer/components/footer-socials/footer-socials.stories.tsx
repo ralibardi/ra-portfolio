@@ -4,7 +4,7 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { ISocialLink } from '../../utils/getSocialLinks';
 
 const meta: Meta<typeof FooterSocials> = {
-  title: 'Buttons/FooterSocials',
+  title: 'Links/FooterSocials',
   component: FooterSocials,
 };
 

@@ -11,11 +11,15 @@ interface IFooterSocials {
 }
 
 const FooterSocials: FunctionComponent<IFooterSocials> = ({ socialLinks }) => {
+  const socialLinksSorted = socialLinks
+    .sort((a, b) => a.order - b.order)
+    .filter((link) => !link.isHidden);
+
   return (
     <div className={styles.container} data-testid="test">
       <ComponentArray
         render={({ icon, link }) => <IconLink icon={icon} linkUrl={link} />}
-        of={socialLinks}
+        of={socialLinksSorted}
       />
     </div>
   );

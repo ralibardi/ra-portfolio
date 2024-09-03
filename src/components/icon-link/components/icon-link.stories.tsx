@@ -3,7 +3,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import IconLink from './icon-link';
 
 const meta: Meta<typeof IconLink> = {
-  title: 'Buttons/IconLink',
+  title: 'Links/IconLink',
   component: IconLink,
 };
 
