@@ -16,7 +16,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <ErrorBoundary>
         <ThemeProvider>
-          <PWAPrompt appIconPath="/public/favicon.ico" />
+          <PWAPrompt appIconPath="public/favicon.ico" />
           <App />
         </ThemeProvider>
       </ErrorBoundary>
