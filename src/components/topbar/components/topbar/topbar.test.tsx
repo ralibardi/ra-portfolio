@@ -1,7 +1,7 @@
 import React from 'react';
 import { customRender, screen } from '@utils/test-utilities';
 import Topbar from './topbar';
-import IRoute from '@types/route';
+import IRoute from '@type/route';
 import { faAccessibleIcon } from '@fortawesome/free-brands-svg-icons';
 
 const TestableComponent = () => <div />;

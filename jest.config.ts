@@ -36,7 +36,7 @@ const config: Config = {
     '^@lib/(.*)$': '<rootDir>/src/lib/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@tests/(.*)$': '<rootDir>/src/tests/$1',
-    '^@types/(.*)$': '<rootDir>/src/types/$1',
+    '^@type(.*)$': '<rootDir>/src/type/$1',
     '^@utils/(.*)$': '<rootDir>/src/utils/$1',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],

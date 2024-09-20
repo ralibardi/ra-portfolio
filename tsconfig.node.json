@@ -22,7 +22,7 @@
       "@lib/*": ["lib/*"],
       "@pages/*": ["pages/*"],
       "@tests/*": ["tests/*"],
-      "@types/*": ["types/*"],
+      "@type*": ["type/*"],
       "@utils/*": ["utils/*"]
     }
   },

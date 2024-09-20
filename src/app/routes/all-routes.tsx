@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import React, { FunctionComponent, Suspense, lazy } from 'react';
 import { getAppRoutes } from '@utils/get-app-routes';
-import IRoute from '@types/route';
+import IRoute from '@type/route';
 import { rootPath } from '@utils/route-paths';
 
 const Loading = lazy(() => import('@components/loading'));

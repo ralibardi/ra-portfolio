@@ -10,7 +10,7 @@ import {
   faStethoscope,
   faX,
 } from '@fortawesome/free-solid-svg-icons';
-import IRoute from '@types/route';
+import IRoute from '@type/route';
 import {
   aboutPagePath,
   codingPagePath,

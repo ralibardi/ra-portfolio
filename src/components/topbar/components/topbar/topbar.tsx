@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import IRoute from '@types/route';
+import IRoute from '@type/route';
 import { useLocation } from 'react-router-dom';
 import NavLink from '../nav-link/nav-link';
 import { ITopbarProps } from '../../types/topbar-props';

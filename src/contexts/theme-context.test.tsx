@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { customRender, screen, act } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
 import ThemeContext, { ThemeProvider } from './theme-context';
-import { IThemeContext } from '@types/theme-context';
+import { IThemeContext } from '@type/theme-context';
 import { useTheme } from '@hooks/use-theme';
 
 describe('ThemeProvider', () => {

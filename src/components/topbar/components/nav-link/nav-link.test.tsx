@@ -1,7 +1,7 @@
 import React from 'react';
 import { customRender, screen } from '@utils/test-utilities';
 import NavLink from './nav-link';
-import IRoute from '@types/route';
+import IRoute from '@type/route';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 describe('NavLink', () => {

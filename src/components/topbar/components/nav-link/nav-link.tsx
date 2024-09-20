@@ -1,5 +1,5 @@
 import React, { FunctionComponent, memo } from 'react';
-import IRoute from '@types/route';
+import IRoute from '@type/route';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
