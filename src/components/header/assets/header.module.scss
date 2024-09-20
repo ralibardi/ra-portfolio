@@ -1,29 +1,16 @@
-@use '@assets\/global' as *;
+@use '@assets/global' as *;
 
 .container {
     position: fixed;
     top: 0;
-    width: 100%;
+    width: map-get($percentage, 100);
     @include flexbox(column, space-between, center);
     overflow: hidden;
-    background-color: linear-gradient(var(--foreground-colour), var(--background-colour));
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    z-index: 1;
+    background: linear-gradient(var(--foreground-colour), var(--background-colour));
+    backdrop-filter: blur(map-get($spacing, lg));
+    z-index: map-get($z-index, top);
 
-    @include breakpoint('mobile-landscape') {
-        @include flexbox(row, space-between, center);
-    }
-
-    @include breakpoint('tablet') {
-        @include flexbox(row, space-between, center);
-    }
-
-    @include breakpoint('tablet-landscape') {
-        @include flexbox(row, space-between, center);
-    }
-
-    @include breakpoint('desktop') {
+    @media (min-width: 480px) {
         @include flexbox(row, space-between, center);
     }
 }
@@ -32,15 +19,7 @@
     @include flexbox(row, space-between, center);
     order: -1;
 
-    @include breakpoint('tablet') {
-        order: 2;
-    }
-
-    @include breakpoint('tablet-landscape') {
-        order: 2;
-    }
-
-    @include breakpoint('desktop') {
+    @media (min-width: 768px) {
         order: 2;
     }
 }
@@ -48,7 +27,7 @@
 .companyInfo,
 .topbar,
 .themeToggle {
-    padding: $spacing-lg;
+    padding: map-get($spacing, lg);
 }
 
 .topbar {

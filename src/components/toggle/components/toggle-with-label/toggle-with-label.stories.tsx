@@ -4,23 +4,28 @@ import ToggleWithLabel from './toggle-with-label';
 const meta: Meta<typeof ToggleWithLabel> = {
   title: 'Toggles/ToggleWithLabel',
   component: ToggleWithLabel,
+  argTypes: {
+    onClick: { action: 'clicked' },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof ToggleWithLabel>;
+
+const commonArgs = {
+  label: 'Testing',
+};
 
 export const DefaultState: Story = {
   args: {
-    label: 'Testing',
-    onClick: () => alert('Clicked'),
+    ...commonArgs,
   },
 };
 
 export const Checked: Story = {
   args: {
-    label: 'Testing',
+    ...commonArgs,
     checked: true,
-    onClick: () => alert('Clicked'),
   },
 };

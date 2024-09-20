@@ -1,5 +1,5 @@
-import IRoute from '@type/route';
+import type IRoute from '@types/route';
 
-export type TopbarProps = {
-  routes: IRoute[];
-};
+export interface ITopbarProps {
+  readonly routes: readonly IRoute[];
+}

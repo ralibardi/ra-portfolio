@@ -4,13 +4,19 @@ import CompanyInfo from './company-info';
 const meta: Meta<typeof CompanyInfo> = {
   title: 'Components/CompanyInfo',
   component: CompanyInfo,
+  argTypes: {
+    isLabelHidden: {
+      control: 'boolean',
+      description: 'Whether to hide the company label',
+    },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof CompanyInfo>;
 
-export const DefaultState: Story = {
+export const Default: Story = {
   args: {},
 };
 

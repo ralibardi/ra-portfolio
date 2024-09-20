@@ -21,26 +21,23 @@ export interface ISocialLink {
 }
 
 const iconMap: Record<string, IconDefinition> = {
-  faGithub: faGithub,
-  faStackOverflow: faStackOverflow,
-  faAndroid: faAndroid,
-  faAppStore: faAppStore,
-  faLinkedinIn: faLinkedinIn,
-  faInstagram: faInstagram,
-  faXbox: faXbox,
-  faXTwitter: faXTwitter,
-  faSpotify: faSpotify,
+  faGithub,
+  faStackOverflow,
+  faAndroid,
+  faAppStore,
+  faLinkedinIn,
+  faInstagram,
+  faXbox,
+  faXTwitter,
+  faSpotify,
 };
-function getIconDefinition(iconName: string): IconDefinition {
-  return iconMap[iconName];
-}
 
 export function getSocialLinks(): ISocialLink[] {
   return socialLinks
+    .filter((link) => !link.isHidden)
     .map((link) => ({
       ...link,
-      icon: getIconDefinition(link.icon),
+      icon: iconMap[link.icon],
     }))
-    .filter((link) => !link.isHidden)
     .sort((a, b) => a.order - b.order);
 }

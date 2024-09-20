@@ -1,29 +1,26 @@
+$breakpoints: (
+  'mobile-landscape': (min: 480px, max: 767px),
+  'tablet': (min: 768px, max: 991px),
+  'tablet-landscape': (min: 992px, max: 1199px),
+  'desktop': (min: 1200px)
+);
+
 @mixin breakpoint($size) {
-  @if $size =='mobile-landscape' {
-    @media (min-width: 480px) and (max-width: 767px) {
-      @content;
-    }
-  }
+  @if map-has-key($breakpoints, $size) {
+    $breakpoint: map-get($breakpoints, $size);
+    $min: map-get($breakpoint, min);
+    $max: map-get($breakpoint, max);
 
-  @else if $size =='tablet' {
-    @media (min-width: 768px) and (max-width: 991px) {
-      @content;
+    @if $max {
+      @media (min-width: #{$min}) and (max-width: #{$max}) {
+        @content;
+      }
+    } @else {
+      @media (min-width: #{$min}) {
+        @content;
+      }
     }
-  }
-
-  @else if $size =='tablet-landscape' {
-    @media (min-width: 992px) and (max-width: 1199px) {
-      @content;
-    }
-  }
-
-  @else if $size =='desktop' {
-    @media (min-width: 1200px) {
-      @content;
-    }
-  }
-
-  @else {
+  } @else {
     @content;
   }
 }

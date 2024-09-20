@@ -8,8 +8,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./src",
     "paths": {
+      "@/*": ["*"],
       "@public/*": ["../public/*"],
-      "@/*": ["/*"],
       "@app/*": ["app/*"],
       "@routes/*": ["app/routes/*"],
       "@assets/*": ["assets/*"],
@@ -21,7 +21,7 @@
       "@lib/*": ["lib/*"],
       "@pages/*": ["pages/*"],
       "@tests/*": ["tests/*"],
-      "@type/*": ["types/*"],
+      "@types/*": ["types/*"],
       "@utils/*": ["utils/*"]
     },
     "moduleResolution": "bundler",
@@ -29,8 +29,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
-    "strict": true
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true
   },
   "include": ["src", "public", "jest.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],

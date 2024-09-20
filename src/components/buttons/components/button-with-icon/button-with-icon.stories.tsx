@@ -5,13 +5,24 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 const meta: Meta<typeof ButtonWithIcon> = {
   title: 'Buttons/ButtonWithIcon',
   component: ButtonWithIcon,
+  argTypes: {
+    icon: { control: 'object' },
+    label: { control: 'text' },
+    isLoading: { control: 'boolean' },
+    onClick: { action: 'clicked' },
+  },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const Template: Story = {
+  render: (args) => <ButtonWithIcon {...args} />,
+};
+
 export const DefaultState: Story = {
+  ...Template,
   args: {
     icon: faArrowLeft,
     label: 'Testing',
@@ -19,16 +30,17 @@ export const DefaultState: Story = {
 };
 
 export const OnClick: Story = {
+  ...Template,
   args: {
-    icon: faArrowLeft,
-    label: 'Testing',
-    onClick: () => alert('Clicked'),
+    ...DefaultState.args,
+    onClick: () => {},
   },
 };
 
 export const LoadingState: Story = {
+  ...Template,
   args: {
-    icon: faArrowLeft,
+    ...DefaultState.args,
     isLoading: true,
     label: 'Loading',
   },

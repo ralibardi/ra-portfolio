@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { company_name_key } from '@app/i18n/keys';
+import { COMPANY_NAME } from '@app/i18n/keys';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
 import { homePagePath } from '@utils/route-paths';
@@ -11,9 +11,9 @@ interface ICompanyInfoProps {
   isLabelHidden?: boolean;
 }
 
-const CompanyInfo: FunctionComponent<ICompanyInfoProps> = ({
+const CompanyInfo = memo(function companyInfo({
   isLabelHidden = false,
-}) => {
+}: ICompanyInfoProps) {
   const { t } = useTranslation();
 
   return (
@@ -31,12 +31,12 @@ const CompanyInfo: FunctionComponent<ICompanyInfoProps> = ({
         />
         {!isLabelHidden && (
           <span className={styles.label} data-testid="company-info-label">
-            {t(company_name_key)}
+            {t(COMPANY_NAME)}
           </span>
         )}
       </Link>
     </div>
   );
-};
+});
 
 export default CompanyInfo;

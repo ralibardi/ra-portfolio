@@ -9,7 +9,7 @@ import styles from '../assets/header.module.scss';
 
 const Header: FunctionComponent = () => {
   const enabledRoutes = useMemo(
-    () => getAppRoutes.filter((r) => r.enabled).filter((r) => !r.hidden),
+    () => getAppRoutes.filter((r) => r.enabled && !r.hidden),
     [],
   );
 

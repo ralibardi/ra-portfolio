@@ -1,7 +1,7 @@
 import React from 'react';
 import { customRender, screen } from '@utils/test-utilities';
 import NavLink from './nav-link';
-import IRoute from '@type/route';
+import IRoute from '@types/route';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 describe('NavLink', () => {
@@ -13,27 +13,26 @@ describe('NavLink', () => {
     icon: faHome,
   };
 
-  it('should customRender the NavLink component', () => {
-    customRender(<NavLink route={route} isActive={false} />);
-    const linkElement = screen.getByRole('link');
+  const renderNavLink = (isActive: boolean) => {
+    customRender(<NavLink route={route} isActive={isActive} />);
+    return screen.getAllByRole('link');
+  };
+
+  it('should render the NavLink component', () => {
+    const linkElement = renderNavLink(false)[0];
     expect(linkElement).toBeInTheDocument();
   });
 
-  it('should customRender the correct labelKey', () => {
-    customRender(<NavLink route={route} isActive={false} />);
-    const linkElement = screen.getByRole('link');
+  it('should render the correct labelKey', () => {
+    const linkElement = renderNavLink(false)[0];
     expect(linkElement).toHaveTextContent('Home');
   });
 
-  it('should have the active class when isActive is true', () => {
-    customRender(<NavLink route={route} isActive={true} />);
-    const linkElement = screen.getByRole('link');
-    expect(linkElement).toHaveClass('active');
-  });
+  it('should have the correct active class based on isActive prop', () => {
+    const activeLinkElement = renderNavLink(true)[0];
+    expect(activeLinkElement).toHaveClass('active');
 
-  it('should not have the active class when isActive is false', () => {
-    customRender(<NavLink route={route} isActive={false} />);
-    const linkElement = screen.getByRole('link');
-    expect(linkElement).not.toHaveClass('active');
+    const inactiveLinkElement = renderNavLink(false)[1];
+    expect(inactiveLinkElement).not.toHaveClass('active');
   });
 });

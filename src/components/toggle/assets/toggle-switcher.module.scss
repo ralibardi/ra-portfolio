@@ -1,85 +1,114 @@
 @use '@assets/global' as *;
 
 .container {
-  margin-left: $spacing-md;
+  margin-left: map-get($spacing, md);
   position: relative;
-  padding: $spacing-2xs $spacing-xs;
+  padding: map-get($spacing, '2xs') map-get($spacing, xs);
   cursor: pointer;
-  @include size(calc($spacing-xl + $spacing-xs), calc($spacing-xl + $spacing-xs));
-  @include box-shadow($spacing-0, $spacing-0, $spacing-sm, $spacing-3xs, var(--text-colour));
-  @include border-radius($spacing-xl);
+  aspect-ratio: 1/1;
+  @include size(calc(map-get($spacing, xl) + map-get($spacing, xs)));
+  @include box-shadow(
+    0,
+    0,
+    map-get($spacing, sm),
+    map-get($spacing, '3xs'),
+    var(--text-colour)
+  );
+  @include border-radius(map-get($spacing, xl));
   @include flexbox(row, center, center);
 }
 
 .light {
   background-color: $black;
 }
-
 .dark {
   background-color: $white;
 }
 
 .container input {
   display: none;
-}
 
-.container input + div {
-  position: relative;
-  box-shadow: inset $spacing-xs calc(-1 * $spacing-xs) $spacing-0 $spacing-0
-    $white;
-  transform: scale(1) rotate(-2deg);
-  transition:
-    box-shadow $transition-medium ease $transition-0,
-    transform $transition-medium ease $transition-0;
-  @include size(calc($spacing-md + $spacing-2xs), calc($spacing-md + $spacing-2xs));
-  @include border-radius(50%);
-}
+  & + div {
+    position: relative;
+    aspect-ratio: 1/1;
+    @include transform(1, -2deg);
+    @include box-shadow(
+      map-get($spacing, xs),
+      -#{map-get($spacing, xs)},
+      0,
+      0,
+      $white,
+      true
+    );
+    @include size(calc(map-get($spacing, md) + map-get($spacing, '2xs')));
+    @include border-radius(map-get($percentage, 50));
+    @include transition(
+      (box-shadow map-get($transition, medium) ease map-get($transition, 0)),
+      (transform map-get($transition, medium) ease map-get($transition, 0))
+    );
 
-.container input + div::before {
-  content: '';
-  position: absolute;
-  left: $spacing-0;
-  top: $spacing-0;
-  transition: background $transition-fast ease;
-  @include size(inherit, inherit);
-  @include border-radius(inherit);
-}
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      aspect-ratio: 1/1;
+      @include size(inherit);
+    }
 
-.container input + div::after {
-  content: '';
-  margin: calc(-1 * $spacing-3xs) $spacing-0 $spacing-0 calc(-1 * $spacing-3xs);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  box-shadow:
-    $spacing-0 calc(-1 * $spacing-sm) $spacing-0 $black,
-    $spacing-0 $spacing-sm $spacing-0 $black,
-    $spacing-sm $spacing-0 $spacing-0 $black,
-    calc(-1 * $spacing-sm) $spacing-0 $spacing-0 $black,
-    $spacing-xs $spacing-xs $spacing-0 $black,
-    calc(-1 * $spacing-xs) $spacing-xs $spacing-0 $black,
-    $spacing-xs calc(-1 * $spacing-xs) $spacing-0 $black,
-    calc(-1 * $spacing-xs) calc(-1 * $spacing-xs) $spacing-0 $black;
-  transform: scale(0);
-  transition: all $transition-fast ease;
-  @include size($spacing-2xs, $spacing-2xs);
-  @include border-radius(50%);
-}
+    &::before {
+      left: 0;
+      top: 0;
+      @include transition(background map-get($transition, fast) ease);
+      @include border-radius(inherit);
+    }
 
-.container input:checked + div {
-  box-shadow: inset $spacing-xl calc(-1 * $spacing-xl) $spacing-0 $spacing-0 $black;
-  transform: scale(0.5) rotate(0deg);
-  transition:
-    box-shadow $transition-medium ease $transition-0,
-    transform $transition-medium ease $transition-0;
-}
+    &::after {
+      margin: -#{map-get($spacing, '3xs')} 0 0 -#{map-get($spacing, '3xs')};
+      aspect-ratio: 1/1;
 
-.container input:checked + div::before {
-  background: $black;
-  transition: background $transition-fast ease $transition-0;
-}
+      top: map-get($percentage, 50);
+      left: map-get($percentage, 50);
 
-.container input:checked + div::after {
-  transform: scale(1.5);
-  transition: transform $transition-medium ease $transition-0;
+      box-shadow:
+        0 -#{map-get($spacing, sm)} 0 $black,
+        0 map-get($spacing, sm) 0 $black,
+        map-get($spacing, sm) 0 0 $black,
+        -#{map-get($spacing, sm)} 0 0 $black,
+        map-get($spacing, xs) map-get($spacing, xs) 0 $black,
+        -#{map-get($spacing, xs)} map-get($spacing, xs) 0 $black,
+        map-get($spacing, xs) -#{map-get($spacing, xs)} 0 $black,
+        -#{map-get($spacing, xs)} -#{map-get($spacing, xs)} 0 $black;
+
+      @include transform(0);
+      @include size(map-get($spacing, '2xs'));
+      @include border-radius(map-get($percentage, 50));
+      @include transition(all map-get($transition, fast) ease);
+    }
+  }
+
+  &:checked + div {
+    @include transform(0.5, 0deg);
+    @include box-shadow(
+      map-get($spacing, xl),
+      -#{map-get($spacing, xl)},
+      0,
+      0,
+      $black,
+      true
+    );
+
+    &::before {
+      background: $black;
+      @include transition(
+        background map-get($transition, fast) ease map-get($transition, 0)
+      );
+    }
+
+    &::after {
+      @include transform(1.5);
+      @include transition(
+        transform map-get($transition, medium) ease map-get($transition, 0)
+      );
+    }
+  }
 }

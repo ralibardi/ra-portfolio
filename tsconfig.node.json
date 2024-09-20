@@ -7,12 +7,10 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-
-    /* Aliases */
     "baseUrl": "./src",
     "paths": {
+      "@/*": ["*"],
       "@public/*": ["../public/*"],
-      "@/*": ["/*"],
       "@app/*": ["app/*"],
       "@routes/*": ["app/routes/*"],
       "@assets/*": ["assets/*"],
@@ -24,7 +22,7 @@
       "@lib/*": ["lib/*"],
       "@pages/*": ["pages/*"],
       "@tests/*": ["tests/*"],
-      "@type/*": ["types/*"],
+      "@types/*": ["types/*"],
       "@utils/*": ["utils/*"]
     }
   },

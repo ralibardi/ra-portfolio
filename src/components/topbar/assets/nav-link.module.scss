@@ -1,17 +1,15 @@
 @use '@assets/global' as *;
 
-.link,
-.link:hover,
-.active {
+.link {
     @include flexbox(row, center, center);
-    padding: $spacing-2xs $spacing-sm;
+    @include size(auto, map-get($spacing, xl));
+    padding: map-get($spacing, '2xs') map-get($spacing, sm);
     text-decoration: none;
     color: var(--text-colour);
-    height: $spacing-xl;
 
     &:hover,
     &.active {
-        @include border-radius($spacing-lg);
+        @include border-radius(map-get($spacing, lg));
         width: auto;
     }
 
@@ -26,28 +24,24 @@
 
 .icon {
     @include flexbox();
-    color: var(--black-colour);
+    color: var(--text-colour);
 
     .active & {
-        @include font-style($font-md, $font-weight-medium, var(--accent-colour));
+        @include font-style(map-get($font-sizes, md), map-get($font-weights, medium), var(--accent-colour));
     }
 }
 
 .label {
     @include flexbox(row, center, center);
-    @include font-style($font-md, $font-weight-medium, var(--text-colour));
-    margin-left: $spacing-xs;
+    @include font-style(map-get($font-sizes, md), map-get($font-weights, medium), var(--text-colour));
+    margin-left: map-get($spacing, xs);
     display: none;
 
     .active & {
-        @include font-style($font-md, $font-weight-medium, var(--accent-colour));
+        color: var(--accent-colour);
     }
 
-    @include breakpoint('tablet-landscape') {
-        display: block;
-    }
-
-    @include breakpoint('desktop') {
+    @media (min-width: 1024px) {
         display: block;
     }
 }

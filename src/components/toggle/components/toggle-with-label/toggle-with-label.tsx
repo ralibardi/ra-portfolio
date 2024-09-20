@@ -1,6 +1,7 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import { IToggleWithLabelProps } from '../../types/toggle-with-label-props';
 import { motion } from 'framer-motion';
+import { spring } from '@utils/animations/framer-motion-animation';
 
 import styles from '../../assets/toggle-with-label.module.scss';
 
@@ -9,12 +10,12 @@ const ToggleWithLabel: FunctionComponent<IToggleWithLabelProps> = ({
   checked = false,
   onClick,
 }) => {
-  const [isOn, setIsOn] = useState(checked);
-
-  const toggleSwitch = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setIsOn(!isOn);
-    onClick && onClick(event);
-  };
+  const toggleSwitch = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      onClick?.(event);
+    },
+    [onClick],
+  );
 
   return (
     <div className={styles.container} data-testid="toggle-container">
@@ -23,7 +24,7 @@ const ToggleWithLabel: FunctionComponent<IToggleWithLabelProps> = ({
       </label>
       <button
         className={styles.toggle}
-        data-ison={isOn}
+        data-ison={checked}
         onClick={toggleSwitch}
         data-testid="toggle-switch-container"
       >
@@ -36,13 +37,6 @@ const ToggleWithLabel: FunctionComponent<IToggleWithLabelProps> = ({
       </button>
     </div>
   );
-};
-
-const spring = {
-  type: 'spring',
-  stiffness: 700,
-  damping: 30,
-  x: '2rem',
 };
 
 export default ToggleWithLabel;

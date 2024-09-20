@@ -1,8 +1,21 @@
-@use '@assets\/global' as *;
+@use '@assets/global' as *;
 
 .container {
   @include flexbox(row, center, center);
-  width: 100%;
-  height: 100%;
+  @include size(map-get($percentage, 100), 100vh);
   background-color: var(--background-colour);
+  @include font-style(map-get($font-sizes, md), map-get($font-weights, regular));
+  @include transition(background-color map-get($transition, medium));
+
+  @media (prefers-color-scheme: dark) {
+    @include theme(dark);
+  }
+
+  @media (prefers-color-scheme: light) {
+    @include theme(light);
+  }
+
+  &:hover {
+    animation: pulse map-get($transition, medium) ease-in-out;
+  }
 }

@@ -1,44 +1,24 @@
 import React from 'react';
-import { act, customRender, screen } from '@utils/test-utilities';
+import { render, screen } from '@testing-library/react';
 import Loading from './loading';
 
 describe('Loading component', () => {
-  test('renders with default size', async () => {
-    customRender(<Loading />);
-    const { loadingContainerElement, loadingSpinnerElement } = await act(() => {
-      const loadingContainerElement = screen.getByTestId('loading-container');
-      const loadingSpinnerElement = screen.getByTestId('loading-spinner');
+  const renderLoading = (props = {}) => {
+    render(<Loading {...props} />);
+    return {
+      loadingContainer: screen.getByTestId('loading-container'),
+      loadingSpinner: screen.getByTestId('loading-spinner'),
+    };
+  };
 
-      return { loadingContainerElement, loadingSpinnerElement };
-    });
+  test.each([
+    ['default', {}],
+    ['medium', { size: 'medium' }],
+    ['large', { size: 'large' }],
+  ])('renders with %s size', (_, props) => {
+    const { loadingContainer, loadingSpinner } = renderLoading(props);
 
-    expect(loadingContainerElement).not.toBeNull();
-    expect(loadingSpinnerElement).not.toBeNull();
-  });
-
-  test('renders with medium size', async () => {
-    customRender(<Loading size="medium" />);
-    const { loadingContainerElement, loadingSpinnerElement } = await act(() => {
-      const loadingContainerElement = screen.getByTestId('loading-container');
-      const loadingSpinnerElement = screen.getByTestId('loading-spinner');
-
-      return { loadingContainerElement, loadingSpinnerElement };
-    });
-
-    expect(loadingContainerElement).not.toBeNull();
-    expect(loadingSpinnerElement).not.toBeNull();
-  });
-
-  test('renders with large size', async () => {
-    customRender(<Loading size="large" />);
-    const { loadingContainerElement, loadingSpinnerElement } = await act(() => {
-      const loadingContainerElement = screen.getByTestId('loading-container');
-      const loadingSpinnerElement = screen.getByTestId('loading-spinner');
-
-      return { loadingContainerElement, loadingSpinnerElement };
-    });
-
-    expect(loadingContainerElement).not.toBeNull();
-    expect(loadingSpinnerElement).not.toBeNull();
+    expect(loadingContainer).toBeInTheDocument();
+    expect(loadingSpinner).toBeInTheDocument();
   });
 });

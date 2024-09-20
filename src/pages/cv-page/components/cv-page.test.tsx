@@ -1,16 +1,11 @@
 import React from 'react';
-import TestingPage from './cv-page';
-import { act, customRender, screen } from '@utils/test-utilities';
+import CVPage from './cv-page';
+import { render, screen } from '@testing-library/react';
 
 describe('CVPage', () => {
   it('renders without crashing', async () => {
-    customRender(<TestingPage />);
-
-    const { element } = await act(() => {
-      const element = screen;
-      return { element };
-    });
-
-    expect(element).not.toBeNull();
+    render(<CVPage />);
+    const container = await screen.findByRole('generic');
+    expect(container).toBeInTheDocument();
   });
 });

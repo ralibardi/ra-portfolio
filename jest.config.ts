@@ -17,16 +17,14 @@ const config: Config = {
     '!**/node_modules/**',
     '!**/*.stories.{js,ts,jsx,tsx}',
     '!manifestGenerator.ts',
-    '!src/service-worker.ts',
-    '!src/serviceWorkerRegistration.ts',
     '!**/app/i18n/**',
-    '!src/main.tsx',
     '!**/types/**',
     '!**/index.ts',
   ],
   moduleNameMapper: {
-    '^@public/(.*)$': '<rootDir>/public/$1',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^@public/(.*)$': '<rootDir>/public/$1',
     '^@app/(.*)$': '<rootDir>/src/app/$1',
     '^@routes/(.*)$': '<rootDir>/src/app/routes/$1',
     '^@assets/(.*)$': '<rootDir>/src/assets/$1',
@@ -38,10 +36,10 @@ const config: Config = {
     '^@lib/(.*)$': '<rootDir>/src/lib/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@tests/(.*)$': '<rootDir>/src/tests/$1',
-    '^@type/(.*)$': '<rootDir>/src/types/$1',
+    '^@types/(.*)$': '<rootDir>/src/types/$1',
     '^@utils/(.*)$': '<rootDir>/src/utils/$1',
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
+  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
 };
 
 export default config;

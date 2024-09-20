@@ -1,10 +1,9 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useCallback, useMemo } from 'react';
 import cn from 'classnames';
 import { IToggleWithIconsProps } from '../../types/toggle-with-icons-props';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { motion } from 'framer-motion';
-
+import { spring } from '@utils/animations/framer-motion-animation';
 import styles from '../../assets/toggle-with-icons.module.scss';
 
 const ToggleWithIcons: FunctionComponent<IToggleWithIconsProps> = ({
@@ -13,20 +12,26 @@ const ToggleWithIcons: FunctionComponent<IToggleWithIconsProps> = ({
   checked = false,
   onClick,
 }) => {
-  const [isOn, setIsOn] = useState(checked);
+  const toggleSwitch = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      onClick && onClick(event);
+    },
+    [onClick],
+  );
 
-  const toggleSwitch = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setIsOn(!isOn);
-    onClick && onClick(event);
-  };
-
-  const iconLeftClassName = cn(styles.iconLeft, { [styles.disabled]: !isOn });
-  const iconRightClassName = cn(styles.iconRight, { [styles.disabled]: isOn });
+  const iconLeftClassName = useMemo(
+    () => cn(styles.iconLeft, { [styles.disabled]: !checked }),
+    [checked],
+  );
+  const iconRightClassName = useMemo(
+    () => cn(styles.iconRight, { [styles.disabled]: checked }),
+    [checked],
+  );
 
   return (
     <button
       className={styles.toggle}
-      data-ison={isOn}
+      data-ison={checked}
       onClick={toggleSwitch}
       data-testid="toggle-container"
     >
@@ -54,10 +59,4 @@ const ToggleWithIcons: FunctionComponent<IToggleWithIconsProps> = ({
   );
 };
 
-const spring = {
-  type: 'spring',
-  stiffness: 700,
-  damping: 30,
-};
-
-export default ToggleWithIcons;
+export default React.memo(ToggleWithIcons);

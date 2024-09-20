@@ -1,4 +1,4 @@
-import React, { FunctionComponent, lazy } from 'react';
+import React, { FunctionComponent, lazy, useMemo } from 'react';
 import { ComponentArray } from '@utils/component-array';
 import { ISocialLink } from '@components/footer/utils/getSocialLinks';
 
@@ -11,9 +11,13 @@ interface IFooterSocials {
 }
 
 const FooterSocials: FunctionComponent<IFooterSocials> = ({ socialLinks }) => {
-  const socialLinksSorted = socialLinks
-    .sort((a, b) => a.order - b.order)
-    .filter((link) => !link.isHidden);
+  const socialLinksSorted = useMemo(
+    () =>
+      socialLinks
+        .filter((link) => !link.isHidden)
+        .sort((a, b) => a.order - b.order),
+    [socialLinks],
+  );
 
   return (
     <div className={styles.container} data-testid="test">

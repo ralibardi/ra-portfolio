@@ -1,16 +1,11 @@
 import React from 'react';
-import TestingPage from './contact-page';
-import { act, customRender, screen } from '@utils/test-utilities';
+import ContactPage from './contact-page';
+import { render, screen } from '@testing-library/react';
 
 describe('ContactPage', () => {
   it('renders without crashing', async () => {
-    customRender(<TestingPage />);
-
-    const { element } = await act(() => {
-      const element = screen;
-      return { element };
-    });
-
-    expect(element).not.toBeNull();
+    render(<ContactPage />);
+    const container = await screen.findByRole('generic');
+    expect(container).toBeInTheDocument();
   });
 });

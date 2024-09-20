@@ -3,45 +3,41 @@
 @use 'fonts' as *;
 
 $themes: (
-    light: (--accent-colour: #{$primary-1},
-        --secondary-colour: #{$secondary-2},
-        --light-grey: #{$grey-1},
-        --grey: #{$grey-2},
-        --dark-grey: #{$grey-3},
-        --text-colour: #{$black},
-        --background-colour: #{$white},
-        --foreground-colour: #{$grey-3},
+    light: (
+        --accent-colour: map-get($primary, 1),
+        --secondary-colour: map-get($secondary, 2),
+        --light-grey: map-get($grey, 1),
+        --grey: map-get($grey, 2),
+        --dark-grey: map-get($grey, 3),
+        --text-colour: $black,
+        --background-colour: $white,
+        --foreground-colour: map-get($grey, 3),
     ),
-    dark: (--accent-colour: #{$primary-3},
-        --secondary-colour: #{$secondary-2},
-        --light-grey: #{$grey-4},
-        --grey: #{$grey-5},
-        --dark-grey: #{$grey-6},
-        --text-colour: #{$white},
-        --background-colour: #{$black},
-        --foreground-colour: #{$grey-4},
+    dark: (
+        --accent-colour: map-get($primary, 3),
+        --secondary-colour: map-get($secondary, 2),
+        --light-grey: map-get($grey, 4),
+        --grey: map-get($grey, 5),
+        --dark-grey: map-get($grey, 6),
+        --text-colour: $white,
+        --background-colour: $black,
+        --foreground-colour: map-get($grey, 4),
     )
 );
 
 @mixin theme($mode: light) {
     @if map-has-key($themes, $mode) {
-        $theme-map: map-get($themes, $mode );
-
-        @each $name, $value in $theme-map {
+        @each $name, $value in map-get($themes, $mode) {
             #{$name}: #{$value};
         }
-    }
-
-    @else {
+    } @else {
         @warn "Unsupported theme mode: #{$mode}";
     }
 }
 
-@mixin font-style($size: $font-md, $weight: $font-weight-medium, $color: var(--text-colour)) {
-    font-size: $size;
-    font-weight: $weight;
-    font-family: $font-main;
-    color: $color
+@mixin font-style($size: map-get($font-sizes, md), $weight: map-get($font-weights, medium), $color: var(--text-colour)) {
+    font: $weight $size $font-family;
+    color: $color;
 }
 
 @mixin size($width: auto, $height: auto) {
@@ -51,44 +47,33 @@ $themes: (
 
 @mixin flexbox($direction: row, $justify: flex-start, $align: stretch) {
     display: flex;
-    flex-direction: $direction;
+    flex-flow: $direction;
     justify-content: $justify;
     align-items: $align;
 }
 
-@mixin box-shadow($x: $spacing-0, $y: $spacing-3xs, $blur: $spacing-2xs, $spread: $spacing-2xs, $color: $black) {
-    box-shadow: $x $y $blur $spread $color;
+@mixin box-shadow($x: map-get($spacing, 0), $y: map-get($spacing, '3xs'), $blur: map-get($spacing, '2xs'), $spread: map-get($spacing, '2xs'), $color: $black, $inset: false) {
+    box-shadow: if($inset, inset, null) $x $y $blur if($spread, $spread, null) $color;
 }
 
-@mixin box-shadow($inset: inset, $x: $spacing-0, $y: $spacing-3xs, $blur: $spacing-2xs, $color: $black) {
-    box-shadow: $inset $x $y $blur $color;
-}
-
-@mixin transition($property: all, $duration: $transition-medium, $timing: ease) {
-    transition: $property $duration $timing;
-}
-
-@mixin transition($property: all, $duration: $transition-medium, $timing: ease, $delay: $transition-0) {
-    transition: $property $duration $timing $delay;
-}
-
-@mixin transition($transitions...) {
-    $transition: null;
-
-    @each $transition in $transitions {
-        @if $transition == nth($transitions, -1) {
-            $transition: $transition;
+@mixin transition($properties...) {
+    $result: ();
+    @each $prop in $properties {
+        $temp: null;
+        @if type-of($prop) == 'list' {
+            $temp: nth($prop, 1);
+            $temp: $temp if(length($prop) > 1, ' ' + nth($prop, 2), '');
+            $temp: $temp if(length($prop) > 2, ' ' + nth($prop, 3), '');
+            $temp: $temp if(length($prop) > 3, ' ' + nth($prop, 4), '');
+        } @else {
+            $temp: $prop;
         }
-
-        @else {
-            $transition: $transition,;
-        }
+        $result: append($result, $temp, comma);
     }
-
-    transition: $transition;
+    transition: $result;
 }
 
-@mixin border-radius($radius: $border-md) {
+@mixin border-radius($radius: map-get($border, md)) {
     border-radius: $radius;
 }
 

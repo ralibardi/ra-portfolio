@@ -3,12 +3,18 @@ import { customRender } from './test-utilities';
 import userEvent from '@testing-library/user-event';
 
 describe('clickButton', () => {
+  const renderButton = (onClick: jest.Mock, disabled: boolean = false) => {
+    const { getByRole } = customRender(
+      <button onClick={onClick} disabled={disabled}>
+        Click me
+      </button>,
+    );
+    return getByRole('button');
+  };
+
   it('should call the onClick function when a button is clicked', async () => {
     const onClick = jest.fn();
-    const { getByRole } = customRender(
-      <button onClick={onClick}>Click me</button>,
-    );
-    const button = getByRole('button');
+    const button = renderButton(onClick);
 
     await userEvent.click(button);
 
@@ -17,12 +23,7 @@ describe('clickButton', () => {
 
   it('should not call the onClick function when a disabled button is clicked', async () => {
     const onClick = jest.fn();
-    const { getByRole } = customRender(
-      <button onClick={onClick} disabled>
-        Click me
-      </button>,
-    );
-    const button = getByRole('button');
+    const button = renderButton(onClick, true);
 
     await userEvent.click(button);
 
@@ -31,10 +32,7 @@ describe('clickButton', () => {
 
   it('should call the onClick function with the correct event object', async () => {
     const onClick = jest.fn();
-    const { getByRole } = customRender(
-      <button onClick={onClick}>Click me</button>,
-    );
-    const button = getByRole('button');
+    const button = renderButton(onClick);
 
     await userEvent.click(button);
 

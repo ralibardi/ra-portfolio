@@ -5,25 +5,25 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 const meta: Meta<typeof ToggleWithIcons> = {
   title: 'Toggles/ToggleWithIcons',
   component: ToggleWithIcons,
+  argTypes: {
+    onClick: { action: 'clicked' },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof ToggleWithIcons>;
 
 export const DefaultState: Story = {
   args: {
     iconLeft: faArrowLeft,
     iconRight: faArrowRight,
-    onClick: () => alert('Clicked'),
   },
 };
 
 export const Checked: Story = {
   args: {
-    iconLeft: faArrowLeft,
-    iconRight: faArrowRight,
+    ...DefaultState.args,
     checked: true,
-    onClick: () => alert('Clicked'),
   },
 };

@@ -1,51 +1,31 @@
 import React from 'react';
 import CompanyInfo from './company-info';
-import { act, customRender, screen } from '@utils/test-utilities';
-import ThemeContext from '@contexts/theme-context';
-import { IThemeContext } from '@type/theme-context';
+import { customRender, screen } from '@utils/test-utilities';
 
 describe('CompanyInfo', () => {
-  let mockToggleTheme: jest.Mock;
-  let contextValue: IThemeContext;
+  const renderCompanyInfo = (props = {}) =>
+    customRender(<CompanyInfo {...props} />);
 
-  beforeEach(() => {
-    mockToggleTheme = jest.fn();
-    contextValue = {
-      theme: 'light',
-      toggleTheme: mockToggleTheme,
-    };
+  test('should render logo', () => {
+    renderCompanyInfo();
+    expect(screen.getByTestId('company-info-logo')).toBeInTheDocument();
   });
 
-  const renderHeader = () =>
-    customRender(
-      <ThemeContext.Provider value={contextValue}>
-        <CompanyInfo />
-      </ThemeContext.Provider>,
+  test('should render label by default', () => {
+    renderCompanyInfo();
+    expect(screen.getByTestId('company-info-label')).toBeInTheDocument();
+  });
+
+  test('should not render label when isLabelHidden is true', () => {
+    renderCompanyInfo({ isLabelHidden: true });
+    expect(screen.queryByTestId('company-info-label')).not.toBeInTheDocument();
+  });
+
+  test('should render link to home page', () => {
+    renderCompanyInfo();
+    expect(screen.getByTestId('company-info-link')).toHaveAttribute(
+      'href',
+      '/',
     );
-
-  test('should render without label', async () => {
-    renderHeader();
-
-    const { logo } = await act(() => {
-      const logo = screen.getByTestId('company-info-logo');
-
-      return { logo };
-    });
-
-    expect(logo).not.toBeNull();
-  });
-
-  test('should render with label', async () => {
-    renderHeader();
-
-    const { logo, label } = await act(() => {
-      const logo = screen.getByTestId('company-info-logo');
-      const label = screen.getByTestId('company-info-label');
-
-      return { logo, label };
-    });
-
-    expect(logo).not.toBeNull();
-    expect(label).not.toBeNull();
   });
 });

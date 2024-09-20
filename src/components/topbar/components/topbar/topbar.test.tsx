@@ -1,19 +1,17 @@
-import React, { FunctionComponent } from 'react';
-import { act, customRender, screen } from '@utils/test-utilities';
+import React from 'react';
+import { customRender, screen } from '@utils/test-utilities';
 import Topbar from './topbar';
-import IRoute from '@type/route';
+import IRoute from '@types/route';
 import { faAccessibleIcon } from '@fortawesome/free-brands-svg-icons';
 
-const TesteabableComponent: FunctionComponent = () => {
-  return <div />;
-};
+const TestableComponent = () => <div />;
 
 describe('Topbar', () => {
   const mockRoutes: IRoute[] = [
     {
       path: 'test',
       index: true,
-      component: TesteabableComponent,
+      component: TestableComponent,
       labelKey: 'test',
       icon: faAccessibleIcon,
       enabled: true,
@@ -22,7 +20,7 @@ describe('Topbar', () => {
     {
       path: 'test2',
       index: true,
-      component: TesteabableComponent,
+      component: TestableComponent,
       labelKey: 'test2',
       icon: faAccessibleIcon,
       enabled: true,
@@ -30,26 +28,16 @@ describe('Topbar', () => {
     },
   ];
 
-  it('renders without crashing', async () => {
+  it('renders without crashing', () => {
     customRender(<Topbar routes={mockRoutes} />);
-
-    const element = await act(() => screen.getByTestId('topbar-container'));
-
-    expect(element).not.toBeNull();
+    const element = screen.getByTestId('topbar-container');
     expect(element).toBeInTheDocument();
   });
 
-  it('renders the correct number of nav links', async () => {
+  it('renders the correct number of nav links', () => {
     customRender(<Topbar routes={mockRoutes} />);
-
-    const { element } = await act(() => {
-      const element = screen.getAllByTestId('nav-link-label');
-
-      return { element };
-    });
-
-    expect(element).not.toBeNull();
-    expect(element.length).toBe(
+    const navLinks = screen.getAllByTestId('nav-link-label');
+    expect(navLinks).toHaveLength(
       mockRoutes.filter((r) => r.enabled && !r.hidden).length,
     );
   });

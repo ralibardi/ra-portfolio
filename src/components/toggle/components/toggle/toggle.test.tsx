@@ -1,46 +1,30 @@
 import React from 'react';
-import { act, customRender, screen } from '@utils/test-utilities';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { Toggle } from '..';
 
 describe('Toggle', () => {
-  test('renders correctly', async () => {
-    // ARRANGE
+  const setup = () => {
     const handleClick = jest.fn();
-    customRender(<Toggle onClick={handleClick} />);
+    render(<Toggle onClick={handleClick} />);
+    const switchContainer = screen.getByTestId('toggle-container');
+    const switchElement = screen.getByTestId('toggle-switch');
+    return { switchContainer, switchElement, handleClick };
+  };
 
-    // ACT
-    const { switchContainer, switchElement } = await act(() => {
-      const switchContainer = screen.getByTestId('toggle-container');
-      const switchElement = screen.getByTestId('toggle-switch');
-      return { switchContainer, switchElement };
-    });
+  test('renders correctly', () => {
+    const { switchContainer, switchElement } = setup();
 
-    // ASSERT
-    expect(switchContainer).not.toBeNull();
-    expect(switchElement).not.toBeNull();
+    expect(switchContainer).toBeInTheDocument();
+    expect(switchElement).toBeInTheDocument();
   });
 
   test('handles click events', async () => {
-    // ARRANGE
-    const onClick = jest.fn();
-    customRender(<Toggle onClick={onClick} />);
-
-    // ACT
-    const { switchContainer, switchElement } = await act(() => {
-      const switchContainer = screen.getByTestId('toggle-container');
-      const switchElement = screen.getByTestId('toggle-switch');
-
-      return { switchContainer, switchElement };
-    });
-
-    // ASSERT
-    expect(switchContainer).not.toBeNull();
-    expect(switchElement).not.toBeNull();
+    const { switchElement, handleClick } = setup();
 
     await userEvent.click(switchElement);
 
-    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });

@@ -1,16 +1,11 @@
 import React from 'react';
-import TestingPage from './gaming-page';
-import { act, customRender, screen } from '@utils/test-utilities';
+import GamingPage from './gaming-page';
+import { render, screen } from '@testing-library/react';
 
 describe('GamingPage', () => {
   it('renders without crashing', async () => {
-    customRender(<TestingPage />);
-
-    const { element } = await act(() => {
-      const element = screen;
-      return { element };
-    });
-
-    expect(element).not.toBeNull();
+    render(<GamingPage />);
+    const container = await screen.findByRole('generic');
+    expect(container).toBeInTheDocument();
   });
 });

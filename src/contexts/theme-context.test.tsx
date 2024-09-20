@@ -1,220 +1,129 @@
-import React, { FunctionComponent, useContext } from 'react';
-import { act, customRender, screen } from '@utils/test-utilities';
+import React, { FunctionComponent } from 'react';
+import { customRender, screen, act } from '@utils/test-utilities';
 import userEvent from '@testing-library/user-event';
 import ThemeContext, { ThemeProvider } from './theme-context';
-import { IThemeContext } from '@type/theme-context';
+import { IThemeContext } from '@types/theme-context';
 import { useTheme } from '@hooks/use-theme';
 
 describe('ThemeProvider', () => {
+  const TestComponent: FunctionComponent<{ onClick?: () => void }> = ({
+    onClick,
+  }) => {
+    const themeContextValue = useTheme();
+    const { toggleTheme } = themeContextValue;
+    return (
+      <button onClick={onClick || toggleTheme} data-testid="toggle-theme">
+        Toggle Theme
+      </button>
+    );
+  };
+
+  beforeEach(() => {
+    localStorage.clear();
+    document.body.className = '';
+  });
+
   it('renders children correctly', () => {
-    // ACT
     customRender(
       <ThemeProvider>
         <div data-testid="child">Test Child</div>
       </ThemeProvider>,
     );
 
-    //ASSERT
     expect(screen.getByTestId('child')).toBeInTheDocument();
   });
 
   it('provides a theme context value', () => {
-    // ARRANGE
-    let themeContextValue: IThemeContext | null | Error = null;
-    const TestComponent = () => {
-      themeContextValue = useContext(ThemeContext);
-      return null;
-    };
-
-    // ACT
+    let themeContextValue: IThemeContext | null = null;
     customRender(
       <ThemeProvider>
-        <TestComponent />
+        <ThemeContext.Consumer>
+          {(value) => {
+            themeContextValue = value;
+            return null;
+          }}
+        </ThemeContext.Consumer>
       </ThemeProvider>,
     );
 
-    // ASSERT
-    expect(themeContextValue).not.toBeNull();
-    expect(themeContextValue).toHaveProperty('theme');
-    expect((themeContextValue as unknown as IThemeContext).theme).toBe('light');
+    expect(themeContextValue).toHaveProperty('theme', 'light');
   });
 
   it('allows theme to be toggled', async () => {
-    // ARRANGE
-    let themeContextValue: IThemeContext | Error | null = null;
-    const TestComponent: FunctionComponent = () => {
-      themeContextValue = useTheme();
-      const { toggleTheme } = themeContextValue as IThemeContext;
-      return (
-        <button onClick={toggleTheme} data-testid="button">
-          Toggle Theme
-        </button>
-      );
-    };
-
+    let themeContextValue: IThemeContext | null = null;
     customRender(
       <ThemeProvider>
         <TestComponent />
+        <ThemeContext.Consumer>
+          {(value) => {
+            themeContextValue = value;
+            return null;
+          }}
+        </ThemeContext.Consumer>
       </ThemeProvider>,
     );
 
-    // ACT
-    const { buttonContainer } = await act(async () => {
-      const buttonContainer = screen.getByTestId('button');
-      await userEvent.click(buttonContainer);
-
-      return { buttonContainer };
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('toggle-theme'));
     });
 
-    // ASSERT
-    expect(buttonContainer).not.toBeNull();
-    expect(themeContextValue).not.toBeNull();
-    expect((themeContextValue as unknown as IThemeContext).theme).toBe('dark');
-  });
-});
-
-describe('ThemeProvider - system theme preference and toggle functionality', () => {
-  beforeEach(() => {
-    localStorage.clear();
-    document.body.className = '';
+    expect(themeContextValue).toHaveProperty('theme', 'dark');
   });
 
-  it('initializes theme to light if system preference is light and no localStorage', () => {
-    // ARRANGE
-    window.matchMedia = jest.fn().mockImplementation((query) => {
-      return {
-        matches: query === '(prefers-color-scheme: light)',
+  it('initializes theme based on system preference and localStorage', () => {
+    const mockMatchMedia = (prefersDark: boolean) =>
+      jest.fn().mockImplementation((query) => ({
+        matches:
+          query === '(prefers-color-scheme: dark)' ? prefersDark : !prefersDark,
         addListener: jest.fn(),
         removeListener: jest.fn(),
-      };
+      }));
+
+    const testCases = [
+      { localStorage: null, systemPreference: 'light', expected: 'light' },
+      { localStorage: null, systemPreference: 'dark', expected: 'dark' },
+      { localStorage: 'light', systemPreference: 'dark', expected: 'light' },
+      { localStorage: 'dark', systemPreference: 'light', expected: 'dark' },
+    ];
+
+    testCases.forEach(({ localStorage, systemPreference, expected }) => {
+      if (localStorage) {
+        window.localStorage.setItem('theme', localStorage);
+      }
+      window.matchMedia = mockMatchMedia(systemPreference === 'dark');
+
+      customRender(
+        <ThemeProvider>
+          <TestComponent />
+        </ThemeProvider>,
+      );
+
+      expect(document.body.classList.contains('dark-mode')).toBe(
+        expected === 'dark',
+      );
+      window.localStorage.clear();
     });
-
-    // ACT
-    customRender(
-      <ThemeProvider>
-        <div data-testid="child">Test Child</div>
-      </ThemeProvider>,
-    );
-
-    // ASSERT
-    expect(document.body.classList.contains('dark')).toBe(false);
   });
 
-  it('toggles theme from light to dark and updates localStorage', async () => {
-    // ARRANGE
-    localStorage.setItem('theme', 'light');
-    const TestComponent: FunctionComponent = () => {
-      const themeContextValue = useTheme();
-      const { toggleTheme } = themeContextValue as IThemeContext;
-      return (
-        <button onClick={toggleTheme} data-testid="toggle-theme">
-          Toggle Theme
-        </button>
-      );
-    };
-
-    // ACT
+  it('updates localStorage and body class on theme toggle', async () => {
     customRender(
       <ThemeProvider>
         <TestComponent />
       </ThemeProvider>,
     );
-    const toggleButton = screen.getByTestId('toggle-theme');
-    await userEvent.click(toggleButton);
 
-    // ASSERT
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('toggle-theme'));
+    });
+
     expect(localStorage.getItem('theme')).toBe('dark');
-    expect(document.body.classList.contains('dark')).toBeFalsy();
-  });
+    expect(document.body.classList.contains('dark-mode')).toBe(true);
 
-  it('toggles theme from dark to light and updates localStorage', async () => {
-    // ARRANGE
-    localStorage.setItem('theme', 'dark');
-    const TestComponent: FunctionComponent = () => {
-      const themeContextValue = useTheme();
-      const { toggleTheme } = themeContextValue as IThemeContext;
-      return (
-        <button onClick={toggleTheme} data-testid="toggle-theme">
-          Toggle Theme
-        </button>
-      );
-    };
+    await act(async () => {
+      await userEvent.click(screen.getByTestId('toggle-theme'));
+    });
 
-    // ACT
-    customRender(
-      <ThemeProvider>
-        <TestComponent />
-      </ThemeProvider>,
-    );
-    const toggleButton = screen.getByTestId('toggle-theme');
-    await userEvent.click(toggleButton);
-
-    // ASSERT
     expect(localStorage.getItem('theme')).toBe('light');
-    expect(document.body.classList.contains('dark')).toBeFalsy();
-  });
-
-  it('does not toggle theme when system preference is set and updates accordingly', () => {
-    // ARRANGE
-    window.matchMedia = jest.fn().mockImplementation((query) => {
-      return {
-        matches: query === '(prefers-color-scheme: dark)',
-        addListener: jest.fn(),
-        removeListener: jest.fn(),
-      };
-    });
-
-    // ACT
-    customRender(
-      <ThemeProvider>
-        <div data-testid="child">Test Child</div>
-      </ThemeProvider>,
-    );
-
-    // ASSERT
-    expect(document.body.classList.contains('dark')).toBeFalsy();
-  });
-});
-
-describe('ThemeProvider - localStorage and system preference', () => {
-  beforeEach(() => {
-    localStorage.clear();
-    document.body.className = '';
-  });
-
-  it('initializes theme from localStorage if available', () => {
-    // ARRANGE
-    localStorage.setItem('theme', 'dark');
-
-    // ACT
-    customRender(
-      <ThemeProvider>
-        <div data-testid="child">Test Child</div>
-      </ThemeProvider>,
-    );
-
-    // ASSERT
-    expect(document.body.classList.contains('dark')).toBeFalsy();
-  });
-
-  it('initializes theme to dark if system preference is dark and no localStorage', () => {
-    // ARRANGE
-    window.matchMedia = jest.fn().mockImplementation((query) => {
-      return {
-        matches: query === '(prefers-color-scheme: dark)',
-        addListener: jest.fn(),
-        removeListener: jest.fn(),
-      };
-    });
-
-    // ACT
-    customRender(
-      <ThemeProvider>
-        <div data-testid="child">Test Child</div>
-      </ThemeProvider>,
-    );
-
-    // ASSERT
-    expect(document.body.classList.contains('dark')).toBeFalsy();
+    expect(document.body.classList.contains('dark-mode')).toBe(false);
   });
 });

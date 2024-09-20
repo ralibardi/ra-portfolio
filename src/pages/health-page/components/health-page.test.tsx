@@ -1,16 +1,11 @@
 import React from 'react';
-import TestingPage from './health-page';
-import { act, customRender, screen } from '@utils/test-utilities';
+import HealthPage from './health-page';
+import { render, screen } from '@testing-library/react';
 
 describe('HealthPage', () => {
   it('renders without crashing', async () => {
-    customRender(<TestingPage />);
-
-    const { element } = await act(() => {
-      const element = screen;
-      return { element };
-    });
-
-    expect(element).not.toBeNull();
+    render(<HealthPage />);
+    const container = await screen.findByRole('generic');
+    expect(container).toBeInTheDocument();
   });
 });

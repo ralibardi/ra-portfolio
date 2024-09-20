@@ -1,7 +1,7 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
-export type IconLinkProps = {
+export interface IIconLinkProps {
   icon: IconDefinition;
   linkUrl?: string;
   title?: string;
-};
+}

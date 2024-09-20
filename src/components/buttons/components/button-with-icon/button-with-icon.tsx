@@ -1,6 +1,6 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import Loading from '@components/loading';
-import { ButtonWithIconProps } from '../../types/button-with-icon-props';
+import { IButtonWithIconProps } from '../../types/button-with-icon-props';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from '../../assets/button-with-icon.module.scss';
@@ -11,13 +11,16 @@ const ButtonWithIcon = memo(function buttonWithIcon({
   label,
   isLoading,
   ...props
-}: ButtonWithIconProps) {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (!isLoading) {
-      onClick(e);
-    }
-  };
+}: IButtonWithIconProps) {
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      if (!isLoading && onClick) {
+        onClick(e);
+      }
+    },
+    [isLoading, onClick],
+  );
 
   return (
     <button
@@ -30,7 +33,7 @@ const ButtonWithIcon = memo(function buttonWithIcon({
       disabled={isLoading}
     >
       {isLoading ? (
-        <Loading />
+        <Loading size="auto" />
       ) : (
         <div
           className={styles.content}
@@ -41,15 +44,15 @@ const ButtonWithIcon = memo(function buttonWithIcon({
             className={styles.icon}
             data-testid="button-with-icon-icon"
           />
-          <span className={styles.label} data-testid="button-with-icon-label">
-            {label}
-          </span>
+          {label && (
+            <span className={styles.label} data-testid="button-with-icon-label">
+              {label}
+            </span>
+          )}
         </div>
       )}
     </button>
   );
 });
-
-ButtonWithIcon.displayName = 'ButtonWithIcon';
 
 export default ButtonWithIcon;

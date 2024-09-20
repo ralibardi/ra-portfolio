@@ -1,101 +1,79 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-#
-# Prerequisites:
-# - A GitHub secret named NODE_VERSION with the Node.js version as its value.
-# - A GitHub secret named CHROMATIC_PROJECT_TOKEN with the Chromatic project token as its value.
-# - A GitHub secret named SONAR_ORGANISATION with the SonarCloud organization as its value.
-# - A GitHub secret named SONAR_PROJECT_KEY with the SonarCloud project key as its value.
-# - A GitHub secret named SONAR_PROJECT_NAME with the SonarCloud project name as its value.
-# - A GitHub secret named TOKEN_GITHUB with the GitHub token as its value.
-# - A GitHub secret named TOKEN_SONAR with the SonarCloud token as its value.
-
 name: Pull Request Workflow
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-  workflow_dispatch: # Allow manual triggering of the workflow
+  workflow_dispatch:
 
+env:
+  NODE_VERSION: ${{ secrets.NODE_VERSION }}
+  CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+  SONAR_ORGANISATION: ${{ secrets.SONAR_ORGANISATION }}
+  SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+  SONAR_PROJECT_NAME: ${{ secrets.SONAR_PROJECT_NAME }}
+  TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+  TOKEN_SONAR: ${{ secrets.TOKEN_SONAR }}
 
 jobs:
-  build:
-    runs-on: windows-latest
-
+  build_and_test:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{ secrets.NODE_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
-      - name: Install Dependencies
-        run: npm install
-        continue-on-error: false
+      - run: npm ci
 
-      - name: Compile App
-        run: npm run build:dev
-        continue-on-error: false
+      - name: Build, Lint, and Test
+        run: |
+          npm run build:dev
+          npm run lint
+          npm run test:coverage
 
-      - name: Run lint
-        run: npm run lint
-        continue-on-error: false
-
-      - name: Run tests and collect coverage
-        run: npm run test:coverage
-        continue-on-error: false
-
-      - name: Run Chromatic
-        uses: chromaui/action@latest
+      - uses: chromaui/action@latest
         with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          projectToken: ${{ env.CHROMATIC_PROJECT_TOKEN }}
 
-      - name: Upload coverage artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: coverage-artifact
+          name: coverage
           path: ./coverage
 
   sonarcloud:
-    name: SonarCloud
+    needs: build_and_test
     runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Download coverage artifact
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
-          name: coverage-artifact
+          name: coverage
           path: ./coverage
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-          SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
+          GITHUB_TOKEN: ${{ env.TOKEN_GITHUB }}
+          SONAR_TOKEN: ${{ env.TOKEN_SONAR }}
         with:
           args: >
-            -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.projectName=${{ secrets.SONAR_PROJECT_NAME }}
-        continue-on-error: false
+            -Dsonar.organization=${{ env.SONAR_ORGANISATION }}
+            -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }}
+            -Dsonar.projectName=${{ env.SONAR_PROJECT_NAME }}
 
       - name: SonarCloud Quality Gate Check
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          SONAR_TOKEN: ${{ secrets.TOKEN_SONAR }}
+          SONAR_TOKEN: ${{ env.TOKEN_SONAR }}
         with:
           args: >
-            -Dsonar.organization=${{ secrets.SONAR_ORGANISATION }}
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ env.SONAR_ORGANISATION }}
+            -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }}
             -Dsonar.qualitygate.wait=true
-        continue-on-error: false

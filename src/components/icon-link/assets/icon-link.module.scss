@@ -1,25 +1,24 @@
-@use '@assets\/global' as *;
+@use '@assets/global' as *;
 
 .container {
-  height: $spacing-lg;
-  display: inline-flex;
   text-decoration: none;
-  align-items: center;
+  @include flexbox(row, flex-start, center);
+  @include size($height: map-get($spacing, lg));
 }
 
 .icon {
-  width: $spacing-lg;
-  height: $spacing-lg;
-  padding-right: $spacing-md;
+  margin-right: map-get($spacing, md);
   color: var(--accent-colour);
-}
+  @include size(map-get($spacing, lg), map-get($spacing, lg));
+  @include transition((color map-get($transition, fast) ease), (box-shadow map-get($transition, fast) ease));
 
-.icon:hover {
-  color: var(--secondary-colour);
-  @include box-shadow();
+  &:hover {
+    color: var(--secondary-colour);
+    @include box-shadow();
+  }
 }
 
 .label {
-  padding-right: $spacing-md;
-  @include font-style($font-md, $font-weight-medium, var(--text-colour));
+  margin-right: map-get($spacing, md);
+  @include font-style(map-get($font-sizes, md), map-get($font-weights, medium), var(--text-colour));
 }

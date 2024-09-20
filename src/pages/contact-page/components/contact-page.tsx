@@ -1,15 +1,14 @@
-import React, { FunctionComponent, lazy } from 'react';
+import React, { FunctionComponent, lazy, Suspense } from 'react';
+import styles from '../assets/contact-page.module.scss';
 
 const Loading = lazy(() => import('@components/loading'));
 
-import styles from '../assets/contact-page.module.scss';
-
-const ContactPage: FunctionComponent = () => {
-  return (
-    <div className={styles.container}>
+const ContactPage: FunctionComponent = () => (
+  <div className={styles.container}>
+    <Suspense fallback={<Loading />}>
       <Loading />
-    </div>
-  );
-};
+    </Suspense>
+  </div>
+);
 
 export default ContactPage;

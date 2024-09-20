@@ -1,20 +1,17 @@
 import React, { memo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconLinkProps } from '../types/icon-link-props';
-
+import { IIconLinkProps } from '../types/icon-link-props';
 import styles from '../assets/icon-link.module.scss';
 
-const IconLink = memo(function buttonWithIcon({
-  icon,
-  linkUrl,
-  title,
-}: IconLinkProps) {
+const IconLink = memo(({ icon, linkUrl, title }: IIconLinkProps) => {
+  const ariaLabel = title || icon?.iconName || 'Link';
+
   return (
     <a
       href={linkUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={title ?? icon?.iconName ?? 'Link'}
+      aria-label={ariaLabel}
       className={styles.container}
       data-testid="icon-link"
     >

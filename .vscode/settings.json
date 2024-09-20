@@ -3,54 +3,35 @@
     "connectionId": "ralibardi",
     "projectKey": "ralibardi_ra-portfolio"
   },
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.patterns": {
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, .env",
-    "manifestGenerator.*": "manifest.hbs",
-    "vite.config.ts": "eslint.*, .gitignore, .prettierrc.*, .babelrc, .editorconfig, commitlint.*, sonar-project.*, web.*,.npmrc,chromatic.*",
-    "index.html": "README.md",
-    "jest.config.ts": "setupTests.ts",
-    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.js, ${capture}.stories.*, ${capture}.test.*, ${capture}.scss",
-    "*.ts": "${capture}.ts, ${capture}.stories.*, ${capture}.test.*, ${capture}.scss",
-    "*.jsx": "${capture}.jsx, ${capture}.stories.*, ${capture}.test.*, ${capture}.scss",
-    "*.tsx": "${capture}.tsx, ${capture}.stories.*, ${capture}.test.*, ${capture}.scss"
+  "explorer.fileNesting": {
+    "enabled": true,
+    "patterns": {
+      "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, .env",
+      "manifestGenerator.*": "manifest.hbs",
+      "vite.config.ts": "eslint.*, .gitignore, .prettierrc.*, .babelrc, .editorconfig, commitlint.*, sonar-project.*, web.*,.npmrc,chromatic.*",
+      "index.html": "README.md",
+      "jest.config.ts": "setupTests.ts",
+      "*.{js,ts,jsx,tsx}": "${capture}.{js.map,min.js,d.ts,js,ts,jsx,tsx,stories.*,test.*,scss}"
+    }
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor": {
+    "defaultFormatter": "esbenp.prettier-vscode",
+    "formatOnSave": true,
+    "formatOnType": true,
+    "formatOnPaste": true,
+    "codeActionsOnSave": {
+      "source.fixAll": "never"
+    }
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.formatOnType": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "never"
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "git": {
+    "autofetch": true,
+    "enableSmartCommit": true
   },
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
-  "git.autofetch": true,
-  "git.enableSmartCommit": true,
-  "files.autoSave": "onFocusChange",
-  "files.eol": "\n"
+  "files": {
+    "autoSave": "onFocusChange",
+    "eol": "\n"
+  }
 }
-

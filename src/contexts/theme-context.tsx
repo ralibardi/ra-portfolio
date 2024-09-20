@@ -1,5 +1,5 @@
-import { Theme } from '@type/theme';
-import { IThemeContext } from '@type/theme-context';
+import { Theme } from '@types/theme';
+import { IThemeContext } from '@types/theme-context';
 import React, {
   createContext,
   useState,
@@ -11,19 +11,18 @@ import React, {
 
 const ThemeContext = createContext<IThemeContext | null>(null);
 
-const getPreferredTheme = () => {
+const getPreferredTheme = (): Theme => {
   const preferredTheme = localStorage.getItem('theme') as Theme;
-
-  if (preferredTheme) {
-    return preferredTheme;
-  }
-
-  const prefersDark =
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  return prefersDark ? 'dark' : 'light';
+  if (preferredTheme) return preferredTheme;
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
 };
+
+const isDarkMode = (theme: Theme): boolean =>
+  theme === 'dark' ||
+  (theme === 'system' &&
+    window.matchMedia?.('(prefers-color-scheme: dark)').matches);
 
 export const ThemeProvider: FunctionComponent<{
   children: React.ReactNode;
@@ -32,21 +31,13 @@ export const ThemeProvider: FunctionComponent<{
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
-
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    document.body.classList.toggle(
-      'dark-mode',
-      theme === 'dark' || (theme === 'system' && prefersDark),
-    );
+    document.body.classList.toggle('dark-mode', isDarkMode(theme));
   }, [theme]);
 
-  const toggleTheme = useCallback(() => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-  }, [theme]);
+  const toggleTheme = useCallback(
+    () => setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light')),
+    [],
+  );
 
   const contextValue = useMemo(
     () => ({ theme, toggleTheme }),

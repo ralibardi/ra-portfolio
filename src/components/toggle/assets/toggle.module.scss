@@ -2,22 +2,27 @@
 
 .toggle {
     background-color: var(--light-grey);
-    padding: $spacing-2xs;
+    padding: map-get($spacing, '2xs');
     cursor: pointer;
-    -webkit-user-select: none;
     user-select: none;
     @include flexbox(row, flex-start, center);
-    @include border-radius($spacing-4xl);
-    @include size($spacing-2xl, $spacing-lg);
-}
+    @include border-radius(map-get($spacing, '4xl'));
+    @include size(map-get($spacing, '2xl'), map-get($spacing, lg));
+    @include transition(background-color map-get($transition, fast) ease);
 
-.toggle[data-ison="true"] {
-    background-color: var(--accent-colour);
-    justify-content: flex-end;
+    &[data-ison="true"] {
+        background-color: var(--accent-colour);
+        justify-content: flex-end;
+    }
 }
 
 .switch {
     background-color: var(--background-colour);
-    @include border-radius($percentage-100);
-    @include size($spacing-md, $spacing-md);
+    @include border-radius(map-get($percentage, 100));
+    @include size(map-get($spacing, md));
+    @include transition(transform map-get($transition, fast) ease);
+
+    .toggle[data-ison="true"] & {
+        transform: translateX(map-get($spacing, lg));
+    }
 }

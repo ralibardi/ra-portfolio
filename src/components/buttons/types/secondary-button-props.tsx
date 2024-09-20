@@ -1,3 +1,3 @@
-import { BaseButtonProps } from './base-button-props';
+import type { BaseButtonProps } from './base-button-props';
 
-export type SecondaryButtonProps = BaseButtonProps;
+export interface ISecondaryButtonProps extends BaseButtonProps {}

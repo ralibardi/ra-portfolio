@@ -1,4 +1,4 @@
-@use '@assets\/global' as *;
+@use '@assets/global' as *;
 
 .container {
   height: 100%;
@@ -6,30 +6,24 @@
 }
 
 .spinner {
-  width: $spacing-2xl;
-  height: $spacing-2xl;
-  border: $spacing-sm var(--accent-colour) double;
+  border: map-get($spacing, sm) var(--accent-colour) double;
   border-left-style: solid;
-  @include border-radius($percentage-50);
-  animation: spin 0.75s infinite linear;
+  animation: spin map-get($transition, medium) infinite linear;
+  @include border-radius(map-get($percentage, 50));
 }
 
 .auto {
-  width: auto;
-  height: auto;
+  @include size(auto, auto);
 }
 
 .small {
-  width: $spacing-2xl;
-  height: $spacing-2xl;
+  @include size(map-get($spacing, '2xl'), map-get($spacing, '2xl'));
 }
 
 .medium {
-  width: $spacing-3xl;
-  height: $spacing-3xl;
+  @include size(map-get($spacing, '3xl'), map-get($spacing, '3xl'));
 }
 
 .large {
-  width: $spacing-4xl;
-  height: $spacing-4xl;
+  @include size(map-get($spacing, '4xl'), map-get($spacing, '4xl'));
 }

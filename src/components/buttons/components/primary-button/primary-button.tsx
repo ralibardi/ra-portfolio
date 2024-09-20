@@ -1,6 +1,6 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import Loading from '@components/loading';
-import { PrimaryButtonProps } from '../../types/primary-button-props';
+import { IPrimaryButtonProps } from '../../types/primary-button-props';
 
 import styles from '../../assets/primary-button.module.scss';
 
@@ -9,13 +9,16 @@ const PrimaryButton = memo(function primaryButton({
   label,
   isLoading,
   ...props
-}: PrimaryButtonProps) {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (!isLoading) {
-      onClick(e);
-    }
-  };
+}: IPrimaryButtonProps) {
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      if (!isLoading && onClick) {
+        onClick(e);
+      }
+    },
+    [isLoading, onClick],
+  );
 
   return (
     <button
@@ -27,22 +30,17 @@ const PrimaryButton = memo(function primaryButton({
       onClick={handleClick}
       disabled={isLoading}
     >
-      <div
-        className={styles.content}
-        data-testid="primary-button-label-container"
-      >
-        {isLoading ? (
-          <Loading />
-        ) : (
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className={styles.content}>
           <span className={styles.label} data-testid="primary-button-label">
             {label}
           </span>
-        )}
-      </div>
+        </div>
+      )}
     </button>
   );
 });
-
-PrimaryButton.displayName = 'PrimaryButton';
 
 export default PrimaryButton;

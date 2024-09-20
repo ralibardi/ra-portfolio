@@ -1,6 +1,6 @@
 import { Theme } from './theme';
 
 export interface IThemeContext {
-  theme: Theme;
-  toggleTheme: () => void;
+  readonly theme: Theme;
+  readonly toggleTheme: () => void;
 }

@@ -9,11 +9,11 @@
     },
     "about": {
       "name": "Acerca de",
-      "title": "Conoce mas de nosotros"
+      "title": "Conoce más de nosotros"
     },
     "contact": {
       "name": "Contacto",
-      "title": "Envianos un mensaje"
+      "title": "Envíanos un mensaje"
     },
     "coding": {
       "name": "Proyectos"
@@ -27,15 +27,18 @@
     "cv": {
       "name": "CV"
     },
+    "health": {
+      "name": "Salud"
+    },
     "error": {
       "name": "Error",
-      "title": "Ay... Hay algo salió mal",
-      "404": "Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique taciti duis; lacinia tempus fringilla accumsan. Risus aliquam posuere pellentesque sociosqu facilisi maecenas. Aptent blandit aliquet cras ultrices neque. Risus habitasse eleifend est urna maximus lorem dui? Tellus lectus pulvinar; iaculis torquent augue ad. Luctus quis neque mus; adipiscing sociosqu fringilla auctor. Consectetur dignissim primis tempus sociosqu congue efficitur, cubilia hendrerit enim.",
+      "title": "Ups... Algo salió mal",
+      "message": "Disculpe las molestias. Por favor, inténtelo de nuevo más tarde.",
       "goBack": "Regresar"
     }
   },
   "header": {
-    "title": "Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique taciti duis; lacinia tempus fringilla accumsan. Risus aliquam posuere pellentesque sociosqu facilisi maecenas. Aptent blandit aliquet cras ultrices neque. Risus habitasse eleifend est urna maximus lorem dui? Tellus lectus pulvinar; iaculis torquent augue ad. Luctus quis neque mus; adipiscing sociosqu fringilla auctor. Consectetur dignissim primis tempus sociosqu congue efficitur, cubilia hendrerit enim."
+    "title": "Bienvenido al Portafolio de Ronny Alibardi"
   },
   "footer": {
     "copyright": "© 2024 Ronny Alibardi"

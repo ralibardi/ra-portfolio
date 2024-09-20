@@ -1,23 +1,19 @@
 import React from 'react';
-import { customRender } from '@utils/test-utilities';
+import { customRender, screen } from '@utils/test-utilities';
 import Footer from './footer';
-import { act, screen } from '@utils/test-utilities';
+import { FOOTER } from '@app/i18n/keys';
+
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
 
 describe('Footer', () => {
-  test('renders without crashing', async () => {
-    await act(() => customRender(<Footer />));
-  });
-
-  test('displays the correct copyright text', async () => {
+  test('renders without crashing and displays the correct copyright text', async () => {
     customRender(<Footer />);
 
-    const { labelElement } = await act(() => {
-      const labelElement = screen.getByTestId('footer-copyright');
+    const copyrightElement = await screen.findByTestId('footer-copyright');
 
-      return { labelElement };
-    });
-
-    expect(labelElement).not.toBeNull();
-    expect(labelElement).toHaveTextContent('© 2024 Ronny Alibardi');
+    expect(copyrightElement).toBeInTheDocument();
+    expect(copyrightElement).toHaveTextContent(FOOTER.COPYRIGHT);
   });
 });

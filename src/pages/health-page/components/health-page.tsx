@@ -1,13 +1,15 @@
-import React, { FunctionComponent, lazy } from 'react';
+import React, { FunctionComponent, Suspense } from 'react';
 
-const Loading = lazy(() => import('@components/loading'));
+const Loading = React.lazy(() => import('@components/loading'));
 
 import styles from '../assets/health-page.module.scss';
 
 const HealthPage: FunctionComponent = () => {
   return (
     <div className={styles.container}>
-      <Loading />
+      <Suspense fallback={<Loading />}>
+        <Loading />
+      </Suspense>
     </div>
   );
 };

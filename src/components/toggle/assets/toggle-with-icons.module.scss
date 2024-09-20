@@ -1,23 +1,14 @@
 @use '@assets/global' as *;
 
 .container {
-  margin-left: $spacing-md;
-  position: relative;
-  padding: $spacing-2xs $spacing-xs;
-  cursor: pointer;
-  @include size(
-    calc($spacing-xl + $spacing-xs),
-    calc($spacing-xl + $spacing-xs)
-  );
-  @include box-shadow(
-    $spacing-0,
-    $spacing-0,
-    $spacing-sm,
-    $spacing-3xs,
-    var(--text-colour)
-  );
-  @include border-radius($spacing-xl);
   @include flexbox(row, center, center);
+  @include size(calc(map-get($spacing, xl) + map-get($spacing, xs)));
+  @include box-shadow(map-get($spacing, 0), map-get($spacing, 0), map-get($spacing, sm), map-get($spacing, '3xs'), var(--text-colour));
+  @include border-radius(map-get($spacing, xl));
+  position: relative;
+  margin-left: map-get($spacing, md);
+  padding: map-get($spacing, '2xs') map-get($spacing, xs);
+  cursor: pointer;
 }
 
 .toggle[data-ison='true'] {
@@ -26,22 +17,26 @@
 }
 
 .switch {
+  @include size(map-get($spacing, md));
+  @include border-radius(map-get($percentage, 100));
   background-color: var(--background-colour);
-  @include border-radius($percentage-100);
-  @include size($spacing-md, $spacing-md);
 }
 
-.iconLeft {
-  color: $grey-2;
-  padding-right: $spacing-sm;
-  @include size($spacing-lg, $spacing-lg);
-}
+.icon {
+  @include size(map-get($spacing, lg));
+  padding-right: map-get($spacing, sm);
 
-.iconRight {
-  color: var(--accent-colour);
-  padding-left: $spacing-sm;
-  @include size($spacing-lg, $spacing-lg);
+  &Left {
+    @extend .icon;
+    color: map-get($grey, 2);
+  }
 
+  &Right {
+    @extend .icon;
+    color: var(--accent-colour);
+    padding-right: 0;
+    padding-left: map-get($spacing, sm);
+  }
 }
 
 .disabled {

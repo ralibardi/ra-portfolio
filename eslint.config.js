@@ -26,7 +26,6 @@ export default [
           './tsconfig.json',
           './tsconfig.node.json',
           './tsconfig.jest.json',
-          './tsconfig.setup.json',
           './tsconfig.eslint.json',
         ],
         tsconfigRootDir: __dirname,

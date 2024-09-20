@@ -1,15 +1,14 @@
-import React, { FunctionComponent, lazy } from 'react';
+import React, { FunctionComponent, lazy, Suspense } from 'react';
+import styles from '../assets/coding-page.module.scss';
 
 const Loading = lazy(() => import('@components/loading'));
 
-import styles from '../assets/coding-page.module.scss';
-
-const CodingPage: FunctionComponent = () => {
-  return (
-    <div className={styles.container}>
+const CodingPage: FunctionComponent = () => (
+  <div className={styles.container}>
+    <Suspense fallback={<Loading />}>
       <Loading />
-    </div>
-  );
-};
+    </Suspense>
+  </div>
+);
 
 export default CodingPage;

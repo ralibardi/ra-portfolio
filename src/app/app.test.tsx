@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import { act, render, screen } from '@testing-library/react';
+import React, { act, FunctionComponent } from 'react';
+import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '@contexts/theme-context';
 import App from './app';
 

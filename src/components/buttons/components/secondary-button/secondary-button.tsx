@@ -1,6 +1,6 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import Loading from '@components/loading';
-import { SecondaryButtonProps } from '../../types/secondary-button-props';
+import { ISecondaryButtonProps } from '../../types/secondary-button-props';
 
 import styles from '../../assets/secondary-button.module.scss';
 
@@ -9,13 +9,16 @@ const SecondaryButton = memo(function secondaryButton({
   label,
   isLoading = false,
   ...props
-}: SecondaryButtonProps) {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (!isLoading) {
-      onClick(e);
-    }
-  };
+}: ISecondaryButtonProps) {
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      if (!isLoading && onClick) {
+        onClick(e);
+      }
+    },
+    [isLoading, onClick],
+  );
 
   return (
     <button
@@ -30,10 +33,7 @@ const SecondaryButton = memo(function secondaryButton({
       {isLoading ? (
         <Loading />
       ) : (
-        <div
-          className={styles.content}
-          data-testid="secondary-button-label-container"
-        >
+        <div className={styles.content}>
           <span className={styles.label} data-testid="secondary-button-label">
             {label}
           </span>
@@ -42,7 +42,5 @@ const SecondaryButton = memo(function secondaryButton({
     </button>
   );
 });
-
-SecondaryButton.displayName = 'SecondaryButton';
 
 export default SecondaryButton;

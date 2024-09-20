@@ -4,7 +4,7 @@ import '@app/i18n/config';
 import ThemeContext from '@contexts/theme-context';
 
 const App: FunctionComponent = () => {
-  const { theme } = useContext(ThemeContext) ?? {};
+  const { theme = '' } = useContext(ThemeContext) ?? {};
 
   return (
     <div className={theme} data-testid="app-container">
@@ -13,4 +13,4 @@ const App: FunctionComponent = () => {
   );
 };
 
-export default App;
+export default React.memo(App);

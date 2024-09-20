@@ -1,16 +1,11 @@
 import React from 'react';
-import TestingPage from './photography-page';
-import { act, customRender, screen } from '@utils/test-utilities';
+import PhotographyPage from './photography-page';
+import { render, screen } from '@testing-library/react';
 
 describe('PhotographyPage', () => {
   it('renders without crashing', async () => {
-    customRender(<TestingPage />);
-
-    const { element } = await act(() => {
-      const element = screen;
-      return { element };
-    });
-
-    expect(element).not.toBeNull();
+    render(<PhotographyPage />);
+    const container = await screen.findByRole('generic');
+    expect(container).toBeInTheDocument();
   });
 });

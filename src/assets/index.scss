@@ -1,10 +1,7 @@
 @use 'global' as *;
 
 :root {
-  font-family: $font-main;
-  line-height: $font-height-normal;
-  font-weight: $font-weight-regular;
-
+  @include font-style(map-get($font-sizes, md), map-get($font-weights, regular));
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -12,39 +9,34 @@
 
 html,
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  @include size(auto, map-get($percentage, 100));
+  margin: map-get($spacing, 0);
+  padding: map-get($spacing, 0);
 }
 
 body {
   @include flexbox(column, center, center);
+  @include theme(light);
+
+  &.dark-mode {
+    @include theme(dark);
+  }
 }
 
 main {
   @include flexbox(column);
-  width: 100dvw;
-  height: 100dvh;
+  @include size(100dvw, 100dvh);
   overflow: hidden;
-}
-
-body {
-  @include theme(light);
-}
-
-body.dark-mode {
-  @include theme(dark);
 }
 
 .apple-prompt {
   display: none;
   position: fixed;
   text-align: center;
-  border: 1px solid var(--accent-colour);
-  bottom: $spacing-xs;
-  left: $spacing-xs;
-  right: $spacing-xs;
+  @include border-radius(map-get($border, xs));
+  border: map-get($border, xs) solid var(--accent-colour);
+  inset: auto map-get($spacing, xs) map-get($spacing, xs);
   background: $white;
-  padding: $spacing-xs;
-  z-index: $z-index-top;
+  padding: map-get($spacing, xs);
+  z-index: map-get($z-index, top);
 }

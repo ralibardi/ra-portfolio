@@ -1,4 +1,6 @@
-export type IToggleProps = {
+import { MouseEvent } from 'react';
+
+export interface IToggleProps {
   checked?: boolean;
-  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-};
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+}

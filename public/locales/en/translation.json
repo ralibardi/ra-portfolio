@@ -32,13 +32,13 @@
     },
     "error": {
       "name": "Error",
-      "title": "Ooopss... There's something wrong",
-      "404": "Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique taciti duis; lacinia tempus fringilla accumsan. Risus aliquam posuere pellentesque sociosqu facilisi maecenas. Aptent blandit aliquet cras ultrices neque. Risus habitasse eleifend est urna maximus lorem dui? Tellus lectus pulvinar; iaculis torquent augue ad. Luctus quis neque mus; adipiscing sociosqu fringilla auctor. Consectetur dignissim primis tempus sociosqu congue efficitur, cubilia hendrerit enim.",
+      "title": "Oops... Something went wrong",
+      "message": "We apologize for the inconvenience. Please try again later.",
       "goBack": "Go back"
     }
   },
   "header": {
-    "title": "Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique taciti duis; lacinia tempus fringilla accumsan. Risus aliquam posuere pellentesque sociosqu facilisi maecenas. Aptent blandit aliquet cras ultrices neque. Risus habitasse eleifend est urna maximus lorem dui? Tellus lectus pulvinar; iaculis torquent augue ad. Luctus quis neque mus; adipiscing sociosqu fringilla auctor. Consectetur dignissim primis tempus sociosqu congue efficitur, cubilia hendrerit enim."
+    "title": "Welcome to Ronny Alibardi's Portfolio"
   },
   "footer": {
     "copyright": "© 2024 Ronny Alibardi"

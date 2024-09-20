@@ -1,13 +1,19 @@
-import React, { ReactNode, ReactElement, ComponentType } from 'react';
+import React, {
+  act,
+  FunctionComponent,
+  ReactNode,
+  ReactElement,
+  ComponentType,
+} from 'react';
 import { MemoryRouter as Router } from 'react-router-dom';
 import {
-  act,
   render,
   RenderHookOptions,
   RenderHookResult,
   RenderOptions,
   RenderResult,
   screen,
+  waitFor,
 } from '@testing-library/react';
 import { ThemeProvider } from '@contexts/theme-context';
 import { renderHook } from '@testing-library/react-hooks';
@@ -16,25 +22,24 @@ interface IAllProvidersProps {
   children: ReactNode;
 }
 
-function allProviders({ children }: IAllProvidersProps): ReactElement {
-  return (
-    <Router>
-      <ThemeProvider>{children}</ThemeProvider>
-    </Router>
-  );
-}
+const AllProviders: FunctionComponent<IAllProvidersProps> = ({ children }) => (
+  <Router>
+    <ThemeProvider>{children}</ThemeProvider>
+  </Router>
+);
 
-function customRender(ui: ReactElement, options?: RenderOptions): RenderResult {
-  return render(ui, { wrapper: allProviders, ...options });
-}
-function customRenderHook<TProps extends IAllProvidersProps, TResult>(
+const customRender = (
+  ui: ReactElement,
+  options?: RenderOptions,
+): RenderResult => render(ui, { wrapper: AllProviders, ...options });
+
+const customRenderHook = <TProps extends IAllProvidersProps, TResult>(
   callback: (props: TProps) => TResult,
   options?: RenderHookOptions<TProps>,
-): RenderHookResult<TResult, TProps> {
-  return renderHook(callback, {
-    wrapper: allProviders as ComponentType<TProps>,
+): RenderHookResult<TResult, TProps> =>
+  renderHook(callback, {
+    wrapper: AllProviders as ComponentType<TProps>,
     ...options,
   });
-}
 
-export { customRender, customRenderHook, act, screen };
+export { customRender, customRenderHook, act, screen, waitFor };

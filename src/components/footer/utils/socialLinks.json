@@ -12,45 +12,33 @@
     "isHidden": false
   },
   {
-    "icon": "faAndroid",
-    "link": "https://stackoverflow.com/users/14803103/ronny-alibardi",
-    "order": 3,
-    "isHidden": true
-  },
-  {
-    "icon": "faAppStore",
-    "link": "https://stackoverflow.com/users/14803103/ronny-alibardi",
-    "order": 4,
-    "isHidden": true
-  },
-  {
     "icon": "faLinkedinIn",
     "link": "https://www.linkedin.com/in/ronnyalibardi",
-    "order": 5,
+    "order": 3,
     "isHidden": false
   },
   {
     "icon": "faInstagram",
     "link": "https://www.instagram.com/ronalibardi",
-    "order": 6,
+    "order": 4,
     "isHidden": false
   },
   {
     "icon": "faXbox",
     "link": "https://live.xbox.com/Profile?Gamertag=ralibardi",
-    "order": 7,
+    "order": 5,
     "isHidden": false
   },
   {
     "icon": "faXTwitter",
     "link": "https://www.x.com/r_alibardi",
-    "order": 8,
+    "order": 6,
     "isHidden": false
   },
   {
     "icon": "faSpotify",
     "link": "https://open.spotify.com/user/22klrzlrx6b2mt6n6tscxrlsy",
-    "order": 9,
+    "order": 7,
     "isHidden": false
   }
 ]

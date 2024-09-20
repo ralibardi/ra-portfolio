@@ -1,5 +1,7 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["commitlint.config.ts"]
+  "include": ["commitlint.config.ts"],
+  "compilerOptions": {
+    "types": ["node"]
+  }
 }
-

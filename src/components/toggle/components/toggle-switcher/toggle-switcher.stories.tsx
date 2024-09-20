@@ -4,29 +4,43 @@ import ToggleSwitcher from './toggle-switcher';
 const meta: Meta<typeof ToggleSwitcher> = {
   title: 'Toggles/ToggleSwitcher',
   component: ToggleSwitcher,
+  argTypes: {
+    onChange: { action: 'changed' },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof ToggleSwitcher>;
+
+const Template: Story = {
+  render: (args) => <ToggleSwitcher {...args} />,
+};
 
 export const DefaultState: Story = {
-  args: {
-    onChange: () => alert('Clicked'),
-  },
+  ...Template,
+  args: {},
 };
 
 export const Checked: Story = {
+  ...Template,
   args: {
     checked: true,
-    onChange: () => alert('Clicked'),
   },
 };
 
 export const InvertedLogic: Story = {
+  ...Template,
   args: {
     checked: false,
     invertedIconLogic: true,
-    onChange: () => {},
+  },
+};
+
+export const InvertedLogicChecked: Story = {
+  ...Template,
+  args: {
+    checked: true,
+    invertedIconLogic: true,
   },
 };

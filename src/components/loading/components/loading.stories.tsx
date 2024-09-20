@@ -4,30 +4,34 @@ import Loading from './loading';
 const meta: Meta<typeof Loading> = {
   title: 'Components/Loading',
   component: Loading,
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['auto', 'small', 'medium', 'large'],
+    },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Loading>;
 
-export const AutoSize: Story = {
-  args: {},
+const Template: Story = {
+  render: (args) => <Loading {...args} />,
 };
 
-export const SmallSize: Story = {
-  args: {
-    size: 'small',
-  },
+export const Default: Story = {
+  ...Template,
 };
 
-export const MediumSize: Story = {
-  args: {
-    size: 'medium',
-  },
-};
-
-export const LargeSize: Story = {
-  args: {
-    size: 'large',
-  },
+export const Sizes: Story = {
+  ...Template,
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem' }}>
+      <Loading size="auto" />
+      <Loading size="small" />
+      <Loading size="medium" />
+      <Loading size="large" />
+    </div>
+  ),
 };

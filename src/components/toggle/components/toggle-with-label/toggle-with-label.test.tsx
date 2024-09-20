@@ -1,48 +1,31 @@
 import React from 'react';
-import { act, customRender, screen } from '@utils/test-utilities';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ToggleWithLabel from './toggle-with-label';
 
 describe('ToggleWithLabel', () => {
-  it('renders without crashing', async () => {
-    customRender(<ToggleWithLabel onClick={jest.fn()} label="Testing" />);
-
-    const { element } = await act(() => {
-      const element = screen;
-
-      return { element };
-    });
-
-    expect(element).not.toBeNull();
-    expect(element).toBeDefined();
+  it('renders without crashing', () => {
+    render(<ToggleWithLabel onClick={jest.fn()} label="Testing" />);
+    expect(screen.getByTestId('toggle-container')).toBeInTheDocument();
   });
 
-  it('renders unchecked by default', async () => {
-    customRender(<ToggleWithLabel onClick={jest.fn()} label="Testing" />);
-
-    const { toggle } = await act(() => {
-      const toggle = screen.getByTestId('toggle-switch-container');
-
-      return { toggle };
-    });
-
-    expect(toggle).not.toHaveClass('checked');
+  it('renders unchecked by default', () => {
+    render(<ToggleWithLabel onClick={jest.fn()} label="Testing" />);
+    const toggle = screen.getByTestId('toggle-switch-container');
+    expect(toggle).toHaveAttribute('data-ison', 'false');
   });
 
   it('calls onClick when clicked', async () => {
     const onClick = jest.fn();
-    customRender(<ToggleWithLabel onClick={onClick} label="Testing" />);
-
-    const { toggle } = await act(() => {
-      const toggle = screen.getByTestId('toggle-switch-container');
-
-      return { toggle };
-    });
-
-    expect(toggle).not.toBeNull();
-
+    render(<ToggleWithLabel onClick={onClick} label="Testing" />);
+    const toggle = screen.getByTestId('toggle-switch-container');
     await userEvent.click(toggle);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
 
-    expect(onClick.mock.calls.length).toEqual(1);
+  it('renders the label correctly', () => {
+    const label = 'Test Label';
+    render(<ToggleWithLabel onClick={jest.fn()} label={label} />);
+    expect(screen.getByTestId('toggle-label')).toHaveTextContent(label);
   });
 });

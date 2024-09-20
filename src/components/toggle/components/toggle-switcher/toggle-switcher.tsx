@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import cn from 'classnames';
 import { IToggleSwitcherProps } from '../../types/toggle-switcher-props';
 
@@ -9,23 +9,32 @@ const ToggleSwitcher: FunctionComponent<IToggleSwitcherProps> = ({
   onChange,
   invertedIconLogic = false,
 }) => {
-  const containerClassName = cn(styles.container, {
-    [styles.dark]: checked,
-    [styles.light]: !checked,
-  });
+  const isChecked = useMemo(
+    () => (invertedIconLogic ? !checked : checked),
+    [checked, invertedIconLogic],
+  );
+
+  const containerClassName = useMemo(
+    () =>
+      cn(styles.container, {
+        [styles.dark]: isChecked,
+        [styles.light]: !isChecked,
+      }),
+    [checked],
+  );
 
   return (
     <label
       className={containerClassName}
       data-testid="toggle-label"
-      htmlFor={'toggle-input'}
+      htmlFor="toggle-input"
       id="toggle-switcher"
     >
       <input
         type="checkbox"
-        id={'toggle-input'}
+        id="toggle-input"
         data-testid="toggle-input"
-        defaultChecked={invertedIconLogic ? !checked : checked}
+        checked={isChecked}
         onChange={onChange}
       />
       <div />
@@ -33,4 +42,4 @@ const ToggleSwitcher: FunctionComponent<IToggleSwitcherProps> = ({
   );
 };
 
-export default ToggleSwitcher;
+export default React.memo(ToggleSwitcher);

@@ -6,13 +6,16 @@ import { ISocialLink } from '../../utils/getSocialLinks';
 const meta: Meta<typeof FooterSocials> = {
   title: 'Links/FooterSocials',
   component: FooterSocials,
+  argTypes: {
+    socialLinks: { control: 'object' },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof FooterSocials>;
 
-const socialLinks: ISocialLink = {
+const baseSocialLink: ISocialLink = {
   icon: faGoogle,
   link: 'https://www.google.com',
   order: 0,
@@ -21,12 +24,12 @@ const socialLinks: ISocialLink = {
 
 export const DefaultState: Story = {
   args: {
-    socialLinks: [socialLinks],
+    socialLinks: [baseSocialLink],
   },
 };
 
 export const IsLinkHidden: Story = {
   args: {
-    socialLinks: [{ ...socialLinks, isHidden: true }],
+    socialLinks: [{ ...baseSocialLink, isHidden: true }],
   },
 };

@@ -6,16 +6,12 @@ import i18n from '../src/app/i18n/config';
 
 import '../src/assets/index.scss';
 
-const withMemoryRouter: Decorator = (Story) => (
+const withProviders: Decorator = (Story) => (
   <MemoryRouter>
-    <Story />
+    <I18nextProvider i18n={i18n}>
+      <Story />
+    </I18nextProvider>
   </MemoryRouter>
-);
-
-const withI18next: Decorator = (Story) => (
-  <I18nextProvider i18n={i18n}>
-    <Story />
-  </I18nextProvider>
 );
 
 const preview: Preview = {
@@ -27,7 +23,7 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [withI18next, withMemoryRouter],
+  decorators: [withProviders],
 };
 
 export default preview;

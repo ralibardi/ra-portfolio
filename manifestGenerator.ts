@@ -1,30 +1,40 @@
-// manifestGenerator.js
-import fs from 'fs';
+// manifestGenerator.ts
+import fs from 'fs/promises';
 import handlebars from 'handlebars';
+import path from 'path';
 
-export function generateManifest() {
-  // Read _colours.scss
-  const scssContent = fs.readFileSync('src/assets/_colours.scss', 'utf8');
+export async function generateManifest() {
+  try {
+    // Read _colours.scss
+    const scssContent = await fs.readFile('src/assets/_colours.scss', 'utf8');
 
-  // Extract primary-1 colour value
-  const primaryColourMatch = scssContent.match(
-    /\$primary-1:\s*(#[0-9a-fA-F]{6});/,
+    // Extract colour values
+    const colours = {
+      primaryColour: extractColour(scssContent, 'primary-1', '#ffffff'),
+      whiteColour: extractColour(scssContent, 'white', '#000000'),
+    };
+
+    // Read and compile manifest template
+    const manifestTemplate = await fs.readFile('manifest.hbs', 'utf8');
+    const template = handlebars.compile(manifestTemplate);
+
+    // Generate manifest content
+    const manifestContent = template(colours);
+
+    // Write the final manifest.json
+    await fs.writeFile(path.join('public', 'manifest.json'), manifestContent);
+  } catch (error) {
+    console.error('Error generating manifest:', error);
+  }
+}
+
+function extractColour(
+  content: string,
+  varName: string,
+  defaultColour: string,
+): string {
+  const match = content.match(
+    new RegExp(`\\$${varName}:\\s*(#[0-9a-fA-F]{6});`),
   );
-  const primaryColour = primaryColourMatch ? primaryColourMatch[1] : '#ffffff';
-
-  // Extract white colour value
-  const whiteColourMatch = scssContent.match(/\$white:\s*(#[0-9a-fA-F]{6});/);
-  const whiteColour = whiteColourMatch ? whiteColourMatch[1] : '#000000';
-
-  // Read manifest.hbs template
-  const manifestTemplate = fs.readFileSync('manifest.hbs', 'utf8');
-
-  // Compile Handlebars template
-  const template = handlebars.compile(manifestTemplate);
-
-  // Generate manifest.json with dynamic color
-  const manifestContent = template({ primaryColour, whiteColour });
-
-  // Write the final manifest.json to the dist folder
-  fs.writeFileSync('public/manifest.json', manifestContent);
+  return match ? match[1] : defaultColour;
 }

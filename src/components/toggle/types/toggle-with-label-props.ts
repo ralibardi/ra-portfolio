@@ -1,5 +1,5 @@
 import { IToggleProps } from './toggle-props';
 
-export type IToggleWithLabelProps = IToggleProps & {
+export interface IToggleWithLabelProps extends IToggleProps {
   label: string;
-};
+}

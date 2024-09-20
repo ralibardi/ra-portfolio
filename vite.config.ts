@@ -3,9 +3,12 @@ import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { generateManifest } from './manifestGenerator';
 import path from 'path';
+import sass from 'sass';
 
-export default ({ mode }: ConfigEnv) => {
-  let baseConfig: UserConfig = {
+export default ({ mode }: ConfigEnv): UserConfig => {
+  const isProd = mode === 'production';
+
+  return defineConfig({
     publicDir: 'public',
     resolve: {
       alias: {
@@ -20,27 +23,27 @@ export default ({ mode }: ConfigEnv) => {
       {
         name: 'manifest-generator',
         enforce: 'post',
-        writeBundle: () => {
-          generateManifest();
-        },
+        writeBundle: generateManifest,
       },
     ],
-    build: {
-      outDir: 'dist',
-      terserOptions: {
-        compress: {
-          drop_console: true,
-          drop_debugger: true,
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+          implementation: sass,
         },
       },
     },
-  };
-
-  if (mode === 'production') {
-    baseConfig = {
-      ...baseConfig,
-      build: {
-        ...baseConfig.build,
+    build: {
+      outDir: 'dist',
+      sourcemap: true,
+      terserOptions: {
+        compress: {
+          drop_console: isProd,
+          drop_debugger: isProd,
+        },
+      },
+      ...(isProd && {
         rollupOptions: {
           output: {
             chunkFileNames: 'static/js/[name]-[hash].js',
@@ -48,20 +51,7 @@ export default ({ mode }: ConfigEnv) => {
             assetFileNames: 'static/assets/[name]-[hash].[ext]',
           },
         },
-        sourcemap: true,
-      },
-    };
-  }
-
-  if (mode === 'development') {
-    baseConfig = {
-      ...baseConfig,
-      build: {
-        ...baseConfig.build,
-        sourcemap: true,
-      },
-    };
-  }
-
-  return defineConfig(baseConfig);
+      }),
+    },
+  });
 };
